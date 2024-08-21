@@ -1,16 +1,5 @@
 [
   {
-    "objectID": "notebooks/00-01-FFNs.html",
-    "href": "notebooks/00-01-FFNs.html",
-    "title": "Deep Learning",
-    "section": "",
-    "text": "placeholder notebook for FFNs",
-    "crumbs": [
-      "Lab",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>00-01-FFNs.html</span>"
-    ]
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Deep Learning",
@@ -73,23 +62,23 @@
   {
     "objectID": "lectures/L01.html",
     "href": "lectures/L01.html",
-    "title": "01A:Grounding MLOps",
+    "title": "FFNs",
     "section": "",
-    "text": "Materials:\nDate: Saturday, 31-Aug-2024.",
+    "text": "Materials:\nDate: Saturday, 31-Aug-2024, 1.30pm",
     "crumbs": [
       "Lectures",
-      "01A:Grounding MLOps"
+      "FFNs"
     ]
   },
   {
     "objectID": "lectures/L01.html#materials",
     "href": "lectures/L01.html#materials",
-    "title": "01A:Grounding MLOps",
+    "title": "FFNs",
     "section": "",
     "text": "Pre-work:\n\nRefresh ML foundations.\nRead “The 100 page ML book” by Andiry Burkov. Chapters accessible here\n\n\n\nIn-Class\n\nFFNs\nLab\n\n\n\nPost-class:\n\nTBD",
     "crumbs": [
       "Lectures",
-      "01A:Grounding MLOps"
+      "FFNs"
     ]
   }
 ]
