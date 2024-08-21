@@ -1,16 +1,5 @@
 [
   {
-    "objectID": "notebooks/00-01-FFNs.html",
-    "href": "notebooks/00-01-FFNs.html",
-    "title": "Deep Learning",
-    "section": "",
-    "text": "placeholder notebook for FFNs",
-    "crumbs": [
-      "Lab",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>00-01-FFNs.html</span>"
-    ]
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Deep Learning",
@@ -35,7 +24,7 @@
     "href": "index.html#overview",
     "title": "Deep Learning",
     "section": "Overview",
-    "text": "Overview\nPrereqs\n\nUndergraduate level exposure to Linear Algebra, Calculus\nAbility to read Python code\nBasic exposure to ML/DL\n\nPart-1: A Mathematical Introduction to Deep Learning Models\n\nTopics\n\nFeed Forward Neural Networks (FFNs)\nConvolution Neural Networks (CNNs)\nRecurrent Neural Networks (RNNs)\nTransformers (Tx)\n\n\nPart-2: A Mathematical Introduction to Deep Generative Models\n\nTopics\n\nVariational Auto Encoders (VAEs)\nGenerative Adversarial Networks (GANs)\nFlow Networks (Flows)\nDiffusion Models",
+    "text": "Overview\nPrereqs\n\nUndergraduate level exposure to Linear Algebra, Calculus\nAbility to read Python code\nBasic exposure to ML/DL\n\nPart-1: A Mathematical Introduction to Deep Learning Models\n\nTopics\n\nFeed Forward Neural Networks (FFNs)\nConvolution Neural Networks (CNNs)\nRecurrent Neural Networks (RNNs)\nTransformers\n\n\nPart-2: A Mathematical Introduction to Deep Generative Models\n\nTopics\n\nVariational Auto Encoders (VAEs)\nGenerative Adversarial Networks (GANs)\nFlow Networks\nDiffusion Models",
     "crumbs": [
       "Welcome"
     ]
@@ -45,7 +34,7 @@
     "href": "preface.html",
     "title": "Preface",
     "section": "",
-    "text": "When I started reading papers about Deep Learning, typically published in conferences, I had hard time following them. The key modeling details are presented in textual form with accompanies by architecture (block) diagrams. Despite this information, it was hard for me to understand them to be able to reproduce. I have to look at source code to see how they are implemented and go back to the paper and read again, and repeat this process. This was probably due to the my training statistics. I always start with the model (expressed as equations). This unlearning took a long time. I am assuming folks with training in Maths/ Applied Maths will also have hard time reading papers in the ML space for the same space. There is no precision.\nIn this course, we will discuss different architectures (models) in Deep Learning using Mathematical language as much as possible (for the sake of precision) and follow-them up with implementation in code.\nSo, the intended audience is those with math background, that wants to appreciate modern deep learning models. We will not get into “why” deep learning works or their applications.\n\nDisclaimer\nThis course is by no means a replacement of any other resources available. Hopefully, the content and views presented complement the current practice of MLOps, readers and students benefit from it.\nopenly,\nThe Saddle Point",
+    "text": "When I started reading papers about Deep Learning, typically published in conferences, I had hard time following them. The key modeling details are presented in textual form with accompanied by architecture (block) diagrams. If the paper had any Math in them it was for proofs but not for explaining the models or the expressions were restricted to highlighting key contributions (eg. loss function).\nDespite this information, it was hard for me to understand them to be able to reproduce. I have to look at source code to see how they are implemented and go back to the paper and read again, and repeat this process. This was probably due to the my formal training Statistics. I always start with the model (expressed as equations). This unlearning took a long time. I am assuming that folks with training in Maths/ Applied Maths will also have hard time reading papers in the ML space for the same reason - there is no precision.\nIn this course, we will discuss different architectures (models) in Deep Learning using Mathematical language as much as possible (for the sake of precision) and follow-them up with implementation in code.\nThe intended audience is those with math background, that wants to appreciate modern deep learning models. We will not get into “why” deep learning works or their applications. In the resources section, I will provide ample references for those interested that wants to explore further.\n\nDisclaimer\nThis course is by no means a replacement of any other resources available. Hopefully, the content and views presented complement the current practice of MLOps, readers and students benefit from it.\nopenly,\nThe Saddle Point",
     "crumbs": [
       "Preface"
     ]
@@ -73,23 +62,23 @@
   {
     "objectID": "lectures/L01.html",
     "href": "lectures/L01.html",
-    "title": "01A:Grounding MLOps",
+    "title": "FFNs",
     "section": "",
-    "text": "Materials:\nDate: Saturday, 31-Aug-2024.",
+    "text": "Materials:\nDate: Saturday, 31-Aug-2024, 1.30pm",
     "crumbs": [
       "Lectures",
-      "01A:Grounding MLOps"
+      "FFNs"
     ]
   },
   {
     "objectID": "lectures/L01.html#materials",
     "href": "lectures/L01.html#materials",
-    "title": "01A:Grounding MLOps",
+    "title": "FFNs",
     "section": "",
     "text": "Pre-work:\n\nRefresh ML foundations.\nRead “The 100 page ML book” by Andiry Burkov. Chapters accessible here\n\n\n\nIn-Class\n\nFFNs\nLab\n\n\n\nPost-class:\n\nTBD",
     "crumbs": [
       "Lectures",
-      "01A:Grounding MLOps"
+      "FFNs"
     ]
   }
 ]

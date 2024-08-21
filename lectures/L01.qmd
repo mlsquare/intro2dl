@@ -1,7 +1,7 @@
-# 01A:Grounding MLOps {.unnumbered}
+# FFNs {.unnumbered}
 
 ## Materials:
-Date: Saturday, 31-Aug-2024.
+Date: Saturday, 31-Aug-2024, 1.30pm
 
 ### Pre-work:
 
