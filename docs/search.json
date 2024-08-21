@@ -1,0 +1,95 @@
+[
+  {
+    "objectID": "notebooks/00-01-FFNs.html",
+    "href": "notebooks/00-01-FFNs.html",
+    "title": "Deep Learning",
+    "section": "",
+    "text": "placeholder notebook for FFNs",
+    "crumbs": [
+      "Lab",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>00-01-FFNs.html</span>"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Deep Learning",
+    "section": "",
+    "text": "Welcome\nDear Faculty, Students and Learners\nSee the course page for recent information on Lectures, Labs, Resources etc..",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#announcements",
+    "href": "index.html#announcements",
+    "title": "Deep Learning",
+    "section": "Announcements",
+    "text": "Announcements\n\n[21-August-2024] Course website up",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#overview",
+    "href": "index.html#overview",
+    "title": "Deep Learning",
+    "section": "Overview",
+    "text": "Overview\nPrereqs\n\nUndergraduate level exposure to Linear Algebra, Calculus\nAbility to read Python code\nBasic exposure to ML/DL\n\nPart-1: A Mathematical Introduction to Deep Learning Models\n\nTopics\n\nFeed Forward Neural Networks (FFNs)\nConvolution Neural Networks (CNNs)\nRecurrent Neural Networks (RNNs)\nTransformers (Tx)\n\n\nPart-2: A Mathematical Introduction to Deep Generative Models\n\nTopics\n\nVariational Auto Encoders (VAEs)\nGenerative Adversarial Networks (GANs)\nFlow Networks (Flows)\nDiffusion Models",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "preface.html",
+    "href": "preface.html",
+    "title": "Preface",
+    "section": "",
+    "text": "When I started reading papers about Deep Learning, typically published in conferences, I had hard time following them. The key modeling details are presented in textual form with accompanies by architecture (block) diagrams. Despite this information, it was hard for me to understand them to be able to reproduce. I have to look at source code to see how they are implemented and go back to the paper and read again, and repeat this process. This was probably due to the my training statistics. I always start with the model (expressed as equations). This unlearning took a long time. I am assuming folks with training in Maths/ Applied Maths will also have hard time reading papers in the ML space for the same space. There is no precision.\nIn this course, we will discuss different architectures (models) in Deep Learning using Mathematical language as much as possible (for the sake of precision) and follow-them up with implementation in code.\nSo, the intended audience is those with math background, that wants to appreciate modern deep learning models. We will not get into “why” deep learning works or their applications.\n\nDisclaimer\nThis course is by no means a replacement of any other resources available. Hopefully, the content and views presented complement the current practice of MLOps, readers and students benefit from it.\nopenly,\nThe Saddle Point",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "course.html",
+    "href": "course.html",
+    "title": "Course",
+    "section": "",
+    "text": "Syllabus & Schedule",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Course</span>"
+    ]
+  },
+  {
+    "objectID": "course.html#references",
+    "href": "course.html#references",
+    "title": "Course",
+    "section": "References",
+    "text": "References\n\n[course] CS6910, Prof. Mitesh Khapra’s CS6910 Deep Learning at IIT-M\n[course] CS236 Prof. Stefano Emron’s course on Deep Generative Modeling at Stanford Fall’23\n[Book] Deep Generative Modeling, Jakub Tomxzak\n[Book] Understanding Deep Learning, Simon Prince\n[Book] Deep Learning, Ian Goodfellow and Yoshua Bengio and Aaron Courville\n\nSoma S Dhavala\nDiscussion Anchor",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Course</span>"
+    ]
+  },
+  {
+    "objectID": "lectures/L01.html",
+    "href": "lectures/L01.html",
+    "title": "01A:Grounding MLOps",
+    "section": "",
+    "text": "Materials:\nDate: Saturday, 31-Aug-2024.",
+    "crumbs": [
+      "Lectures",
+      "01A:Grounding MLOps"
+    ]
+  },
+  {
+    "objectID": "lectures/L01.html#materials",
+    "href": "lectures/L01.html#materials",
+    "title": "01A:Grounding MLOps",
+    "section": "",
+    "text": "Pre-work:\n\nRefresh ML foundations.\nRead “The 100 page ML book” by Andiry Burkov. Chapters accessible here\n\n\n\nIn-Class\n\nFFNs\nLab\n\n\n\nPost-class:\n\nTBD",
+    "crumbs": [
+      "Lectures",
+      "01A:Grounding MLOps"
+    ]
+  }
+]

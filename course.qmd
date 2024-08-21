@@ -1,0 +1,29 @@
+---
+title: "Course"
+---
+
+You will find below material and schedule for _Deep Learning: A Mathematical Introduction_ being discussed at [TIFR-CAM](https://www.math.tifrbng.res.in/), Bangalore, in the Fall of 2024. This will evolve as the discussion progress.
+
+
+### Syllabus & Schedule
+
+::: {style="font-size: 80%;"}
+| Wk | Dt | Topics | Resources |
+| :- | :- | :------- | :------- |
+| 01 | 31-Aug | 1. Course Intro <br> 2. FFNs | [L01](./lectures/L01.qmd) |
+: Part-1: Deep Learning Models {.striped}
+:::
+
+
+
+
+## References
+1. \[course\] [CS6910](http://www.cse.iitm.ac.in/~miteshk/CS6910.html), Prof. Mitesh Khapra’s CS6910 Deep Learning at IIT-M
+2. \[course\] [CS236](https://deepgenerativemodels.github.io/) Prof. Stefano Emron’s course on Deep Generative Modeling at Stanford Fall’23
+3. \[Book\] [Deep Generative Modeling](https://jmtomczak.github.io/dgm_book.html), Jakub Tomxzak
+4. \[Book\] [Understanding Deep Learning](https://udlbook.github.io/udlbook/), Simon Prince
+5. \[Book\] [Deep Learning](https://www.deeplearningbook.org/), Ian Goodfellow and Yoshua Bengio and Aaron Courville
+
+
+[Soma S Dhavala](https://www.linkedin.com/in/somasdhavala/) \
+Discussion Anchor

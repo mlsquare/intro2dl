@@ -1,0 +1,19 @@
+# 01A:Grounding MLOps {.unnumbered}
+
+## Materials:
+Date: Saturday, 31-Aug-2024.
+
+### Pre-work:
+
+1. Refresh ML foundations.
+2. Read "The 100 page ML book" by Andiry Burkov. Chapters accessible [here](https://themlbook.com/wiki/doku.php)
+
+### In-Class
+
+1. FFNs
+2. Lab
+
+### Post-class:
+
+1. TBD
+

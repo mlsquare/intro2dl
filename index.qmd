@@ -1,0 +1,37 @@
+# Welcome {.unnumbered}
+
+
+Dear Faculty, Students and Learners
+
+See the [course](./course.qmd) page for recent information on Lectures, Labs, Resources etc.. 
+
+## Announcements
+- [21-August-2024] Course website up
+
+## Overview
+
+**Prereqs**
+
+- Undergraduate level exposure to Linear Algebra, Calculus
+- Ability to read Python code
+- Basic exposure to ML/DL
+
+
+**Part-1: A Mathematical Introduction to Deep Learning Models**
+
+- Topics
+    - Feed Forward Neural Networks (FFNs)
+    - Convolution Neural Networks (CNNs)
+    - Recurrent Neural Networks (RNNs)
+    - Transformers
+
+**Part-2: A Mathematical Introduction to Deep Generative Models**
+
+- Topics
+    - Variational Auto Encoders (VAEs)
+    - Generative Adversarial Networks (GANs)
+    - Flow Networks
+    - Diffusion Models
+
+
+
