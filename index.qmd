@@ -6,7 +6,8 @@ Dear Faculty, Students and Learners
 See the [course](./course.qmd) page for recent information on Lectures, Labs, Resources etc.. 
 
 ## Announcements
-- [21-August-2024] Course website up
+- [07-Sep-2024] [L01](./lectures/L01.qmd) added.
+- [21-Aug-2024] Course website up
 
 ## Overview
 
