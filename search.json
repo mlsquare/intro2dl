@@ -86,7 +86,7 @@
     "href": "lectures/L01.html",
     "title": "FFNs",
     "section": "",
-    "text": "Materials:\nDate: Saturday, 31-Aug-2024, 1.30pm",
+    "text": "Materials:\nDate: Saturday, 07-Sep-2024, 1.30pm",
     "crumbs": [
       "Lectures",
       "FFNs"
@@ -97,7 +97,7 @@
     "href": "lectures/L01.html#materials",
     "title": "FFNs",
     "section": "",
-    "text": "Pre-work:\n\nRefresh ML foundations.\nRead “The 100 page ML book” by Andiry Burkov. Chapters accessible here\n\n\n\nIn-Class\n\nHistory of Deep Learning\n\nLecture-1 pdf, Interactive slides [R01]\nLecture-1 pdf [R02]\n\nVisualizations\n\nInteractive Figures to visualize NNs [R05]\nRepresentational Power of NNs from [R06]\n\nNeural Networks Motivation\n\nMcCulloch-Pitts Neuron, Perceptron Lecture-2:pdf [R01]\nDigital Logic Modeling by Perceptron Neural Networks:pdf [R03]\n\nFFNs\n\nFFNs for Classification and Language Modeling: pdf\n\nLab\n\nFFN for Classification on Iris data\nFFN for Regression on Friedman2 data\n\n\n\n\nPost-class:\n\nLecture-3:pdf Sigmoid Neuron, Error Surfaces, Representation Power of FFNs [R02]\nGradient Descent, Word Vectors [R03]\nLecture-4:pdf FFNs and Backprop [R02]\nComputational Graphs, Backprop:pdf [R03]\n\n\n\nReferences\n\nR01: CS6910: Deep Learning Mitesh Khapra @ IIT Madras\nR02: CS7015: Deep Learning Mitesh Khapra @ IIT Madras (earlier version of CS6910)\nR03: LING 574: Deep Learning for NLP Shane Steinhard-Threlkeld @ University of Washington\nR04: Dive into Deep Learning\nR05: Understanding Deep Learning\nR06: Neural Networks and Deep Learning",
+    "text": "Pre-work:\n\nRefresh ML foundations.\nRead “The 100 page ML book” by Andiry Burkov. Chapters accessible here\n\n\n\nIn-Class\n\nHistory of Deep Learning\n\nLecture-1 pdf, Interactive slides [R01]\nLecture-1 pdf [R02]\n\nVisualizations\n\nInteractive Figures to visualize NNs [R05]\nRepresentational Power of NNs from [R06]\n\nNeural Networks Motivation\n\nMcCulloch-Pitts Neuron, Perceptron Lecture-2:pdf [R01]\nDigital Logic Modeling by Perceptron Neural Networks:pdf [R03]\n\nFFNs\n\nFFNs for Classification and Language Modeling: pdf\n\n\n\n\nLab\n\nFFN for Classification on Iris data\nFFN for Regression on Friedman2 data\n\n\n\nPost-class:\n\nLecture-3:pdf Sigmoid Neuron, Error Surfaces, Representation Power of FFNs [R02]\nGradient Descent, Word Vectors [R03]\nLecture-4:pdf FFNs and Backprop [R02]\nComputational Graphs, Backprop:pdf [R03]\nLecture - Expressivity and UAT\n\n\n\nPapers\n\nUniversal Approximation Theorem original paper by Cybenko pdf\nMultilayer FFNs are universal approximators Hornik, Stinchcombe, and White\nRepresentation Benefits of Deep FFNs Telagarsky\n\n\n\nReferences\n\nR01: CS6910: Deep Learning Mitesh Khapra @ IIT Madras\nR02: CS7015: Deep Learning Mitesh Khapra @ IIT Madras (earlier version of CS6910)\nR03: LING 574: Deep Learning for NLP Shane Steinhard-Threlkeld @ University of Washington\nR04: Dive into Deep Learning\nR05: Understanding Deep Learning\nR06: Neural Networks and Deep Learning",
     "crumbs": [
       "Lectures",
       "FFNs"
