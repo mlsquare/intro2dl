@@ -27,12 +27,12 @@ Date: Saturday, 31-Aug-2024, 1.30pm
 2. [FFN for Regression](./../notebooks/00-02-FFN-Regression-Friedman2.ipynb) on Friedman2 data
 
 ### Post-class:
-
 1. [Lecture-3:pdf](http://www.cse.iitm.ac.in/~miteshk/CS7015/Slides/Handout/Lecture3.pdf) Sigmoid Neuron, Error Surfaces, Representation Power of FFNs [R02]
 2. [Gradient Descent, Word Vectors](https://www.shane.st/teaching/574/spr24/slides/2_GD_WV.pdf) [R03]
 3. [Lecture-4:pdf](http://www.cse.iitm.ac.in/~miteshk/CS7015/Slides/Handout/Lecture4.pdf) FFNs and Backprop [R02]
 4. [Computational Graphs, Backprop:pdf](https://www.shane.st/teaching/574/spr24/slides/5_comp-graph.pdf) [R03]
 5. [Lecture](https://mitliagkas.github.io/ift6169-2022/ift-6169-lecture-10-notes.pdf) - Expressivity and UAT
+
 ### Papers
 1. [Universal Approximation Theorem](https://hal.science/hal-03753170/) original paper by Cybenko [pdf](https://web.njit.edu/~usman/courses/cs675_fall18/10.1.1.441.7873.pdf)
 2. [Multilayer FFNs are universal approximators](https://www.sciencedirect.com/science/article/abs/pii/0893608089900208) Hornik, Stinchcombe, and White
