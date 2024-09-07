@@ -10,10 +10,38 @@ Date: Saturday, 31-Aug-2024, 1.30pm
 
 ### In-Class
 
-1. FFNs
+1. History of Deep Learning
+    - Lecture-1 [pdf](http://www.cse.iitm.ac.in/~miteshk/CS7015/Slides/Handout/Lecture1.pdf), [Interactive slides](https://iitm-pod.slides.com/arunprakash_ai/lecture-1-briefhistoryofdl/fullscreen) [R01]
+    - Lecture-1 [pdf](https://www.shane.st/teaching/574/spr24/slides/1_Intro.pdf) [R02]
+2. Visualizations
+    - [Interactive Figures](https://udlbook.github.io/udlfigures/) to visualize NNs [R05]
+    - [Representational Power of NNs](http://neuralnetworksanddeeplearning.com/chap4.html) from [R06]
+3. Neural Networks Motivation
+    - McCulloch-Pitts Neuron, Perceptron [Lecture-2:pdf](http://www.cse.iitm.ac.in/~miteshk/CS7015/Slides/Handout/Lecture2.pdf)  [R01]
+    - Digital Logic Modeling by Perceptron [Neural Networks:pdf](https://www.shane.st/teaching/574/spr24/slides/4_NN.pdf) [R03]
+4. FFNs
+    - [FFNs for Classification and Language Modeling: pdf](https://www.shane.st/teaching/574/spr24/slides/6_FF-class-lm.pdf)
+
 2. Lab
+    - [FFN for Classification](./../notebooks/00-01-FFN-Classification-Iris.ipynbnotebook) on Iris data
+    - [FFN for Regression](./../notebooks/00-02-FFN-Regression-Friedman2.ipynb) on Friedman2 data
 
 ### Post-class:
 
-1. TBD
+1. [Lecture-3:pdf](http://www.cse.iitm.ac.in/~miteshk/CS7015/Slides/Handout/Lecture3.pdf) Sigmoid Neuron, Error Surfaces, Representation Power of FFNs [R02]
+2. [Gradient Descent, Word Vectors](https://www.shane.st/teaching/574/spr24/slides/2_GD_WV.pdf) [R03]
+3. [Lecture-4:pdf](http://www.cse.iitm.ac.in/~miteshk/CS7015/Slides/Handout/Lecture4.pdf) FFNs and Backprop [R02]
+4. [Computational Graphs, Backprop:pdf](https://www.shane.st/teaching/574/spr24/slides/5_comp-graph.pdf) [R03]
+
+
+
+### References
+- R01: [CS6910: Deep Learning](http://www.cse.iitm.ac.in/~miteshk/CS6910.html) Mitesh Khapra @ IIT Madras
+- R02:  [CS7015: Deep Learning](- \[course\] [CS6910: Deep Learning](http://www.cse.iitm.ac.in/~miteshk/CS6910.html) Mitesh Khapra @ IIT Madras) Mitesh Khapra @ IIT Madras (earlier version of CS6910)
+- R03: [LING 574: Deep Learning for NLP](https://www.shane.st/teaching/574/spr24/) Shane Steinhard-Threlkeld @ University of Washington
+- R04: [Dive into Deep Learning](https://d2l.ai/index.html)
+- R05: [Understanding Deep Learning](https://udlbook.github.io/udlbook/)
+- R06: [Neural Networks and Deep Learning](http://neuralnetworksanddeeplearning.com/)
+
+
 

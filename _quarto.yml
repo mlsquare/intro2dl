@@ -37,7 +37,8 @@ book:
     - ./lectures/L01.qmd
   - part: Lab
     chapters:
-    - ./notebooks/00-01-FFNs.ipynb
+    - ./notebooks/00-01-FFN-Classification-Iris.ipynb
+    - ./notebooks/00-02-FFN-Regression-Friedman2.ipynb
   
   
 format:
