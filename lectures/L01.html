@@ -31,7 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../notebooks/00-01-FFNs.html" rel="next">
+<link href="../notebooks/00-01-FFN-Classification-Iris.html" rel="next">
 <link href="../course.html" rel="prev">
 <link href="../logo.jpg" rel="icon" type="image/jpeg">
 <script src="../site_libs/quarto-html/quarto.js"></script>
@@ -161,7 +161,12 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/00-01-FFNs.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">FFN in PyTorch</span></a>
+  <a href="../notebooks/00-01-FFN-Classification-Iris.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">FFN Classification</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/00-02-FFN-Regression-Friedman2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">FFNs Regression</span></a>
   </div>
 </li>
       </ul>
@@ -181,6 +186,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#pre-work" id="toc-pre-work" class="nav-link" data-scroll-target="#pre-work">Pre-work:</a></li>
   <li><a href="#in-class" id="toc-in-class" class="nav-link" data-scroll-target="#in-class">In-Class</a></li>
   <li><a href="#post-class" id="toc-post-class" class="nav-link" data-scroll-target="#post-class">Post-class:</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/mlsquare/intro2dl/edit/main/lectures/L01.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mlsquare/intro2dl/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -220,15 +226,51 @@ ul.task-list li input[type="checkbox"] {
 <section id="in-class" class="level3">
 <h3 class="anchored" data-anchor-id="in-class">In-Class</h3>
 <ol type="1">
-<li>FFNs</li>
-<li>Lab</li>
+<li>History of Deep Learning
+<ul>
+<li>Lecture-1 <a href="http://www.cse.iitm.ac.in/~miteshk/CS7015/Slides/Handout/Lecture1.pdf">pdf</a>, <a href="https://iitm-pod.slides.com/arunprakash_ai/lecture-1-briefhistoryofdl/fullscreen">Interactive slides</a> [R01]</li>
+<li>Lecture-1 <a href="https://www.shane.st/teaching/574/spr24/slides/1_Intro.pdf">pdf</a> [R02]</li>
+</ul></li>
+<li>Visualizations
+<ul>
+<li><a href="https://udlbook.github.io/udlfigures/">Interactive Figures</a> to visualize NNs [R05]</li>
+<li><a href="http://neuralnetworksanddeeplearning.com/chap4.html">Representational Power of NNs</a> from [R06]</li>
+</ul></li>
+<li>Neural Networks Motivation
+<ul>
+<li>McCulloch-Pitts Neuron, Perceptron <a href="http://www.cse.iitm.ac.in/~miteshk/CS7015/Slides/Handout/Lecture2.pdf">Lecture-2:pdf</a> [R01]</li>
+<li>Digital Logic Modeling by Perceptron <a href="https://www.shane.st/teaching/574/spr24/slides/4_NN.pdf">Neural Networks:pdf</a> [R03]</li>
+</ul></li>
+<li>FFNs
+<ul>
+<li><a href="https://www.shane.st/teaching/574/spr24/slides/6_FF-class-lm.pdf">FFNs for Classification and Language Modeling: pdf</a></li>
+</ul></li>
+<li>Lab
+<ul>
+<li><a href="./../notebooks/00-01-FFN-Classification-Iris.ipynbnotebook">FFN for Classification</a> on Iris data</li>
+<li><a href="../notebooks/00-02-FFN-Regression-Friedman2.html">FFN for Regression</a> on Friedman2 data</li>
+</ul></li>
 </ol>
 </section>
 <section id="post-class" class="level3">
 <h3 class="anchored" data-anchor-id="post-class">Post-class:</h3>
 <ol type="1">
-<li>TBD</li>
+<li><a href="http://www.cse.iitm.ac.in/~miteshk/CS7015/Slides/Handout/Lecture3.pdf">Lecture-3:pdf</a> Sigmoid Neuron, Error Surfaces, Representation Power of FFNs [R02]</li>
+<li><a href="https://www.shane.st/teaching/574/spr24/slides/2_GD_WV.pdf">Gradient Descent, Word Vectors</a> [R03]</li>
+<li><a href="http://www.cse.iitm.ac.in/~miteshk/CS7015/Slides/Handout/Lecture4.pdf">Lecture-4:pdf</a> FFNs and Backprop [R02]</li>
+<li><a href="https://www.shane.st/teaching/574/spr24/slides/5_comp-graph.pdf">Computational Graphs, Backprop:pdf</a> [R03]</li>
 </ol>
+</section>
+<section id="references" class="level3">
+<h3 class="anchored" data-anchor-id="references">References</h3>
+<ul>
+<li>R01: <a href="http://www.cse.iitm.ac.in/~miteshk/CS6910.html">CS6910: Deep Learning</a> Mitesh Khapra @ IIT Madras</li>
+<li>R02: <a href="- [course] [CS6910: Deep Learning](http://www.cse.iitm.ac.in/~miteshk/CS6910.html) Mitesh Khapra @ IIT Madras">CS7015: Deep Learning</a> Mitesh Khapra @ IIT Madras (earlier version of CS6910)</li>
+<li>R03: <a href="https://www.shane.st/teaching/574/spr24/">LING 574: Deep Learning for NLP</a> Shane Steinhard-Threlkeld @ University of Washington</li>
+<li>R04: <a href="https://d2l.ai/index.html">Dive into Deep Learning</a></li>
+<li>R05: <a href="https://udlbook.github.io/udlbook/">Understanding Deep Learning</a></li>
+<li>R06: <a href="http://neuralnetworksanddeeplearning.com/">Neural Networks and Deep Learning</a></li>
+</ul>
 
 
 </section>
@@ -662,8 +704,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../notebooks/00-01-FFNs.html" class="pagination-link" aria-label="FFN in PyTorch">
-        <span class="nav-page-text"><span class="chapter-title">FFN in PyTorch</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../notebooks/00-01-FFN-Classification-Iris.html" class="pagination-link" aria-label="FFN Classification">
+        <span class="nav-page-text"><span class="chapter-title">FFN Classification</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

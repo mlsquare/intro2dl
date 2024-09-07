@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://mlsquare.github.io/intro2dl/notebooks/00-01-FFNs.html</loc>
-    <lastmod>2024-08-21T06:40:00.829Z</lastmod>
+    <loc>https://mlsquare.github.io/intro2dl/notebooks/00-01-FFN-Classification-Iris.html</loc>
+    <lastmod>2024-09-07T04:10:33.196Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mlsquare.github.io/intro2dl/notebooks/00-02-FFN-Regression-Friedman2.html</loc>
+    <lastmod>2024-09-07T04:09:46.890Z</lastmod>
   </url>
   <url>
     <loc>https://mlsquare.github.io/intro2dl/index.html</loc>
@@ -18,6 +22,6 @@
   </url>
   <url>
     <loc>https://mlsquare.github.io/intro2dl/lectures/L01.html</loc>
-    <lastmod>2024-08-21T06:40:33.414Z</lastmod>
+    <lastmod>2024-09-07T04:07:30.928Z</lastmod>
   </url>
 </urlset>
