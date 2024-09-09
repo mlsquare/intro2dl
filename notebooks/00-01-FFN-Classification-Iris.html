@@ -736,6 +736,7 @@ Estimated Total Size (MB): 0.03
 <span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Epoch </span><span class="sc">{</span>epoch<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>num_epochs<span class="sc">}</span><span class="ss">, Train Loss: </span><span class="sc">{</span>loss_train<span class="sc">.</span>item()<span class="sc">:.4f}</span><span class="ss">, Test Loss: </span><span class="sc">{</span>loss_test<span class="sc">.</span>item()<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>In the above <em>train_network</em> block, we have not used batches. Entire train data is passed at once. So, one epoch is one complete pass through the data.</p>
+<p><strong>Exercise</strong> Modify the training loop to pass over mini batches.</p>
 <div id="cell-29" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>num_epochs <span class="op">=</span> <span class="dv">1000</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>train_losses <span class="op">=</span> np.zeros(num_epochs)</span>
