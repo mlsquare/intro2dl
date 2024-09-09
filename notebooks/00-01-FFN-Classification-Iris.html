@@ -238,15 +238,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Based on</p>
-<p>https://www.kaggle.com/code/mohitchaitanya/simple-iris-dataset-classification-using-pytorch https://github.com/mattsinbot/PyTorch-for-Iris-Dataset https://github.com/yangzhangalmo/pytorch-iris/blob/master/main.py</p>
-<div id="cell-1" class="cell" data-execution_count="1">
+<p>A notebook to apply an FFN (Feed Forward Neural Network) to classify the flower species type. We will use the the famous Iris dataset (which is now the equivalent of the hellow world dataset in the Data Science World)</p>
+<p>Based on - <a href="https://www.kaggle.com/code/mohitchaitanya/simple-iris-dataset-classification-using-pytorch">Kaggle Notebook for Iris Classiifcation</a> - <a href="https://github.com/mattsinbot/PyTorch-for-Iris-Dataset">PyTorch for Iris Dataset</a> - <a href="https://github.com/yangzhangalmo/pytorch-iris/blob/master/main.py">Iris Classification</a></p>
+<p><strong>Load, Visualize, Summarise Data</strong></p>
+<p>sklearn comes with Iris dataset. We will load it, and do some basic visualization. It is always a good idea to “look” at the data before (blindly) running any models.</p>
+<div id="cell-2" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_iris</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>iris <span class="op">=</span> load_iris()</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>_, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>_, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">5</span>,<span class="dv">5</span>))</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>scatter <span class="op">=</span> ax.scatter(iris.data[:, <span class="dv">0</span>], iris.data[:, <span class="dv">1</span>], c<span class="op">=</span>iris.target)</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>ax.<span class="bu">set</span>(xlabel<span class="op">=</span>iris.feature_names[<span class="dv">0</span>], ylabel<span class="op">=</span>iris.feature_names[<span class="dv">1</span>])</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> ax.legend(</span>
@@ -260,7 +262,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-2" class="cell" data-execution_count="2">
+<p>We see that, 1. there are four features, and it is a three class classification problem 2. Using two features (<em>sepal length</em>, and <em>sepal width</em>), it is clear that, a perceptron will not be able separate _versicolor from <em>virginica</em> (data is not linearly separable) class. 3. But setosa can be separated from the remaining two.</p>
+<p>Let us look at the basic descriptions of the data.</p>
+<div id="cell-4" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'feature name'</span>,iris.feature_names)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'features type of data'</span>,<span class="bu">type</span>(iris.data))</span>
@@ -277,7 +281,7 @@ target type of data &lt;class 'numpy.ndarray'&gt;
 target shape (150,)</code></pre>
 </div>
 </div>
-<div id="cell-3" class="cell" data-execution_count="3">
+<div id="cell-5" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'target labels'</span>,iris.target)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>target labels [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
@@ -287,7 +291,15 @@ target shape (150,)</code></pre>
  2 2]</code></pre>
 </div>
 </div>
-<div id="cell-4" class="cell" data-execution_count="4">
+<p>Ha. In the original dataset, the data is organized by class. If we naively prepare the mini batches (sequentially), model will only see data corresponding to only one class. This will be pretty problematic to get proper gradient signals. We should shuffle the data s.t diversity in the mini batches is maintained.</p>
+<p><strong>A homework exercise</strong> :)</p>
+<p>Imagine you split the data into two batches. One containing only say class 0, and other contains only class 1. During training, the model sees these two batches cyclically. Will the model ever converge.</p>
+<ol type="1">
+<li>Will it converge when the data is linearly separable?</li>
+<li>Will it converge when the data is not linearly separable?</li>
+<li>Does having a balanced class representation in every mini batch helps? Which way does it?</li>
+</ol>
+<div id="cell-7" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datasets <span class="im">import</span> Dataset</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"hf://datasets/scikit-learn/iris/Iris.csv"</span>)</span>
@@ -361,13 +373,13 @@ target shape (150,)</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-5" class="cell" data-execution_count="5">
+<div id="cell-8" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Species'</span>].unique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>array(['Iris-setosa', 'Iris-versicolor', 'Iris-virginica'], dtype=object)</code></pre>
 </div>
 </div>
-<div id="cell-6" class="cell" data-execution_count="6">
+<div id="cell-9" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># transform species to numerics</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>df.loc[df.Species<span class="op">==</span><span class="st">'Iris-setosa'</span>, <span class="st">'Target'</span>] <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>df.loc[df.Species<span class="op">==</span><span class="st">'Iris-versicolor'</span>, <span class="st">'Target'</span>] <span class="op">=</span> <span class="dv">1</span></span>
@@ -451,7 +463,7 @@ target shape (150,)</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-7" class="cell" data-execution_count="7">
+<div id="cell-10" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df.drop([<span class="st">'Id'</span>],axis<span class="op">=</span><span class="dv">1</span>,inplace<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
@@ -522,7 +534,7 @@ target shape (150,)</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-8" class="cell" data-execution_count="8">
+<div id="cell-11" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -530,7 +542,7 @@ target shape (150,)</code></pre>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df.Target.values</span>
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X,y, test_size<span class="op">=</span><span class="fl">0.8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-9" class="cell" data-execution_count="9">
+<div id="cell-12" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check that data is shuffled</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -538,13 +550,13 @@ target shape (150,)</code></pre>
  1. 1. 1. 0. 0. 1.]</code></pre>
 </div>
 </div>
-<div id="cell-10" class="cell" data-execution_count="10">
+<div id="cell-13" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> scaler.fit_transform(X_train)</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>X_test <span class="op">=</span> scaler.transform(X_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-11" class="cell" data-execution_count="11">
+<div id="cell-14" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score, precision_score, recall_score</span>
@@ -554,13 +566,13 @@ target shape (150,)</code></pre>
 <span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.nn.functional <span class="im">as</span> F</span>
 <span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.autograd <span class="im">import</span> Variable</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-12" class="cell" data-execution_count="12">
+<div id="cell-15" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> torch.FloatTensor(X_train)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>X_test <span class="op">=</span> torch.FloatTensor(X_test)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>y_train <span class="op">=</span> torch.LongTensor(y_train)</span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>y_test <span class="op">=</span> torch.LongTensor(y_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-13" class="cell" data-execution_count="13">
+<div id="cell-16" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MLP(nn.Module):</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># define nn</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, input_dim<span class="op">=</span><span class="dv">4</span>, output_dim<span class="op">=</span><span class="dv">3</span>, hidden_dim <span class="op">=</span> [<span class="dv">128</span>,<span class="dv">64</span>]):</span>
@@ -576,18 +588,18 @@ target shape (150,)</code></pre>
 <span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>        X <span class="op">=</span> <span class="va">self</span>.out(X)</span>
 <span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> X</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-14" class="cell" data-execution_count="14">
+<div id="cell-17" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>input_dim <span class="op">=</span> <span class="dv">4</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>output_dim <span class="op">=</span> <span class="dv">3</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>hidden_dim <span class="op">=</span> [<span class="dv">64</span>, <span class="dv">64</span>]</span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> MLP(input_dim<span class="op">=</span>input_dim, output_dim<span class="op">=</span>output_dim, hidden_dim<span class="op">=</span>hidden_dim)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-15" class="cell" data-execution_count="15">
+<div id="cell-18" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>learning_rate <span class="op">=</span> <span class="fl">0.01</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>criterion <span class="op">=</span> nn.CrossEntropyLoss()</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>optimizer <span class="op">=</span> torch.optim.Adam(model.parameters(),lr<span class="op">=</span>learning_rate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-16" class="cell" data-execution_count="16">
+<div id="cell-19" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> train_network(model,optimizer,criterion,X_train,y_train,X_test,y_test,num_epochs,train_losses,test_losses):</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(num_epochs):</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>        <span class="co">#clear out the gradients from the last step loss.backward()</span></span>
@@ -615,12 +627,12 @@ target shape (150,)</code></pre>
 <span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (epoch <span class="op">+</span> <span class="dv">1</span>) <span class="op">%</span> <span class="dv">50</span> <span class="op">==</span> <span class="dv">0</span>:</span>
 <span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Epoch </span><span class="sc">{</span>epoch<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>num_epochs<span class="sc">}</span><span class="ss">, Train Loss: </span><span class="sc">{</span>loss_train<span class="sc">.</span>item()<span class="sc">:.4f}</span><span class="ss">, Test Loss: </span><span class="sc">{</span>loss_test<span class="sc">.</span>item()<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-17" class="cell" data-execution_count="17">
+<div id="cell-20" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>num_epochs <span class="op">=</span> <span class="dv">1000</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>train_losses <span class="op">=</span> np.zeros(num_epochs)</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>test_losses  <span class="op">=</span> np.zeros(num_epochs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-18" class="cell" data-execution_count="18">
+<div id="cell-21" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>train_network(model,optimizer,criterion,X_train,y_train,X_test,y_test,num_epochs,train_losses,test_losses)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Epoch 50/1000, Train Loss: 0.0001, Test Loss: 0.4372
@@ -645,7 +657,7 @@ Epoch 950/1000, Train Loss: 0.0000, Test Loss: 0.3598
 Epoch 1000/1000, Train Loss: 0.0000, Test Loss: 0.3601</code></pre>
 </div>
 </div>
-<div id="cell-19" class="cell" data-execution_count="19">
+<div id="cell-22" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">10</span>))</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>plt.plot(train_losses, label<span class="op">=</span><span class="st">'train loss'</span>)</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>plt.plot(test_losses, label<span class="op">=</span><span class="st">'test loss'</span>)</span>
@@ -659,14 +671,14 @@ Epoch 1000/1000, Train Loss: 0.0000, Test Loss: 0.3601</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-20" class="cell" data-execution_count="20">
+<div id="cell-23" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>predictions_train <span class="op">=</span> []</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>predictions_test <span class="op">=</span>  []</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> torch.no_grad():</span>
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    predictions_train <span class="op">=</span> model(X_train)</span>
 <span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    predictions_test <span class="op">=</span> model(X_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-21" class="cell" data-execution_count="21">
+<div id="cell-24" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(predictions_train.shape)</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(predictions_train))</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -679,7 +691,7 @@ torch.Size([30])
 &lt;class 'torch.Tensor'&gt;</code></pre>
 </div>
 </div>
-<div id="cell-22" class="cell" data-execution_count="22">
+<div id="cell-25" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_accuracy_multiclass(pred_arr,original_arr):</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(pred_arr)<span class="op">!=</span><span class="bu">len</span>(original_arr):</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">False</span></span>
@@ -698,7 +710,7 @@ torch.Size([30])
 <span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>            count<span class="op">+=</span><span class="dv">1</span></span>
 <span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> count<span class="op">/</span><span class="bu">len</span>(final_pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-23" class="cell" data-execution_count="23">
+<div id="cell-26" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>train_acc <span class="op">=</span> get_accuracy_multiclass(predictions_train,y_train)</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>test_acc  <span class="op">=</span> get_accuracy_multiclass(predictions_test,y_test)</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Training Accuracy: </span><span class="sc">{</span><span class="bu">round</span>(train_acc<span class="op">*</span><span class="dv">100</span>,<span class="dv">3</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
