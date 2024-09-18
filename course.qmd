@@ -10,7 +10,8 @@ You will find below material and schedule for _Deep Learning: A Mathematical Int
 ::: {style="font-size: 80%;"}
 | Wk | Dt | Topics | Resources |
 | :- | :- | :------- | :------- |
-| 01 | 31-Aug | 1. Course Intro <br> 2. FFNs | [L01](./lectures/L01.qmd) |
+| 01 | 07-Sep | 1. Course Intro <br> 2. FFNs | [L01](./lectures/L01.qmd) |
+| 02 | 21-Sep | 1. Nonparametric Regression <br> 2. KANs | [L01](./lectures/L03.qmd) |
 : Part-1: Deep Learning Models {.striped}
 :::
 

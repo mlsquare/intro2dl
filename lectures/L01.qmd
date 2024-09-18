@@ -9,7 +9,6 @@ Date: Saturday, 07-Sep-2024, 1.30pm
 2. Read "The 100 page ML book" by Andiry Burkov. Chapters accessible [here](https://themlbook.com/wiki/doku.php)
 
 ### In-Class
-
 1. History of Deep Learning
     - Lecture-1 [pdf](http://www.cse.iitm.ac.in/~miteshk/CS7015/Slides/Handout/Lecture1.pdf), [Interactive slides](https://iitm-pod.slides.com/arunprakash_ai/lecture-1-briefhistoryofdl/fullscreen) [R01]
     - Lecture-1 [pdf](https://www.shane.st/teaching/574/spr24/slides/1_Intro.pdf) [R02]
@@ -21,10 +20,11 @@ Date: Saturday, 07-Sep-2024, 1.30pm
     - Digital Logic Modeling by Perceptron [Neural Networks:pdf](https://www.shane.st/teaching/574/spr24/slides/4_NN.pdf) [R03]
 4. FFNs
     - [FFNs for Classification and Language Modeling: pdf](https://www.shane.st/teaching/574/spr24/slides/6_FF-class-lm.pdf)
-
+    
 ### Lab
 1. [FFN for Classification](./../notebooks/00-01-FFN-Classification-Iris.ipynbnotebook) on Iris data
 2. [FFN for Regression](./../notebooks/00-02-FFN-Regression-Friedman2.ipynb) on Friedman2 data
+
 
 ### Post-class:
 1. [Lecture-3:pdf](http://www.cse.iitm.ac.in/~miteshk/CS7015/Slides/Handout/Lecture3.pdf) Sigmoid Neuron, Error Surfaces, Representation Power of FFNs [R02]
@@ -32,19 +32,27 @@ Date: Saturday, 07-Sep-2024, 1.30pm
 3. [Lecture-4:pdf](http://www.cse.iitm.ac.in/~miteshk/CS7015/Slides/Handout/Lecture4.pdf) FFNs and Backprop [R02]
 4. [Computational Graphs, Backprop:pdf](https://www.shane.st/teaching/574/spr24/slides/5_comp-graph.pdf) [R03]
 5. [Lecture](https://mitliagkas.github.io/ift6169-2022/ift-6169-lecture-10-notes.pdf) - Expressivity and UAT
+6. Neural Networks Review from R07
+    - Neural Networks: A Review [part-1: youtube](https://www.youtube.com/watch?v=47d0M3UAXNc), [part-2: youtube](https://www.youtube.com/watch?v=OKVn7q20dEY)
+    - FFNs and Backpopr [part-1: youtube](https://www.youtube.com/watch?v=8sjbwfHdqW8), [part-2: youtube](https://www.youtube.com/watch?v=XV20CvRsIJU)
 
+
+    
 ### Papers
 1. [Universal Approximation Theorem](https://hal.science/hal-03753170/) original paper by Cybenko [pdf](https://web.njit.edu/~usman/courses/cs675_fall18/10.1.1.441.7873.pdf)
 2. [Multilayer FFNs are universal approximators](https://www.sciencedirect.com/science/article/abs/pii/0893608089900208) Hornik, Stinchcombe, and White
 3. [Representation Benefits of Deep FFNs](https://arxiv.org/abs/1509.08101) Telagarsky
 
+
 ### References
 - R01: [CS6910: Deep Learning](http://www.cse.iitm.ac.in/~miteshk/CS6910.html) Mitesh Khapra @ IIT Madras
-- R02:  [CS7015: Deep Learning](- \[course\] [CS6910: Deep Learning](http://www.cse.iitm.ac.in/~miteshk/CS6910.html) Mitesh Khapra @ IIT Madras) Mitesh Khapra @ IIT Madras (earlier version of CS6910)
+(earlier version of CS6910)
 - R03: [LING 574: Deep Learning for NLP](https://www.shane.st/teaching/574/spr24/) Shane Steinhard-Threlkeld @ University of Washington
 - R04: [Dive into Deep Learning](https://d2l.ai/index.html)
 - R05: [Understanding Deep Learning](https://udlbook.github.io/udlbook/)
 - R06: [Neural Networks and Deep Learning](http://neuralnetworksanddeeplearning.com/)
+- R07: [Deep Learning for Computer Vision](https://archive.nptel.ac.in/noc/courses/noc20/SEM2/noc20-cs88/) NPTEL course by Prof. Vineeth N Balasubramanian
+
 
 
 
