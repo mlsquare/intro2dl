@@ -66,7 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../notebooks/00-02-FFN-Regression-Friedman2.html" rel="next">
-<link href="../lectures/L01.html" rel="prev">
+<link href="../lectures/L03.html" rel="prev">
 <link href="../logo.jpg" rel="icon" type="image/jpeg">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -212,6 +212,18 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../lectures/L01.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">FFNs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lectures/L02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">CNNs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lectures/L03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">KANs</span></a>
   </div>
 </li>
       </ul>
@@ -736,7 +748,8 @@ Estimated Total Size (MB): 0.03
 <span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Epoch </span><span class="sc">{</span>epoch<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>num_epochs<span class="sc">}</span><span class="ss">, Train Loss: </span><span class="sc">{</span>loss_train<span class="sc">.</span>item()<span class="sc">:.4f}</span><span class="ss">, Test Loss: </span><span class="sc">{</span>loss_test<span class="sc">.</span>item()<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>In the above <em>train_network</em> block, we have not used batches. Entire train data is passed at once. So, one epoch is one complete pass through the data.</p>
-<p><strong>Exercise</strong> Modify the training loop to pass over mini batches.</p>
+<p><strong>Exercise</strong></p>
+<p>Modify the training loop to pass over mini batches.</p>
 <div id="cell-29" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>num_epochs <span class="op">=</span> <span class="dv">1000</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>train_losses <span class="op">=</span> np.zeros(num_epochs)</span>
@@ -820,7 +833,7 @@ torch.Size([30])
 <span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>            count<span class="op">+=</span><span class="dv">1</span></span>
 <span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> count<span class="op">/</span><span class="bu">len</span>(final_pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Notice that the model predictions were of size _(batch_size, output_dim) and we have to take <em>argmax</em> of the model predictions to produce the class labels. The predictions are in the <em>logit</em> space (recall that the output layer is <em>linear</em> and not <em>softmax</em>).</p>
+<p>Notice that the model predictions were of size <em>(batch_size, output_dim)</em> and we have to take <em>argmax</em> of the model predictions to produce the class labels. The predictions are in the <em>logit</em> space (recall that the output layer is <em>linear</em> and not <em>softmax</em>).</p>
 <div id="cell-36" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>train_acc <span class="op">=</span> get_accuracy_multiclass(predictions_train,y_train)</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>test_acc  <span class="op">=</span> get_accuracy_multiclass(predictions_test,y_test)</span>
@@ -1257,8 +1270,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../lectures/L01.html" class="pagination-link" aria-label="FFNs">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">FFNs</span>
+      <a href="../lectures/L03.html" class="pagination-link" aria-label="KANs">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">KANs</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
