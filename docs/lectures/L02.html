@@ -8,7 +8,7 @@
 
 <meta name="author" content="mlsquare">
 
-<title>FFNs – Deep Learning</title>
+<title>CNNs – Deep Learning</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,8 +31,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../lectures/L02.html" rel="next">
-<link href="../course.html" rel="prev">
+<link href="../lectures/L03.html" rel="next">
+<link href="../lectures/L01.html" rel="prev">
 <link href="../logo.jpg" rel="icon" type="image/jpeg">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -83,7 +83,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lectures/L01.html">Lectures</a></li><li class="breadcrumb-item"><a href="../lectures/L01.html">FFNs</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lectures/L01.html">Lectures</a></li><li class="breadcrumb-item"><a href="../lectures/L02.html">CNNs</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -144,13 +144,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/L01.html" class="sidebar-item-text sidebar-link active">
+  <a href="../lectures/L01.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">FFNs</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/L02.html" class="sidebar-item-text sidebar-link">
+  <a href="../lectures/L02.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">CNNs</span></a>
   </div>
 </li>
@@ -203,14 +203,14 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/mlsquare/intro2dl/edit/main/lectures/L01.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mlsquare/intro2dl/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/mlsquare/intro2dl/edit/main/lectures/L02.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mlsquare/intro2dl/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lectures/L01.html">Lectures</a></li><li class="breadcrumb-item"><a href="../lectures/L01.html">FFNs</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lectures/L01.html">Lectures</a></li><li class="breadcrumb-item"><a href="../lectures/L02.html">CNNs</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">FFNs</h1>
+<h1 class="title">CNNs</h1>
 </div>
 
 
@@ -229,72 +229,75 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="materials" class="level2">
 <h2 class="anchored" data-anchor-id="materials">Materials:</h2>
-<p>Date: Saturday, 07-Sep-2024, 1.30pm</p>
+<p>Date: TBD</p>
 <section id="pre-work" class="level3">
 <h3 class="anchored" data-anchor-id="pre-work">Pre-work:</h3>
 <ol type="1">
 <li>Refresh ML foundations.</li>
 <li>Read “The 100 page ML book” by Andiry Burkov. Chapters accessible <a href="https://themlbook.com/wiki/doku.php">here</a></li>
+<li><a href="../lectures/L01.html">FFNs</a></li>
 </ol>
 </section>
 <section id="in-class" class="level3">
 <h3 class="anchored" data-anchor-id="in-class">In-Class</h3>
 <ol type="1">
-<li>History of Deep Learning
+<li>CNNs Intro
 <ul>
-<li>Lecture-1 <a href="http://www.cse.iitm.ac.in/~miteshk/CS7015/Slides/Handout/Lecture1.pdf">pdf</a>, <a href="https://iitm-pod.slides.com/arunprakash_ai/lecture-1-briefhistoryofdl/fullscreen">Interactive slides</a> [R01]</li>
-<li>Lecture-1 <a href="https://www.shane.st/teaching/574/spr24/slides/1_Intro.pdf">pdf</a> [R02]</li>
+<li><a href="https://d2l.ai/chapter_convolutional-neural-networks/index.html">Chapter 7</a>[R05] covers topics like Invariance, Channels, Convolution Operation, Padding, Stride, Pooling.</li>
+<li><a href="https://www.cse.iitm.ac.in/~miteshk/CS7015/Slides/Handout/Lecture11.pdf">CNNs</a>[R02]</li>
 </ul></li>
 <li>Visualizations
 <ul>
-<li><a href="https://udlbook.github.io/udlfigures/">Interactive Figures</a> to visualize NNs [R05]</li>
-<li><a href="http://neuralnetworksanddeeplearning.com/chap4.html">Representational Power of NNs</a> from [R06]</li>
+<li><a href="https://www.cse.iitm.ac.in/~miteshk/CS7015/Slides/Handout/Lecture13.pdf">CNNs</a>[R02]</li>
 </ul></li>
-<li>Neural Networks Motivation
+<li>CNN Architectures
 <ul>
-<li>McCulloch-Pitts Neuron, Perceptron <a href="http://www.cse.iitm.ac.in/~miteshk/CS7015/Slides/Handout/Lecture2.pdf">Lecture-2:pdf</a> [R01]</li>
-<li>Digital Logic Modeling by Perceptron <a href="https://www.shane.st/teaching/574/spr24/slides/4_NN.pdf">Neural Networks:pdf</a> [R03]</li>
-</ul></li>
-<li>FFNs
-<ul>
-<li><a href="https://www.shane.st/teaching/574/spr24/slides/6_FF-class-lm.pdf">FFNs for Classification and Language Modeling: pdf</a></li>
+<li><a href="https://d2l.ai/chapter_convolutional-modern/index.html">Chapter 8</a>[R04] covers landmark CNN architectures such as AlexNet, VGG, ResNet, DenseNet.</li>
 </ul></li>
 </ol>
 </section>
 <section id="lab" class="level3">
 <h3 class="anchored" data-anchor-id="lab">Lab</h3>
 <ol type="1">
-<li><a href="./../notebooks/00-01-FFN-Classification-Iris.ipynbnotebook">FFN for Classification</a> on Iris data</li>
-<li><a href="../notebooks/00-02-FFN-Regression-Friedman2.html">FFN for Regression</a> on Friedman2 data</li>
+<li>1d CNNs (tbd)</li>
+<li>2d CNNs (tbd)</li>
 </ol>
 </section>
 <section id="post-class" class="level3">
 <h3 class="anchored" data-anchor-id="post-class">Post-class:</h3>
 <ol type="1">
-<li><a href="http://www.cse.iitm.ac.in/~miteshk/CS7015/Slides/Handout/Lecture3.pdf">Lecture-3:pdf</a> Sigmoid Neuron, Error Surfaces, Representation Power of FFNs [R02]</li>
-<li><a href="https://www.shane.st/teaching/574/spr24/slides/2_GD_WV.pdf">Gradient Descent, Word Vectors</a> [R03]</li>
-<li><a href="http://www.cse.iitm.ac.in/~miteshk/CS7015/Slides/Handout/Lecture4.pdf">Lecture-4:pdf</a> FFNs and Backprop [R02]</li>
-<li><a href="https://www.shane.st/teaching/574/spr24/slides/5_comp-graph.pdf">Computational Graphs, Backprop:pdf</a> [R03]</li>
-<li><a href="https://mitliagkas.github.io/ift6169-2022/ift-6169-lecture-10-notes.pdf">Lecture</a> - Expressivity and UAT</li>
-<li>Neural Networks Review from R07
+<li>[notebook] <a href="https://github.com/udlbook/udlbook/blob/main/Notebooks/Chap10/10_1_1D_Convolution.ipynb">ID Convolution</a> R05</li>
+<li>[notebook] <a href="https://github.com/udlbook/udlbook/blob/main/Notebooks/Chap10/10_2_Convolution_for_MNIST_1D.ipynb">ID Convolution for MNSIT</a> R05</li>
+<li>[notebook] <a href="https://github.com/udlbook/udlbook/blob/main/Notebooks/Chap10/10_3_2D_Convolution.ipynb">2D Convolution</a> R05</li>
+<li>[notebook] <a href="https://github.com/udlbook/udlbook/blob/main/Notebooks/Chap10/10_5_Convolution_For_MNIST.ipynb">CNN for MNIST</a> R05</li>
+<li>[youtube] Lectures from R07
 <ul>
-<li>Neural Networks: A Review <a href="https://www.youtube.com/watch?v=47d0M3UAXNc">part-1: youtube</a>, <a href="https://www.youtube.com/watch?v=OKVn7q20dEY">part-2: youtube</a></li>
-<li>FFNs and Backpopr <a href="https://www.youtube.com/watch?v=8sjbwfHdqW8">part-1: youtube</a>, <a href="https://www.youtube.com/watch?v=XV20CvRsIJU">part-2: youtube</a></li>
+<li>CNNs: An Intro <a href="https://www.youtube.com/watch?v=tH6uRl6f3bc&amp;t">Part-1</a>, <a href="https://www.youtube.com/watch?v=H_JtjeSNhA0">part-2</a></li>
+<li>Backprop in CNNS <a href="https://www.youtube.com/watch?v=pUCCd2-17vI">youtube</a></li>
+<li>Evolution of CNNs for Image Classification <a href="https://www.youtube.com/watch?v=rEFTKAXEBgY&amp;t">part-1</a>, <a href="https://www.youtube.com/watch?v=YizB_RoGrMs">part-2</a></li>
+<li>Recent Architectures <a href="https://www.youtube.com/watch?v=p047WxBf-qA&amp;t">youtube</a> [as of 2021]</li>
+<li>CNNs for Object Detection <a href="https://www.youtube.com/watch?v=yqyLWUKftI0">Part-1</a>, <a href="https://www.youtube.com/watch?v=VQXD6ZfYT6o">Part-2</a> <a href="https://www.youtube.com/watch?v=JI-bxTnnSTg">Part-3</a></li>
+<li>CNNs for Segmentation <a href="https://www.youtube.com/watch?v=4zuAYazbCQ0">youtube</a></li>
 </ul></li>
 </ol>
 </section>
 <section id="papers" class="level3">
 <h3 class="anchored" data-anchor-id="papers">Papers</h3>
-<ol type="1">
-<li><a href="https://hal.science/hal-03753170/">Universal Approximation Theorem</a> original paper by Cybenko <a href="https://web.njit.edu/~usman/courses/cs675_fall18/10.1.1.441.7873.pdf">pdf</a></li>
-<li><a href="https://www.sciencedirect.com/science/article/abs/pii/0893608089900208">Multilayer FFNs are universal approximators</a> Hornik, Stinchcombe, and White</li>
-<li><a href="https://arxiv.org/abs/1509.08101">Representation Benefits of Deep FFNs</a> Telagarsky</li>
-</ol>
+<ul>
+<li><a href="https://proceedings.neurips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf">AlexNet</a> - ImageNet Classification with Deep Convolutional Neural Networks</li>
+<li><a href="https://arxiv.org/abs/1311.2901v3">ZFNet</a> Visualizing and Understanding Convolutional Networks</li>
+<li><a href="https://arxiv.org/abs/1409.1556v6">VGGNet</a> Very Deep Convolutional Networks for Large-Scale Image Recognition</li>
+<li><a href="https://arxiv.org/abs/1409.4842">GooLeNet</a> Going Deeper with Convolutions</li>
+<li><a href="https://arxiv.org/abs/1512.03385v1">ResNet</a> Deep Residual Learning for Image Recognition</li>
+<li><a href="https://arxiv.org/abs/1311.2524">RCNN</a> Rich feature hierarchies for accurate object detection and semantic segmentation -<a href="https://arxiv.org/abs/1506.01497">Faster-RCNN</a> Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks</li>
+<li><a href="https://pjreddie.com/media/files/papers/yolo.pdf">YOLO</a> You Only Look Once: Unified, Real-Time Object Detection</li>
+<li><a href="https://arxiv.org/abs/1505.04597">UNet</a> U-Net: Convolutional Networks for Biomedical Image Segmentation</li>
+</ul>
 </section>
 <section id="references" class="level3">
 <h3 class="anchored" data-anchor-id="references">References</h3>
 <ul>
-<li>R01: <a href="http://www.cse.iitm.ac.in/~miteshk/CS6910.html">CS6910: Deep Learning</a> Mitesh Khapra @ IIT Madras (earlier version of CS6910)</li>
+<li>R01: <a href="http://www.cse.iitm.ac.in/~miteshk/CS6910.html">CS6910: Deep Learning</a> Mitesh Khapra @ IIT Madras</li>
 <li>R02: <a href="https://www.cse.iitm.ac.in/~miteshk/CS7015_2019.html">CS7015: Deep Learning</a> Mitesh Khapra @ IIT Madras) Mitesh Khapra @ IIT Madras (earlier version of CS6910)</li>
 <li>R03: <a href="https://www.shane.st/teaching/574/spr24/">LING 574: Deep Learning for NLP</a> Shane Steinhard-Threlkeld @ University of Washington</li>
 <li>R04: <a href="https://d2l.ai/index.html">Dive into Deep Learning</a></li>
@@ -730,13 +733,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../course.html" class="pagination-link" aria-label="Course">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Course</span></span>
+      <a href="../lectures/L01.html" class="pagination-link" aria-label="FFNs">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">FFNs</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../lectures/L02.html" class="pagination-link" aria-label="CNNs">
-        <span class="nav-page-text">CNNs</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../lectures/L03.html" class="pagination-link" aria-label="KANs">
+        <span class="nav-page-text">KANs</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -748,7 +751,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/mlsquare/intro2dl/edit/main/lectures/L01.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mlsquare/intro2dl/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/mlsquare/intro2dl/edit/main/lectures/L02.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mlsquare/intro2dl/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This course material was built with <a href="https://quarto.org/">Quarto</a> with <a href="https://github.com/hadley/r4ds">r4ds</a> theme.</p>
 </div>

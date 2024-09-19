@@ -8,7 +8,7 @@
 
 <meta name="author" content="mlsquare">
 
-<title>FFNs – Deep Learning</title>
+<title>KANs – Deep Learning</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,8 +31,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../lectures/L02.html" rel="next">
-<link href="../course.html" rel="prev">
+<link href="../notebooks/00-01-FFN-Classification-Iris.html" rel="next">
+<link href="../lectures/L02.html" rel="prev">
 <link href="../logo.jpg" rel="icon" type="image/jpeg">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -83,7 +83,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lectures/L01.html">Lectures</a></li><li class="breadcrumb-item"><a href="../lectures/L01.html">FFNs</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lectures/L01.html">Lectures</a></li><li class="breadcrumb-item"><a href="../lectures/L03.html">KANs</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -144,7 +144,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/L01.html" class="sidebar-item-text sidebar-link active">
+  <a href="../lectures/L01.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">FFNs</span></a>
   </div>
 </li>
@@ -156,7 +156,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/L03.html" class="sidebar-item-text sidebar-link">
+  <a href="../lectures/L03.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">KANs</span></a>
   </div>
 </li>
@@ -200,17 +200,18 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#lab" id="toc-lab" class="nav-link" data-scroll-target="#lab">Lab</a></li>
   <li><a href="#post-class" id="toc-post-class" class="nav-link" data-scroll-target="#post-class">Post-class:</a></li>
   <li><a href="#papers" id="toc-papers" class="nav-link" data-scroll-target="#papers">Papers</a></li>
+  <li><a href="#theory" id="toc-theory" class="nav-link" data-scroll-target="#theory">Theory</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/mlsquare/intro2dl/edit/main/lectures/L01.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mlsquare/intro2dl/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/mlsquare/intro2dl/edit/main/lectures/L03.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mlsquare/intro2dl/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lectures/L01.html">Lectures</a></li><li class="breadcrumb-item"><a href="../lectures/L01.html">FFNs</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lectures/L01.html">Lectures</a></li><li class="breadcrumb-item"><a href="../lectures/L03.html">KANs</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">FFNs</h1>
+<h1 class="title">KANs</h1>
 </div>
 
 
@@ -229,72 +230,66 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="materials" class="level2">
 <h2 class="anchored" data-anchor-id="materials">Materials:</h2>
-<p>Date: Saturday, 07-Sep-2024, 1.30pm</p>
+<p>Date: TBD</p>
 <section id="pre-work" class="level3">
 <h3 class="anchored" data-anchor-id="pre-work">Pre-work:</h3>
 <ol type="1">
 <li>Refresh ML foundations.</li>
 <li>Read “The 100 page ML book” by Andiry Burkov. Chapters accessible <a href="https://themlbook.com/wiki/doku.php">here</a></li>
+<li><a href="../lectures/L01.html">FFNs</a></li>
+<li><a href="../lectures/L02.html">CNNs</a></li>
 </ol>
 </section>
 <section id="in-class" class="level3">
 <h3 class="anchored" data-anchor-id="in-class">In-Class</h3>
 <ol type="1">
-<li>History of Deep Learning
-<ul>
-<li>Lecture-1 <a href="http://www.cse.iitm.ac.in/~miteshk/CS7015/Slides/Handout/Lecture1.pdf">pdf</a>, <a href="https://iitm-pod.slides.com/arunprakash_ai/lecture-1-briefhistoryofdl/fullscreen">Interactive slides</a> [R01]</li>
-<li>Lecture-1 <a href="https://www.shane.st/teaching/574/spr24/slides/1_Intro.pdf">pdf</a> [R02]</li>
-</ul></li>
-<li>Visualizations
-<ul>
-<li><a href="https://udlbook.github.io/udlfigures/">Interactive Figures</a> to visualize NNs [R05]</li>
-<li><a href="http://neuralnetworksanddeeplearning.com/chap4.html">Representational Power of NNs</a> from [R06]</li>
-</ul></li>
-<li>Neural Networks Motivation
-<ul>
-<li>McCulloch-Pitts Neuron, Perceptron <a href="http://www.cse.iitm.ac.in/~miteshk/CS7015/Slides/Handout/Lecture2.pdf">Lecture-2:pdf</a> [R01]</li>
-<li>Digital Logic Modeling by Perceptron <a href="https://www.shane.st/teaching/574/spr24/slides/4_NN.pdf">Neural Networks:pdf</a> [R03]</li>
-</ul></li>
-<li>FFNs
-<ul>
-<li><a href="https://www.shane.st/teaching/574/spr24/slides/6_FF-class-lm.pdf">FFNs for Classification and Language Modeling: pdf</a></li>
-</ul></li>
+<li><a href="https://arxiv.org/abs/2404.19756">KAN: Kolmogorov-Arnold Networks</a></li>
+<li>Implementation <a href="https://github.com/KindXiaoming/pykan">PyKAN</a></li>
+<li>Implementation <a href="https://github.com/Blealtan/efficient-kan">Efficient-KAN</a></li>
+<li><a href="https://arxiv.org/abs/2408.10205">KAN 2.0: Kolmogorov-Arnold Networks Meet Science</a></li>
 </ol>
 </section>
 <section id="lab" class="level3">
 <h3 class="anchored" data-anchor-id="lab">Lab</h3>
 <ol type="1">
-<li><a href="./../notebooks/00-01-FFN-Classification-Iris.ipynbnotebook">FFN for Classification</a> on Iris data</li>
-<li><a href="../notebooks/00-02-FFN-Regression-Friedman2.html">FFN for Regression</a> on Friedman2 data</li>
+<li>simple functions (tbd)</li>
+<li>PDE solver (tbd)</li>
+<li>MLPS vs KAN (tbd)</li>
 </ol>
 </section>
 <section id="post-class" class="level3">
 <h3 class="anchored" data-anchor-id="post-class">Post-class:</h3>
 <ol type="1">
-<li><a href="http://www.cse.iitm.ac.in/~miteshk/CS7015/Slides/Handout/Lecture3.pdf">Lecture-3:pdf</a> Sigmoid Neuron, Error Surfaces, Representation Power of FFNs [R02]</li>
-<li><a href="https://www.shane.st/teaching/574/spr24/slides/2_GD_WV.pdf">Gradient Descent, Word Vectors</a> [R03]</li>
-<li><a href="http://www.cse.iitm.ac.in/~miteshk/CS7015/Slides/Handout/Lecture4.pdf">Lecture-4:pdf</a> FFNs and Backprop [R02]</li>
-<li><a href="https://www.shane.st/teaching/574/spr24/slides/5_comp-graph.pdf">Computational Graphs, Backprop:pdf</a> [R03]</li>
-<li><a href="https://mitliagkas.github.io/ift6169-2022/ift-6169-lecture-10-notes.pdf">Lecture</a> - Expressivity and UAT</li>
-<li>Neural Networks Review from R07
-<ul>
-<li>Neural Networks: A Review <a href="https://www.youtube.com/watch?v=47d0M3UAXNc">part-1: youtube</a>, <a href="https://www.youtube.com/watch?v=OKVn7q20dEY">part-2: youtube</a></li>
-<li>FFNs and Backpopr <a href="https://www.youtube.com/watch?v=8sjbwfHdqW8">part-1: youtube</a>, <a href="https://www.youtube.com/watch?v=XV20CvRsIJU">part-2: youtube</a></li>
-</ul></li>
+<li>[paper] <a href="https://arxiv.org/abs/2405.07200v1">Chebyshev KAN</a> Chebyshev Polynomial-Based Kolmogorov-Arnold Networks: An Efficient Architecture for Nonlinear Function Approximation. Implementation <a href="https://github.com/SynodicMonth/ChebyKAN">ChebyKAN</a></li>
+<li>[paper] <a href="https://arxiv.org/abs/2405.12832">Wav-KAN</a> Wav-KAN: Wavelet Kolmogorov-Arnold Networks</li>
+<li>[paper] <a href="https://arxiv.org/abs/2407.11075">Survey of KANs</a> A Comprehensive Survey on Kolmogorov Arnold Networks (KAN)</li>
+<li>[git] <a href="https://github.com/AdityaNG/kan-gpt">KAN GPT</a></li>
+<li>[git] <a href="https://github.com/ZiyaoLi/fast-kan">Fast KAN</a> Replace B-splines with RBF to make it 3.3x faster than <a href="https://github.com/Blealtan/efficient-kan">Efficient-KAN</a></li>
+<li>[paper]<a href="https://arxiv.org/abs/2407.01092">Kolmogorov-Arnold Convolutions: Design Principles and Empirical Studies</a> | <a href="https://github.com/IvanDrokin/torch-conv-kan">code</a></li>
+<li>[collection] <a href="https://github.com/mintisan/awesome-kan">awesome KANs</a> - a collection of papers, codes, tutorials on KANs.</li>
 </ol>
 </section>
 <section id="papers" class="level3">
 <h3 class="anchored" data-anchor-id="papers">Papers</h3>
-<ol type="1">
-<li><a href="https://hal.science/hal-03753170/">Universal Approximation Theorem</a> original paper by Cybenko <a href="https://web.njit.edu/~usman/courses/cs675_fall18/10.1.1.441.7873.pdf">pdf</a></li>
-<li><a href="https://www.sciencedirect.com/science/article/abs/pii/0893608089900208">Multilayer FFNs are universal approximators</a> Hornik, Stinchcombe, and White</li>
-<li><a href="https://arxiv.org/abs/1509.08101">Representation Benefits of Deep FFNs</a> Telagarsky</li>
-</ol>
+<ul>
+<li><a href="https://arxiv.org/abs/2407.16674">KAN vs MLP</a> KAN or MLP: A Fairer Comparison</li>
+<li><a href="https://arxiv.org/abs/2406.11045">KANs for PINNs</a> Kolmogorov Arnold Informed neural network: A physics-informed deep learning framework for solving forward and inverse problems based on Kolmogorov Arnold Networks</li>
+</ul>
+</section>
+<section id="theory" class="level3">
+<h3 class="anchored" data-anchor-id="theory">Theory</h3>
+<ul>
+<li>1957-<a href="https://cs.uwaterloo.ca/~y328yu/classics/Kolmogorov57.pdf">On the representation of continuous functions of several variables by superpositions of continuous functions of a smaller number of variables</a> : The original Kolmogorov Arnold paper</li>
+<li>1957-<a href="https://cs.uwaterloo.ca/~y328yu/classics/Arnold57.pdf">On functions of three variables</a></li>
+<li>2009-<a href="https://ins.uni-bonn.de/media/public/publication-media/remonkoe.pdf?pk=82">On a constructive proof of Kolmogorov’s superposition theorem</a></li>
+<li>2021-<a href="https://arxiv.org/abs/2007.15884">The Kolmogorov-Arnold representation theorem revisited</a></li>
+<li>2021-<a href="https://arxiv.org/pdf/2112.09963">The Kolmogorov Superposition Theorem can Break the Curse of Dimension When Approximating High Dimensional Functions</a></li>
+</ul>
 </section>
 <section id="references" class="level3">
 <h3 class="anchored" data-anchor-id="references">References</h3>
 <ul>
-<li>R01: <a href="http://www.cse.iitm.ac.in/~miteshk/CS6910.html">CS6910: Deep Learning</a> Mitesh Khapra @ IIT Madras (earlier version of CS6910)</li>
+<li>R01: <a href="http://www.cse.iitm.ac.in/~miteshk/CS6910.html">CS6910: Deep Learning</a> Mitesh Khapra @ IIT Madras</li>
 <li>R02: <a href="https://www.cse.iitm.ac.in/~miteshk/CS7015_2019.html">CS7015: Deep Learning</a> Mitesh Khapra @ IIT Madras) Mitesh Khapra @ IIT Madras (earlier version of CS6910)</li>
 <li>R03: <a href="https://www.shane.st/teaching/574/spr24/">LING 574: Deep Learning for NLP</a> Shane Steinhard-Threlkeld @ University of Washington</li>
 <li>R04: <a href="https://d2l.ai/index.html">Dive into Deep Learning</a></li>
@@ -730,13 +725,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../course.html" class="pagination-link" aria-label="Course">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Course</span></span>
+      <a href="../lectures/L02.html" class="pagination-link" aria-label="CNNs">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">CNNs</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../lectures/L02.html" class="pagination-link" aria-label="CNNs">
-        <span class="nav-page-text">CNNs</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../notebooks/00-01-FFN-Classification-Iris.html" class="pagination-link" aria-label="FFN Classification">
+        <span class="nav-page-text"><span class="chapter-title">FFN Classification</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -748,7 +743,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/mlsquare/intro2dl/edit/main/lectures/L01.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mlsquare/intro2dl/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/mlsquare/intro2dl/edit/main/lectures/L03.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mlsquare/intro2dl/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This course material was built with <a href="https://quarto.org/">Quarto</a> with <a href="https://github.com/hadley/r4ds">r4ds</a> theme.</p>
 </div>
