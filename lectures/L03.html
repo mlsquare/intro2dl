@@ -200,6 +200,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#lab" id="toc-lab" class="nav-link" data-scroll-target="#lab">Lab</a></li>
   <li><a href="#post-class" id="toc-post-class" class="nav-link" data-scroll-target="#post-class">Post-class:</a></li>
   <li><a href="#papers" id="toc-papers" class="nav-link" data-scroll-target="#papers">Papers</a></li>
+  <li><a href="#theory" id="toc-theory" class="nav-link" data-scroll-target="#theory">Theory</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
@@ -236,59 +237,60 @@ ul.task-list li input[type="checkbox"] {
 <li>Refresh ML foundations.</li>
 <li>Read “The 100 page ML book” by Andiry Burkov. Chapters accessible <a href="https://themlbook.com/wiki/doku.php">here</a></li>
 <li><a href="../lectures/L01.html">FFNs</a></li>
+<li><a href="../lectures/L02.html">CNNs</a></li>
 </ol>
 </section>
 <section id="in-class" class="level3">
 <h3 class="anchored" data-anchor-id="in-class">In-Class</h3>
 <ol type="1">
-<li>CNNs Intro
-<ul>
-<li><a href="https://d2l.ai/chapter_convolutional-neural-networks/index.html">Chapter 7</a>[R05] covers topics like Invariance, Channels, Convolution Operation, Padding, Stride, Pooling.</li>
-<li><a href="https://www.cse.iitm.ac.in/~miteshk/CS7015/Slides/Handout/Lecture11.pdf">CNNs</a>[R02]</li>
-</ul></li>
-<li>Visualizations
-<ul>
-<li><a href="https://www.cse.iitm.ac.in/~miteshk/CS7015/Slides/Handout/Lecture13.pdf">CNNs</a>[R02]</li>
-</ul></li>
-<li>CNN Architectures
-<ul>
-<li><a href="https://d2l.ai/chapter_convolutional-modern/index.html">Chapter 8</a>[R04] covers landmark CNN architectures such as AlexNet, VGG, ResNet, DenseNet.</li>
-</ul></li>
+<li><a href="https://arxiv.org/abs/2404.19756">KAN: Kolmogorov-Arnold Networks</a></li>
+<li>Implementation <a href="https://github.com/KindXiaoming/pykan">PyKAN</a></li>
+<li>Implementation <a href="https://github.com/Blealtan/efficient-kan">Efficient-KAN</a></li>
+<li><a href="https://arxiv.org/abs/2408.10205">KAN 2.0: Kolmogorov-Arnold Networks Meet Science</a></li>
 </ol>
 </section>
 <section id="lab" class="level3">
 <h3 class="anchored" data-anchor-id="lab">Lab</h3>
 <ol type="1">
-<li>1d CNNs (tbd)</li>
-<li>2d CNNs (tbd)</li>
+<li>simple functions (tbd)</li>
+<li>PDE solver (tbd)</li>
+<li>MLPS vs KAN (tbd)</li>
 </ol>
 </section>
 <section id="post-class" class="level3">
 <h3 class="anchored" data-anchor-id="post-class">Post-class:</h3>
 <ol type="1">
-<li>[notebook] <a href="https://github.com/udlbook/udlbook/blob/main/Notebooks/Chap10/10_1_1D_Convolution.ipynb">ID Convolution</a> R05</li>
-<li>[notebook] <a href="https://github.com/udlbook/udlbook/blob/main/Notebooks/Chap10/10_2_Convolution_for_MNIST_1D.ipynb">ID Convolution for MNSIT</a> R05</li>
-<li>[notebook] <a href="https://github.com/udlbook/udlbook/blob/main/Notebooks/Chap10/10_3_2D_Convolution.ipynb">2D Convolution</a> R05</li>
-<li>[notebook] <a href="https://github.com/udlbook/udlbook/blob/main/Notebooks/Chap10/10_5_Convolution_For_MNIST.ipynb">CNN for MNIST</a> R05</li>
-<li>[youtube] Lectures from R07
-<ul>
-<li>CNNs: An Intro <a href="https://www.youtube.com/watch?v=tH6uRl6f3bc&amp;t">Part-1</a>, <a href="https://www.youtube.com/watch?v=H_JtjeSNhA0">part-2</a></li>
-<li>Backprop in CNNS <a href="https://www.youtube.com/watch?v=pUCCd2-17vI">youtube</a></li>
-<li>Evolution of CNNs for Image Classification <a href="https://www.youtube.com/watch?v=rEFTKAXEBgY&amp;t">part-1</a>, <a href="https://www.youtube.com/watch?v=YizB_RoGrMs">part-2</a></li>
-<li>Recent Architectures <a href="https://www.youtube.com/watch?v=p047WxBf-qA&amp;t">youtube</a> [as of 2021]</li>
-<li>CNNs for Object Detection <a href="https://www.youtube.com/watch?v=yqyLWUKftI0">Part-1</a>, <a href="https://www.youtube.com/watch?v=VQXD6ZfYT6o">Part-2</a> <a href="https://www.youtube.com/watch?v=JI-bxTnnSTg">Part-3</a></li>
-<li>CNNs for Segmentation <a href="https://www.youtube.com/watch?v=4zuAYazbCQ0">youtube</a></li>
-</ul></li>
+<li>[paper] <a href="https://arxiv.org/abs/2405.07200v1">Chebyshev KAN</a> Chebyshev Polynomial-Based Kolmogorov-Arnold Networks: An Efficient Architecture for Nonlinear Function Approximation. Implementation <a href="https://github.com/SynodicMonth/ChebyKAN">ChebyKAN</a></li>
+<li>[paper] <a href="https://arxiv.org/abs/2405.12832">Wav-KAN</a> Wav-KAN: Wavelet Kolmogorov-Arnold Networks</li>
+<li>[paper] <a href="https://arxiv.org/abs/2407.11075">Survey of KANs</a> A Comprehensive Survey on Kolmogorov Arnold Networks (KAN)</li>
+<li>[git] <a href="https://github.com/AdityaNG/kan-gpt">KAN GPT</a></li>
+<li>[git] <a href="https://github.com/ZiyaoLi/fast-kan">Fast KAN</a> Replace B-splines with RBF to make it 3.3x faster than <a href="https://github.com/Blealtan/efficient-kan">Efficient-KAN</a></li>
+<li>[paper]<a href="https://arxiv.org/abs/2407.01092">Kolmogorov-Arnold Convolutions: Design Principles and Empirical Studies</a> | <a href="https://github.com/IvanDrokin/torch-conv-kan">code</a></li>
+<li>[collection] <a href="https://github.com/mintisan/awesome-kan">awesome KANs</a> - a collection of papers, codes, tutorials on KANs.</li>
 </ol>
 </section>
 <section id="papers" class="level3">
 <h3 class="anchored" data-anchor-id="papers">Papers</h3>
+<ul>
+<li><a href="https://arxiv.org/abs/2407.16674">KAN vs MLP</a> KAN or MLP: A Fairer Comparison</li>
+<li><a href="https://arxiv.org/abs/2406.11045">KANs for PINNs</a> Kolmogorov Arnold Informed neural network: A physics-informed deep learning framework for solving forward and inverse problems based on Kolmogorov Arnold Networks</li>
+</ul>
+</section>
+<section id="theory" class="level3">
+<h3 class="anchored" data-anchor-id="theory">Theory</h3>
+<ul>
+<li>1957-<a href="https://cs.uwaterloo.ca/~y328yu/classics/Kolmogorov57.pdf">On the representation of continuous functions of several variables by superpositions of continuous functions of a smaller number of variables</a> : The original Kolmogorov Arnold paper</li>
+<li>1957-<a href="https://cs.uwaterloo.ca/~y328yu/classics/Arnold57.pdf">On functions of three variables</a></li>
+<li>2009-<a href="https://ins.uni-bonn.de/media/public/publication-media/remonkoe.pdf?pk=82">On a constructive proof of Kolmogorov’s superposition theorem</a></li>
+<li>2021-<a href="https://arxiv.org/abs/2007.15884">The Kolmogorov-Arnold representation theorem revisited</a></li>
+<li>2021-<a href="https://arxiv.org/pdf/2112.09963">The Kolmogorov Superposition Theorem can Break the Curse of Dimension When Approximating High Dimensional Functions</a></li>
+</ul>
 </section>
 <section id="references" class="level3">
 <h3 class="anchored" data-anchor-id="references">References</h3>
 <ul>
 <li>R01: <a href="http://www.cse.iitm.ac.in/~miteshk/CS6910.html">CS6910: Deep Learning</a> Mitesh Khapra @ IIT Madras</li>
-<li>R02: <a href="- [course] [CS6910: Deep Learning](http://www.cse.iitm.ac.in/~miteshk/CS6910.html) Mitesh Khapra @ IIT Madras">CS7015: Deep Learning</a> Mitesh Khapra @ IIT Madras (earlier version of CS6910)</li>
+<li>R02: <a href="https://www.cse.iitm.ac.in/~miteshk/CS7015_2019.html">CS7015: Deep Learning</a> Mitesh Khapra @ IIT Madras) Mitesh Khapra @ IIT Madras (earlier version of CS6910)</li>
 <li>R03: <a href="https://www.shane.st/teaching/574/spr24/">LING 574: Deep Learning for NLP</a> Shane Steinhard-Threlkeld @ University of Washington</li>
 <li>R04: <a href="https://d2l.ai/index.html">Dive into Deep Learning</a></li>
 <li>R05: <a href="https://udlbook.github.io/udlbook/">Understanding Deep Learning</a></li>
