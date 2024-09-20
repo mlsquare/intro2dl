@@ -1,43 +1,49 @@
 # KANs {.unnumbered}
 
 ## Materials:
-Date: TBD
+Date: Saturday, 21-Sep-2024, 1.30pm, IST.
 
 ### Pre-work:
 
-1. Refresh ML foundations.
-2. Read "The 100 page ML book" by Andiry Burkov. Chapters accessible [here](https://themlbook.com/wiki/doku.php)
-3. [FFNs](./L01.qmd) 
-3. [CNNs](./L02.qmd) 
+- Refresh ML foundations.
+- Read "The 100 page ML book" by Andiry Burkov. Chapters accessible [here](https://themlbook.com/wiki/doku.php)
+- [FFNs](./L01.qmd) 
+- [CNNs](./L02.qmd) 
 
 
 
 ### In-Class
-1. [KAN: Kolmogorov-Arnold Networks](https://arxiv.org/abs/2404.19756)
-2. Implementation [PyKAN](https://github.com/KindXiaoming/pykan)
-3. Implementation [Efficient-KAN](https://github.com/Blealtan/efficient-kan)
-4. [KAN 2.0: Kolmogorov-Arnold Networks Meet Science](https://arxiv.org/abs/2408.10205)
+
+- [KAN: Kolmogorov-Arnold Networks](https://arxiv.org/abs/2404.19756)
+- Implementation [PyKAN](https://github.com/KindXiaoming/pykan)
+- Implementation [Efficient-KAN](https://github.com/Blealtan/efficient-kan)
+- [KAN 2.0: Kolmogorov-Arnold Networks Meet Science](https://arxiv.org/abs/2408.10205)
+- [Functional Regression](https://arxiv.org/abs/1406.4068) Tutorial.
+
     
 ### Lab
-1. simple functions (tbd)
-2. PDE solver (tbd)
-3. MLPS vs KAN (tbd)
+
+- simple functions (tbd)
+- PDE solver (tbd)
+- MLPS vs KAN (tbd)
+- [Wavelet Regression in Python](https://github.com/jseabold/web-site/blob/master/content/notebooks/wavelet-regression-in-python.ipynb)
 
 ### Post-class:
-1. \[paper\] [Chebyshev KAN](https://arxiv.org/abs/2405.07200v1) Chebyshev Polynomial-Based Kolmogorov-Arnold Networks: An Efficient Architecture for Nonlinear Function Approximation. Implementation [ChebyKAN](https://github.com/SynodicMonth/ChebyKAN) 
-2. \[paper\] [Wav-KAN](https://arxiv.org/abs/2405.12832) Wav-KAN: Wavelet Kolmogorov-Arnold Networks
-3. \[paper\] [Survey of KANs](https://arxiv.org/abs/2407.11075) A Comprehensive Survey on Kolmogorov Arnold Networks (KAN)
-4. \[git\] [KAN GPT](https://github.com/AdityaNG/kan-gpt)
-5. \[git\] [Fast KAN](https://github.com/ZiyaoLi/fast-kan) Replace B-splines with RBF to make it 3.3x faster than [Efficient-KAN](https://github.com/Blealtan/efficient-kan) 
-6. \[paper\][Kolmogorov-Arnold Convolutions: Design Principles and Empirical Studies](https://arxiv.org/abs/2407.01092) | [code](https://github.com/IvanDrokin/torch-conv-kan)
-7. \[collection\] [awesome KANs](https://github.com/mintisan/awesome-kan) - a collection of papers, codes, tutorials on KANs.
+
+- \[paper\] [Chebyshev KAN](https://arxiv.org/abs/2405.07200v1) Chebyshev Polynomial-Based Kolmogorov-Arnold Networks: An Efficient Architecture for Nonlinear Function Approximation. Implementation [ChebyKAN](https://github.com/SynodicMonth/ChebyKAN) 
+- \[paper\] [Survey of KANs](https://arxiv.org/abs/2407.11075) A Comprehensive Survey on Kolmogorov Arnold Networks (KAN)
+- \[code\] [Fast KAN](https://github.com/ZiyaoLi/fast-kan) Replace B-splines with RBF to make it 3.3x faster than [Efficient-KAN](https://github.com/Blealtan/efficient-kan) 
+- \[paper\][Kolmogorov-Arnold Convolutions: Design Principles and Empirical Studies](https://arxiv.org/abs/2407.01092) | [code](https://github.com/IvanDrokin/torch-conv-kan)
+- \[collection\] [awesome KANs](https://github.com/mintisan/awesome-kan) - a collection of papers, codes, tutorials on KANs.
+- [Functional Data Analysis: An Introduction and Recent Developments](https://arxiv.org/abs/2312.05523) Tutorial 
 
 
-
-### Papers
+### KAN Papers and Advancements
 
 - [KAN vs MLP ](https://arxiv.org/abs/2407.16674) KAN or MLP: A Fairer Comparison
 - [KANs for PINNs](https://arxiv.org/abs/2406.11045) Kolmogorov Arnold Informed neural network: A physics-informed deep learning framework for solving forward and inverse problems based on Kolmogorov Arnold Networks
+- [Wav-KAN](https://arxiv.org/abs/2405.12832) Wav-KAN: Wavelet Kolmogorov-Arnold Networks
+- [KAN GPT](https://github.com/AdityaNG/kan-gpt)
 
 ### Theory
 
@@ -48,10 +54,18 @@ Date: TBD
 - 2021-[The Kolmogorov Superposition Theorem can Break the Curse of Dimension When Approximating High Dimensional Functions](https://arxiv.org/pdf/2112.09963)
 
 ### References
+
 - R01: [CS6910: Deep Learning](http://www.cse.iitm.ac.in/~miteshk/CS6910.html) Mitesh Khapra @ IIT Madras
-- R02:  [CS7015: Deep Learning](https://www.cse.iitm.ac.in/~miteshk/CS7015_2019.html) Mitesh Khapra @ IIT Madras) Mitesh Khapra @ IIT Madras (earlier version of CS6910)
+- R02:  [CS7015: Deep Learning](https://www.cse.iitm.ac.in/~miteshk/CS7015_2019.html) Mitesh Khapra @ IIT Madras(earlier version of CS6910)
 - R03: [LING 574: Deep Learning for NLP](https://www.shane.st/teaching/574/spr24/) Shane Steinhard-Threlkeld @ University of Washington
 - R04: [Dive into Deep Learning](https://d2l.ai/index.html)
 - R05: [Understanding Deep Learning](https://udlbook.github.io/udlbook/)
 - R06: [Neural Networks and Deep Learning](http://neuralnetworksanddeeplearning.com/)
 - R07: [Deep Learning for Computer Vision](https://archive.nptel.ac.in/noc/courses/noc20/SEM2/noc20-cs88/) NPTEL course by Prof. Vineeth N Balasubramanian
+
+### Additional References
+
+- \[Book\] [Functional Data Analysis](https://github.com/mintisan/awesome-kan) - a collection of papers, codes, tutorials on KANs. Chapter 3 on Fourier basis, Splines, Wavelets and Polynomials
+- \[Book\] [Functional Data Analysis with R and MATLAB](https://link.springer.com/book/10.1007/978-0-387-98185-7) - Chapter 2 on specifying basis functions 
+- \[Book\] [All of Nonparametric Statistics](https://www.amazon.com/gp/product/1441920447/ref=as_li_qf_sp_asin_tl?ie=UTF8&tag=scistapro-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=1441920447) - Chapter 9 on 
+- \[Book\] [Essential Wavelets for Statistical Applications and Data Analysis](- \[Book\] [All of Nonparametric Statistics](https://www.amazon.com/gp/product/1441920447/ref=as_li_qf_sp_asin_tl?ie=UTF8&tag=scistapro-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=1441920447)

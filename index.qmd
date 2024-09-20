@@ -23,6 +23,7 @@ See the [course](./course.qmd) page for recent information on Lectures, Labs, Re
 - Topics
     - Feed Forward Neural Networks (FFNs)
     - Convolution Neural Networks (CNNs)
+    - Kolmogorov-Arnold Networks
     - Recurrent Neural Networks (RNNs)
     - Transformers
 
