@@ -68,7 +68,7 @@ Date: Saturday, 21-Sep-2024, 1.30pm, IST.
 
 ### Additional References
 
-- \[Book\] [Essential Wavelets for Statistical Applications and Data Analysis](- \[Book\] [All of Nonparametric Statistics](https://www.amazon.com/gp/product/1441920447/ref=as_li_qf_sp_asin_tl?ie=UTF8&tag=scistapro-20&linkCode=as2&
+- \[Book\] [Essential Wavelets for Statistical Applications and Data Analysis](https://link.springer.com/book/10.1007/978-1-4612-0709-2)
 - \[Book\] [All of Nonparametric Statistics](https://www.stat.cmu.edu/~larry/all-of-nonpar/index.html) - Chapter 9
 - \[Book\] [Functional Data Analysis](https://link.springer.com/book/10.1007/b98888) Chapter 3 on Fourier basis, Splines, Wavelets and Polynomials
 - \[Book\] [Functional Data Analysis with R and MATLAB](https://link.springer.com/book/10.1007/978-0-387-98185-7) - Chapter 2 on specifying basis functions 
