@@ -11,7 +11,8 @@ You will find below material and schedule for _Deep Learning: A Mathematical Int
 | Wk | Dt | Topics | Resources |
 | :- | :- | :------- | :------- |
 | 01 | 07-Sep | 1. Course Intro <br> 2. FFNs | [L01](./lectures/L01.qmd) |
-| 02 | 21-Sep | 1. Nonparametric Regression <br> 2. KANs | [L01](./lectures/L03.qmd) |
+| 02 | tbd | 1. CNNs Intro <br> 2. Lab <br> 3. Architectures | [L02](./lectures/L02.qmd) |
+| 02 | 21-Sep | 1. KAN (with Splines) <br> 2. Nonparametric Regression <br> 2. KAN Variants | [L03](./lectures/L03.qmd) |
 : Part-1: Deep Learning Models {.striped}
 :::
 

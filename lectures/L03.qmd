@@ -18,14 +18,17 @@ Date: Saturday, 21-Sep-2024, 1.30pm, IST.
 - Implementation [PyKAN](https://github.com/KindXiaoming/pykan)
 - Implementation [Efficient-KAN](https://github.com/Blealtan/efficient-kan)
 - [KAN 2.0: Kolmogorov-Arnold Networks Meet Science](https://arxiv.org/abs/2408.10205)
-- [Functional Regression](https://arxiv.org/abs/1406.4068) Tutorial.
 
     
 ### Lab
 
-- simple functions (tbd)
-- PDE solver (tbd)
-- MLPS vs KAN (tbd)
+- [Fit a function](./../notebooks/02-01-KAN-Intro.ipynb) from [PyKAN](https://github.com/KindXiaoming/pykan) simple functions (tbd)
+- [Splines](./../notebooks/02-02-KAN-Splines.ipynb) from [PyKAN](https://github.com/KindXiaoming/pykan on a Doppler function. 
+- [RBFs](./../notebooks/02-03-KAN-RBFs.ipynb) from [Fast-KAN](https://github.com/ZiyaoLi/fast-kan) on a Doppler function
+- [Chebyshev Polynomials](./../notebooks/02-04-KAN-Chebyshev.ipynb) from [ChebyKAN](https://github.com/SynodicMonth/ChebyKAN) on a Doppler function
+- [Wavelets](./../notebooks/02-05-KAN-Wavelets.ipynb) from [WavKAN](https://github.com/zavareh1/Wav-KAN) on a Doppler function
+- [PDE solver](./../notebooks/02-07-KAN-PDE.ipynb)
+- [Wavelets with IWT](./../notebooks/02-06-KAN-PyWavelets.ipynb)
 - [Wavelet Regression in Python](https://github.com/jseabold/web-site/blob/master/content/notebooks/wavelet-regression-in-python.ipynb)
 
 ### Post-class:
@@ -35,7 +38,7 @@ Date: Saturday, 21-Sep-2024, 1.30pm, IST.
 - \[code\] [Fast KAN](https://github.com/ZiyaoLi/fast-kan) Replace B-splines with RBF to make it 3.3x faster than [Efficient-KAN](https://github.com/Blealtan/efficient-kan) 
 - \[paper\][Kolmogorov-Arnold Convolutions: Design Principles and Empirical Studies](https://arxiv.org/abs/2407.01092) | [code](https://github.com/IvanDrokin/torch-conv-kan)
 - \[collection\] [awesome KANs](https://github.com/mintisan/awesome-kan) - a collection of papers, codes, tutorials on KANs.
-- [Functional Data Analysis: An Introduction and Recent Developments](https://arxiv.org/abs/2312.05523) Tutorial 
+
 
 
 ### KAN Papers and Advancements
@@ -65,7 +68,10 @@ Date: Saturday, 21-Sep-2024, 1.30pm, IST.
 
 ### Additional References
 
-- \[Book\] [Functional Data Analysis](https://github.com/mintisan/awesome-kan) - a collection of papers, codes, tutorials on KANs. Chapter 3 on Fourier basis, Splines, Wavelets and Polynomials
+- \[Book\] [Essential Wavelets for Statistical Applications and Data Analysis](- \[Book\] [All of Nonparametric Statistics](https://www.amazon.com/gp/product/1441920447/ref=as_li_qf_sp_asin_tl?ie=UTF8&tag=scistapro-20&linkCode=as2&
+- \[Book\] [All of Nonparametric Statistics](https://www.stat.cmu.edu/~larry/all-of-nonpar/index.html) - Chapter 9
+- \[Book\] [Functional Data Analysis](https://link.springer.com/book/10.1007/b98888) Chapter 3 on Fourier basis, Splines, Wavelets and Polynomials
 - \[Book\] [Functional Data Analysis with R and MATLAB](https://link.springer.com/book/10.1007/978-0-387-98185-7) - Chapter 2 on specifying basis functions 
-- \[Book\] [All of Nonparametric Statistics](https://www.amazon.com/gp/product/1441920447/ref=as_li_qf_sp_asin_tl?ie=UTF8&tag=scistapro-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=1441920447) - Chapter 9 on 
-- \[Book\] [Essential Wavelets for Statistical Applications and Data Analysis](- \[Book\] [All of Nonparametric Statistics](https://www.amazon.com/gp/product/1441920447/ref=as_li_qf_sp_asin_tl?ie=UTF8&tag=scistapro-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=1441920447)
+- \[Book\] [Generalized Additive Models](https://www.taylorfrancis.com/books/mono/10.1201/9780203753781/generalized-additive-models-hastie) by Hastie and Tibshirani. [paper](https://projecteuclid.org/journals/statistical-science/volume-1/issue-3/Generalized-Additive-Models/10.1214/ss/1177013604.full)
+- \[Tutorial\] [Functional Regression](https://arxiv.org/abs/1406.4068)
+- \[Tutorial\] [Functional Data Analysis: An Introduction and Recent Developments](https://arxiv.org/abs/2312.05523)
