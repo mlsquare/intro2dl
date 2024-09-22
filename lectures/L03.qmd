@@ -114,7 +114,7 @@ f(\bf{x})=\sum_{i_{L-1}=1}^{n_{L-1}}\phi_{L-1,i_{L},i_{L-1}}\left(\sum_{i_{L-2}=
 $$
 </p>
 
-The basic ingredient is the _so called_ learnable activation $\phi_{l,j,i}$ which maps the post-activation of $i$th neuron in layer $l$ to the pre-activation of $j$th neuron. Effectively, it is the edge connecting two neurons on  adjacent layers. But how can it be made learnable? Represent this activation function as:
+The basic ingredient is the so called _learnable activation_ $\phi_{l,j,i}$ which maps the post-activation of $i$th neuron in layer $l$ to the pre-activation of $j$th neuron. Effectively, it is the edge connecting two neurons on  adjacent layers. But how can it be made learnable? Represent this activation function as:
 $$
 \begin{align}
 \phi(x)=w_{b} b(x)+w_{s}{\rm spline}(x) \\
@@ -130,9 +130,9 @@ The above development of KANs is compelling but it is much more illustrative to 
 
 Consider the following regression problem
 $$y^{[i]} \equiv f(x^{[i]}) + e^{[i]} \equiv \phi(x^{[i]}) + e^{[i]}, i \in \left\{1,\dots,N\right\}$$
-with $D = \{x^{[i]}, y^{[i]}\}_{i=1}^{N}$ representing all the data available to fit (train) the model $f(x)$. It is customary to write the model as $f(x)$ instead of $\phi(x)$. It is done for compatibility with KAN. In the shallow case $f(x) = \phi(x)$ otherwise $\phi(x)$ is used to denote the building blocks that $f(x)$ will be a composition many such building blocks.
+with $D = \{x^{[i]}, y^{[i]}\}_{i=1}^{N}$ representing all the data available to fit (train) the model $f(x)$. It is customary to write the model as $f(x)$ instead of $\phi(x)$. It is done for compatibility with KAN. In the shallow case $f(x) = \phi(x)$ otherwise $\phi(x)$ is used to denote the building blocks and $f(x)$ will be a composition many such building blocks.
 
-For a moment, w.l.o.g, assume $x$ to be univariate. In a typical regression setup, one constructs features such as $x^2, x^3,\dots$, like in polynomial regression and treats this as a Linear Regression problem. We can view this standard procedure as expanding the function $f(x)$ on a set of Polynomials. Seen in a more general sense, we can choose an appropriate _Basis Functions_ to construct the feature space. For example [see Chapter 9 of [All of Nonparametric Statistics](https://www.stat.cmu.edu/~larry/all-of-nonpar/index.html)]
+For a moment, w.l.o.g, assume $x$ to be univariate. In a typical regression setup, one constructs features such as $x^2, x^3,\dots$, like in polynomial regression and treat this as a Linear Regression problem. We can view this standard procedure as expanding the function $f(x)$ on a set of Polynomials. Seen in a more general sense, we can choose an appropriate _Basis Functions_ to construct the feature space. For example [see Chapter 9 of [All of Nonparametric Statistics](https://www.stat.cmu.edu/~larry/all-of-nonpar/index.html)]
 $$f(x) \equiv \phi(x) =  \sum_{i=1}^{\infty} \beta_i B_i(x)$$
 where $B_1(x) \equiv 1, B_i(x) \equiv \sqrt{2}\cos((i-1)\pi x) \text{ for } i \ge 2$. See the figure below.
 
@@ -157,7 +157,7 @@ $$
 {\bf y}_{N \times 1} &=& [y^{[1]}, y^{[2]}, \dots, y^{[N]} ]^T \\
 \end{array}
 $$
-Different choices of the Basis Functions lead to different design matrices ${\bf X}$. Some popular choices are Splines, Chebyshev Polynomials, Legendre Polynomials, Wavelets, among others. 
+This is the classic Non-parametric Regression setup. Different choices of the Basis Functions lead to different design matrices ${\bf X}$. Some popular choices are Splines, Chebyshev Polynomials, Legendre Polynomials, Wavelets, among others. 
 
 <p style="color:blue">
 Specifically, the function approximation with wavelets takes the following form [see [Wavelet Regression in Python](https://github.com/jseabold/web-site/blob/master/content/notebooks/wavelet-regression-in-python.ipynb) for a very nice demonstration of wavelets for denoising]:
@@ -166,7 +166,7 @@ where
 $$\alpha=\int_0^1\phi(x)\zeta(x)dx\text{, }\beta_{jk}=\int_0^1\phi(x)\psi_{jk}(x)dx.$$ 
 Here $\alpha$ and $\beta_{jk}$ are called the scaling coefficients and the detail coefficients, respectively. The basic idea is that the detail coefficients capture the coarser details of the function while the scaling, or smoothing, coefficients capture the overall functional form.
 </p>
-So, by choosing a basis function, we map the observed inputs into the feature space defined by the basis functions, and project the response onto the space spanned by the basis functions. This is basically a Linear Regression in a different function space (induced by the basis functions). 
+So, by choosing a basis function, we map the observed inputs into the feature space defined by the basis functions, and project the response onto the space spanned by the basis functions. This is basically a Linear Regression in a different function space (induced by the basis functions), commonly referred to as Nonparametric Regression. 
 
 ##### Generalized Additive Models
 
@@ -180,9 +180,11 @@ See the figure below for an illustration.
 
 ![KAN Neuron = GAM](./../figs/KANs-GAMs.drawio.png){fig-align="center"}
 
-That is, for every dimension $p$ of input, there is a corresponding $\phi_p$ and add them to get the multivariate function. In fact, the above specification appears in the framework developed by Hastie and Tibhirani in 1986, known as Generalized Addtive Models (see [paper](https://projecteuclid.org/journals/statistical-science/volume-1/issue-3/Generalized-Additive-Models/10.1214/ss/1177013604.full), [wiki](https://en.wikipedia.org/wiki/Generalized_additive_model)) or GAMs as they are popularly referred to.
+That is, for every dimension $p$ of input, there is a corresponding $\phi_p$ and we can add them to get a multivariate function. In fact, the above specification appears in the framework developed by Hastie and Tibhirani in 1986, known as Generalized Addtive Models (see [paper](https://projecteuclid.org/journals/statistical-science/volume-1/issue-3/Generalized-Additive-Models/10.1214/ss/1177013604.full), [wiki](https://en.wikipedia.org/wiki/Generalized_additive_model)) or GAMs as they are popularly referred to.
 
 In the context of KANs, we can see this exactly as node at layer $l+1$, which takes inputs from layer $l$, whose edges represent the transformation of the inputs via $\phi_p$. Except for notational differences, each neuron in KAN is a GAM.
+
+##### Vector Generalized Additive Models
 
 So far we are dealing with single output and multiple inputs. But what if there are $n_{1}$ outputs. This leads us to Vector Generalized Additive Models (VGAMs), proposed by Yee and Wild in 1996 (see [paper](https://www.jstor.org/stable/2345888), [wiki](https://en.wikipedia.org/wiki/Vector_generalized_linear_model)). We can represent VGAM as:
 
@@ -197,7 +199,7 @@ See the figure below.
 ![KAN Layer = VGAM](./../figs/KANs-VGAMs.drawio.png){fig-align="center"}
 
 
-In effect, one KAN layer is actually a VGLM. So, given $D=\{x^{[i]}, y^{[i]}\}_{i=1}^{N}$ with $x^{[i]} \in R^{n_{0}}, y^{[i]} \in R^{n_{1}}$ outputs, KAN Layer and VGAM learn $\phi_{q,p}$ which are specified in terms of the Basis Functions. Note that, the choice of the basis functions should correspond to the domain and range of the functions being modeled. GAMS and VGAM models are trained (or leant) using back-fitting techniques. There is no reason why we can not apply backprop and fit these models using gradient descent.
+In effect, one KAN layer is actually a VGAM. So, given $D=\{x^{[i]}, y^{[i]}\}_{i=1}^{N}$ with $x^{[i]} \in R^{n_{0}}, y^{[i]} \in R^{n_{1}}$ outputs, KAN Layer and VGAM learn $\phi_{q,p}$ which are specified in terms of the Basis Functions. Note that, the choice of the basis functions should correspond to the domain and range of the functions being modeled. GAMS and VGAM models are trained (or leant) using back-fitting techniques. There is no reason why we can not apply backprop and fit these models using gradient descent.
 
 ### Deep Non-parametric Regression
 
@@ -209,9 +211,9 @@ For clarity sake, $x_{i_0}$ is referring to the $i_0$th input dimension or featu
 
 ![KAN = Deep Non-parametric Regression Model](./../figs/KANs-Deep-VGAMS.drawio.png){fig-align="center"}
 
-From the above figure, it is clear that the edges of the KAN network are non-parametric functions $\phi(x)$ which are specified via basis functions such as Splines. Even MLPs have weights on the edges. So, the mainstream interpretation that, in KANs, the activations are on the edges and they learnable is not very convincing. Both MLPs and KANs, the edges are learnable. For example, if we choose $\phi(x) = \beta x$, and replace the sum with sum preceded by elementwise, fixed activations like $SiLU$, we get the standard MLP network. [KAN](https://arxiv.org/abs/2404.19756) proposed by Liu et al in 2024 is a Deep Non-parametric Regression framework. Specifically, we note the following:
+From the above figure, it is clear that the edges of the KAN network are non-parametric functions $\phi(x)$ which are specified via basis functions such as Splines. Even MLPs have weights on the edges. So, the mainstream interpretation that, in KANs, the activations are on the edges and they are learnable is not very convincing. In both MLPs and KANs, the edges are learnable. For example, if we choose $\phi(x) = \beta x$, and replace the sum with sum preceded by elementwise, fixed activations like $SiLU$, we get the standard MLP network. [KAN](https://arxiv.org/abs/2404.19756) proposed by Liu et al in 2024 is a Deep Non-parametric Regression framework. Specifically, we note the following:
 
-- KAN nueron is a Generalized Additive Model (GAM)
+- KAN neuron is a Generalized Additive Model (GAM)
 - KAN layer is a Vector GAM (VGAM)
 - KAN Network is a Deep VGAM or simply put a Deep Non-parametric Regression Model
 
@@ -226,7 +228,7 @@ The generality of this technique comes from
 
 Not only that, the modularity of the KAN layer allows one to mix and match KAN layer with other modules such as a Transformer block or an RNN block, for example. We can replace MLP with KAN almost like a drop-in. We have already seen implementation of KANs in GPT models [GTP-KAN](https://github.com/AdityaNG/kan-gpt), [GPT2-KAN](https://github.com/CG80499/KAN-GPT-2). They also started appearing in CNNs. For more resources see [awesome-KANS](https://github.com/mintisan/awesome-kan). 
 
-Explore the features of KANs such as interpretability, solving PDEs,check out this [KAN Features](./../notebooks/02-01-KAN-Intro.ipynb) notebook or go through the examples from [PyKAN](https://github.com/KindXiaoming/pykan) official repo.
+Explore the features of KANs such as interpretability, solving PDEs, check out this [KAN Features](./../notebooks/02-01-KAN-Intro.ipynb) notebook or go through the examples from [PyKAN](https://github.com/KindXiaoming/pykan) official repo.
 
 ### Limitations
 
