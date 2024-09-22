@@ -400,7 +400,7 @@ The Kolmogorov-Arnold representation can be written in matrix form <span class="
 f(\bf{x})=\sum_{i_{L-1}=1}^{n_{L-1}}\phi_{L-1,i_{L},i_{L-1}}\left(\sum_{i_{L-2}=1}^{n_{L-2}}\cdots\left(\sum_{i_2=1}^{n_2}\phi_{2,i_3,i_2}\left(\sum_{i_1=1}^{n_1}\phi_{1,i_2,i_1}\left(\sum_{i_0=1}^{n_0}\phi_{0,i_1,i_0}(x_{i_0})\right)\right)\right)\cdots\right)
 \]</span>
 </p>
-<p>The basic ingredient is the <em>so called</em> learnable activation <span class="math inline">\(\phi_{l,i,i}\)</span> which maps the post-activation of <span class="math inline">\(j\)</span>th neuron in layer <span class="math inline">\(l\)</span> to the pre-activation of <span class="math inline">\(i\)</span>th neuron. Effectively, it is the edge connecting two neurons on of adjacent layers. But how can it be made learnable? Represent this activation function as: <span class="math display">\[
+<p>The basic ingredient is the <em>so called</em> learnable activation <span class="math inline">\(\phi_{l,j,i}\)</span> which maps the post-activation of <span class="math inline">\(i\)</span>th neuron in layer <span class="math inline">\(l\)</span> to the pre-activation of <span class="math inline">\(j\)</span>th neuron. Effectively, it is the edge connecting two neurons on adjacent layers. But how can it be made learnable? Represent this activation function as: <span class="math display">\[
 \begin{align}
 \phi(x)=w_{b} b(x)+w_{s}{\rm spline}(x) \\
 b(x)={\rm silu}(x)=x/(1+e^{-x}) \\
@@ -458,7 +458,7 @@ f(\bf{x})=\sum_{i_{L-1}=1}^{n_{L-1}}\phi_{L-1,i_{L},i_{L-1}}\left(\sum_{i_{L-2}=
 </section>
 <section id="limitations" class="level3">
 <h3 class="anchored" data-anchor-id="limitations">Limitations</h3>
-<p>But one limitation of KANs at this time is, they are relying on one-dimensional (univariate) functions as the building blocks. This need not be efficient always. For example, consider 2-d functions that have certain spatial or temporal properties. To apply KANs, we have to convert them to 1-d first and then apply. It would be much better if we can find multivariate basis functions that can naturally deal with arbitrary dimensions. For example, to process images, 2d wavelets could be a better choice. Also, in many cases, MLPs still seem to be doing better. See <a href="https://arxiv.org/abs/2407.16674">KAN or MLP: A Fairer Comparision</a> for details.</p>
+<p>But one limitation of KANs at this time is, they are relying on one-dimensional (univariate) functions as the building blocks. This need not be efficient always. For example, consider 2d functions that have certain spatial or temporal properties. To apply KANs, we have to convert them to 1d first and then apply. It would be much better if we can find multivariate basis functions that can naturally deal with arbitrary dimensions. For example, to process images, 2d wavelets could be a better choice. Also, in many cases, MLPs still seem to be doing better. See <a href="https://arxiv.org/abs/2407.16674">KAN or MLP: A Fairer Comparision</a> for details.</p>
 
 
 </section>
