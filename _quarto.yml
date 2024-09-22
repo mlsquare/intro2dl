@@ -41,6 +41,12 @@ book:
     chapters:
     - ./notebooks/00-01-FFN-Classification-Iris.ipynb
     - ./notebooks/00-02-FFN-Regression-Friedman2.ipynb
+    - ./notebooks/02-01-KAN-Intro.ipynb
+    - ./notebooks/02-02-KAN-Splines.ipynb
+    - ./notebooks/02-03-KAN-RBFs.ipynb
+    - ./notebooks/02-04-KAN-Chebyshev.ipynb
+    - ./notebooks/02-05-KAN-Wavelets.ipynb
+    - ./notebooks/02-07-KAN-PDE.ipynb
   
   
 format:
