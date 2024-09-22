@@ -170,7 +170,7 @@ So, by choosing a basis function, we map the observed inputs into the feature sp
 
 ##### Generalized Additive Models
 
-How we do extend the above formulation to multivariate case. Say, we have $n_{0}$ dimensional inputs. One obvious but non-trivial way is to choose a multivariate basis function. The other way to do that is to construct feature space based on univariate functions which we know how to approximate already. For example, take the cartesian product space as $f(x) \equiv \phi(x) = \Pi_{p=1}^{n_{0}} \phi_p(x_p)$ where $\phi_p$ can be expanded like before (univariate case). Or we can construct the function $f(x)$ additively as
+How do we extend the above formulation to multivariate case. Say, we have $n_{0}$ dimensional inputs. One obvious but non-trivial way is to choose a multivariate basis function. The other way to do that is to construct feature space based on univariate functions which we know how to approximate already. For example, take the cartesian product space as $f(x) \equiv \phi(x) = \Pi_{p=1}^{n_{0}} \phi_p(x_p)$ where $\phi_p$ can be expanded like before (univariate case). Or we can construct the function $f(x)$ additively as
 $$
 \begin{array}{left}
 f(x) \equiv \phi(x) = \sum_{p=1}^{n_{0}} \phi_p(x_p)
@@ -224,7 +224,7 @@ The generality of this technique comes from
     - Fast-KAN: KANs with Radial Basis Functions [code](https://github.com/ZiyaoLi/fast-kan)
     - ChebyKAN: KANs with Chebyshev Polynomials [paper](https://arxiv.org/abs/2405.07200v1)
     - WavKAN: KANs with Wavelets [paper](https://arxiv.org/abs/2405.12832)
-    - TorchKAN: KANs with Monmials, Legendre Polynomials [code](https://github.com/1ssb/torchkan)
+    - TorchKAN: KANs with Monomials, Legendre Polynomials [code](https://github.com/1ssb/torchkan)
 
 Not only that, the modularity of the KAN layer allows one to mix and match KAN layer with other modules such as a Transformer block or an RNN block, for example. We can replace MLP with KAN almost like a drop-in. We have already seen implementation of KANs in GPT models [GTP-KAN](https://github.com/AdityaNG/kan-gpt), [GPT2-KAN](https://github.com/CG80499/KAN-GPT-2). They also started appearing in CNNs. For more resources see [awesome-KANS](https://github.com/mintisan/awesome-kan). 
 
@@ -242,5 +242,5 @@ That said, KANs are extremely interesting in the sense that:
 
 - KAN is a Deep Non-parametric regression framework
 - Very generic
-- After pruning and doing some symbolic search, one can recover interoperable equations, which may be difficult to do in a typical Deep Neural Network.
+- After pruning and doing some symbolic search, one can recover interpretable equations, which may be difficult to do in a typical Deep Neural Network.
 - Combining the power of Wavelets, Filter Banks, Multi Resolution Analysis (MRA) in the KAN framework would be interesting to pursue.
