@@ -390,7 +390,7 @@ window.Quarto = {
 <section id="kolmogorov-arnold-representation-theorem" class="level3">
 <h3 class="anchored" data-anchor-id="kolmogorov-arnold-representation-theorem"><span style="color:blue">Kolmogorov-Arnold representation theorem</span></h3>
 <p style="color:blue">
-Kolmogorov-Arnold representation theorem states that if <span class="math inline">\(f\)</span> is a multivariate continuous function on a bounded domain, then it can be written as a finite composition of continuous functions of a single variable and the binary operation of addition. More specifically, for a smooth <span class="math inline">\(f : [0,1]^{d_{in}} \to \mathbb{R}\)</span>, <span class="math display">\[f(x) = f(x_1,...,x_{d_{in}})=\sum_{q=1}^{2{d_{in}}+1}\Phi_q(\sum_{p=1}^n \phi_{q,p}(x_p))\]</span> where <span class="math inline">\(\phi_{q,p}:[0,1]\to\mathbb{R}\)</span> and <span class="math inline">\(\Phi_q:\mathbb{R}\to\mathbb{R}\)</span>. In a sense, they showed that the only true multivariate function is addition, since every other function can be written using univariate functions and sum. However, this 2-Layer width-<span class="math inline">\((2{d_{in}}+1)\)</span> Kolmogorov-Arnold representation may not be smooth due to its limited expressive power. We augment its expressive power by generalizing it to arbitrary depths and widths.
+Kolmogorov-Arnold representation theorem states that if <span class="math inline">\(f\)</span> is a multivariate continuous function on a bounded domain, then it can be written as a finite composition of continuous functions of a single variable and the binary operation of addition. More specifically, for a smooth <span class="math inline">\(f : [0,1]^{n} \to \mathbb{R}\)</span>, <span class="math display">\[f(x) = f(x_1,...,x_{n})=\sum_{q=1}^{2{n}+1}\Phi_q(\sum_{p=1}^{n} \phi_{q,p}(x_p))\]</span> where <span class="math inline">\(\phi_{q,p}:[0,1]\to\mathbb{R}\)</span> and <span class="math inline">\(\Phi_q:\mathbb{R}\to\mathbb{R}\)</span>. In a sense, they showed that the only true multivariate function is addition, since every other function can be written using univariate functions and sum. However, this 2-Layer width-<span class="math inline">\((2{n}+1)\)</span> Kolmogorov-Arnold representation may not be smooth due to its limited expressive power. We augment its expressive power by generalizing it to arbitrary depths and widths.
 </p>
 </section>
 <section id="kolmogorov-arnold-network-kan" class="level3">
@@ -411,7 +411,15 @@ b(x)={\rm silu}(x)=x/(1+e^{-x}) \\
 </section>
 <section id="shallow-non-parametric-regression" class="level3">
 <h3 class="anchored" data-anchor-id="shallow-non-parametric-regression">Shallow Non-parametric Regression</h3>
-Consider the following regression problem <span class="math display">\[y^{[i]} = f(x^{[i]}) + e^{[i]}, i \in \left\{1,\dots,n\right\}\]</span> with <span class="math inline">\(D = \{x^{[i]}, y^{[i]}\}_{i=1}^{n}\)</span> representing all the data available to fit (train) the model <span class="math inline">\(f(x)\)</span>. For a moment, w.l.o.g, assume <span class="math inline">\(x\)</span> to be univariate. In a typical regression setup, one constructs features such as <span class="math inline">\(x^2, x^3,\dots\)</span>, like in polynomial regression and treats this as a Linear Regression problem. We can view this standard procedures as expanding the function <span class="math inline">\(f(x)\)</span> on a set of Polynomials. Seen in a more general sense, we can choose an appropriate <em>Basis Functions</em> to construct the feature space. For example [see Chapter 9 of <a href="https://www.stat.cmu.edu/~larry/all-of-nonpar/index.html">All of Nonparametric Statistics</a>] <span class="math display">\[f(x) =  \sum_{i=1}^{\infty} \beta_i B_i(x)\]</span> where <span class="math inline">\(B_1(x) \equiv 1, B_i(x) \equiv \sqrt{2}\cos((i-1)\pi x) \text{ for } i \ge 2\)</span>. In practice, we will truncate the expansion upto some finite number of terms. For illustration, say, we choose <span class="math inline">\(p\)</span> terms. Then, in matrix notation, the regression problem is: <span class="math display">\[
+<p>Consider the following regression problem <span class="math display">\[y^{[i]} \equiv f(x^{[i]}) + e^{[i]} \equiv \phi(x^{[i]}) + e^{[i]}, i \in \left\{1,\dots,N\right\}\]</span> with <span class="math inline">\(D = \{x^{[i]}, y^{[i]}\}_{i=1}^{N}\)</span> representing all the data available to fit (train) the model <span class="math inline">\(f(x)\)</span>. It is customary to write the model as <span class="math inline">\(f(x)\)</span> instead of <span class="math inline">\(\phi(x)\)</span>. It is done for compatibility with KAN. In the shallow case <span class="math inline">\(f(x) = \phi(x)\)</span> otherwise <span class="math inline">\(\phi(x)\)</span> is used to denote the building blocks that <span class="math inline">\(f(x)\)</span> will be made of.</p>
+<p>For a moment, w.l.o.g, assume <span class="math inline">\(x\)</span> to be univariate. In a typical regression setup, one constructs features such as <span class="math inline">\(x^2, x^3,\dots\)</span>, like in polynomial regression and treats this as a Linear Regression problem. We can view this standard procedures as expanding the function <span class="math inline">\(f(x)\)</span> on a set of Polynomials. Seen in a more general sense, we can choose an appropriate <em>Basis Functions</em> to construct the feature space. For example [see Chapter 9 of <a href="https://www.stat.cmu.edu/~larry/all-of-nonpar/index.html">All of Nonparametric Statistics</a>] <span class="math display">\[f(x) \equiv \phi(x) =  \sum_{i=1}^{\infty} \beta_i B_i(x)\]</span> where <span class="math inline">\(B_1(x) \equiv 1, B_i(x) \equiv \sqrt{2}\cos((i-1)\pi x) \text{ for } i \ge 2\)</span>. See the figure below.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./../figs/KANs-Shallow-Regression.drawio.png" class="img-fluid figure-img"></p>
+<figcaption>figure</figcaption>
+</figure>
+</div>
+In practice, we will truncate the expansion upto some finite number of terms. For illustration, say, we choose <span class="math inline">\(p\)</span> terms. Then, in matrix notation, the regression problem is: <span class="math display">\[
 \begin{array}{left}
 {\bf y} = {\bf X}{\bf \beta} + {\bf \epsilon}
 \end{array}
@@ -421,30 +429,45 @@ Consider the following regression problem <span class="math display">\[y^{[i]} =
 \begin{pmatrix} 1 &amp; \sqrt{2}\cos(\pi x^{[1]}) &amp; \dots &amp; \sqrt{2}\cos((p-1)\pi x^{[1]}) \\
 1 &amp; \sqrt{2}\cos(\pi x^{[2]}) &amp; \dots &amp; \sqrt{2}\cos((p-1)\pi x^{[2]}) \\
 \vdots &amp; &amp; &amp; \vdots \\
-1 &amp; \sqrt{2}\cos(\pi x^{[n]}) &amp; \dots &amp; \sqrt{2}\cos((p-1)\pi x^{[n]})
+1 &amp; \sqrt{2}\cos(\pi x^{[N]}) &amp; \dots &amp; \sqrt{2}\cos((p-1)\pi x^{[N]})
 \end{pmatrix} \\
 {\bf \beta}_{p \times 1} &amp;=&amp; [\beta_1, \beta_2, \dots, \beta_p ]^T \\
-{\bf y}_{n \times 1} &amp;=&amp; [y^{[1]}, y^{[2]}, \dots, y^{[n]} ]^T \\
+{\bf y}_{n \times 1} &amp;=&amp; [y^{[1]}, y^{[2]}, \dots, y^{[N]} ]^T \\
 \end{array}
 \]</span> Different choices of the Basis Functions lead to different design matrices <span class="math inline">\({\bf X}\)</span>. Some popular choices are Splines, Chebyshev Polynomials, Legendre Polynomials, Wavelets among others. Specifically, the function approximation with wavelets takes the following form [see <a href="https://github.com/jseabold/web-site/blob/master/content/notebooks/wavelet-regression-in-python.ipynb">Wavelet Regression in Python</a> for a very nice demonstration wavelets for denoising]:
 <p style="color:blue">
-<span class="math display">\[f(x) = \alpha\phi(x) + \sum_{j=0}^{J-1}\sum_{k=0}^{2^j-1}\beta_{jk}\psi_{jk}(x)\]</span> where <span class="math display">\[\alpha=\int_0^1f(x)\phi(x)dx\text{, }\beta_{jk}=\int_0^1f(x)\psi_{jk}(x)dx.\]</span> Here <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta_{jk}\)</span> are called the scaling coefficients and the detail coefficients, respectively. The basic idea is that the detail coefficients capture the coarser details of the function while the scaling, or smoothing, coefficients capture the overall functional form.
+<span class="math display">\[\phi(x) = \alpha\zeta(x) + \sum_{j=0}^{J-1}\sum_{k=0}^{2^j-1}\beta_{jk}\psi_{jk}(x)\]</span> where <span class="math display">\[\alpha=\int_0^1\phi(x)\zeta(x)dx\text{, }\beta_{jk}=\int_0^1\phi(x)\psi_{jk}(x)dx.\]</span> Here <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta_{jk}\)</span> are called the scaling coefficients and the detail coefficients, respectively. The basic idea is that the detail coefficients capture the coarser details of the function while the scaling, or smoothing, coefficients capture the overall functional form.
 </p>
 <p>So, by choosing a basis function, we map the observed inputs into the feature space, and project the response onto the space spanned by the basis functions. This is basically a Linear Regression in a different function space (induced by the basis functions).</p>
 <section id="generalized-additive-models" class="level5">
 <h5 class="anchored" data-anchor-id="generalized-additive-models">Generalized Additive Models</h5>
-<p>How we do extend the above formulation to multivariate case. Say, we have <span class="math inline">\(d_{in}\)</span> dimensional inputs. One obvious but non-trivial way is to choose a multivariate basis function. The other way to do that is to construct feature space based on univariate functions which we know to approximate already. For example, take the cartesian product space as <span class="math inline">\(f(x) = \Pi_{p=1}^{d_{in}} \phi_p(x_p)\)</span> where <span class="math inline">\(f_p\)</span> can be expanded like before (univariate case). Or we can construct the function <span class="math inline">\(f(x)\)</span> additively as <span class="math display">\[
+<p>How we do extend the above formulation to multivariate case. Say, we have <span class="math inline">\(n_{0}\)</span> dimensional inputs. One obvious but non-trivial way is to choose a multivariate basis function. The other way to do that is to construct feature space based on univariate functions which we know to approximate already. For example, take the cartesian product space as <span class="math inline">\(f(x) \equiv \phi(x) = \Pi_{p=1}^{n_{0}} \phi_p(x_p)\)</span> where <span class="math inline">\(\phi_p\)</span> can be expanded like before (univariate case). Or we can construct the function <span class="math inline">\(f(x)\)</span> additively as <span class="math display">\[
 \begin{array}{left}
-f(x) = \sum_{p=1}^{d_{in}} \phi_p(x_p)
+f(x) \equiv \phi(x) = \sum_{p=1}^{n_{0}} \phi_p(x_p)
 \end{array}
-\]</span> That is, for every dimension <span class="math inline">\(p\)</span> of input, there is a corresponding <span class="math inline">\(\phi_p\)</span> and add them to get the multivariate function. In fact, the above specification appears in the framework developed by Hastie and Tibhirani in 1986, known as Generalized Addtive Models <a href="https://projecteuclid.org/journals/statistical-science/volume-1/issue-3/Generalized-Additive-Models/10.1214/ss/1177013604.full">paper</a>, <a href="https://en.wikipedia.org/wiki/Generalized_additive_model">wiki</a> or GAMs as they are popularly referred to.</p>
+\]</span> See the figure below.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./../figs/KANs-GAMs.drawio.png" class="img-fluid figure-img"></p>
+<figcaption>KAN Neuron = GAM</figcaption>
+</figure>
+</div>
+<p>That is, for every dimension <span class="math inline">\(p\)</span> of input, there is a corresponding <span class="math inline">\(\phi_p\)</span> and add them to get the multivariate function. In fact, the above specification appears in the framework developed by Hastie and Tibhirani in 1986, known as Generalized Addtive Models (see <a href="https://projecteuclid.org/journals/statistical-science/volume-1/issue-3/Generalized-Additive-Models/10.1214/ss/1177013604.full">paper</a>, <a href="https://en.wikipedia.org/wiki/Generalized_additive_model">wiki</a>) or GAMs as they are popularly referred to.</p>
 <p>In the context of KANs, we can see this exactly as node at layer <span class="math inline">\(l+1\)</span>, which takes inputs from layer <span class="math inline">\(l\)</span>, whose edges represent the transformation of the inputs via <span class="math inline">\(\phi_p\)</span>. Except for notational differences, each neuron in KAN is a GAM.</p>
-<p>So far we are dealing with single output and multiple inputs. But what if there are <span class="math inline">\(d_{out}\)</span> outputs. This leads us to Vector Generalized Additive Models (VGAMs), proposed by Yee and Wild in 1996. See <a href="https://www.jstor.org/stable/2345888">paper</a> and <a href="https://en.wikipedia.org/wiki/Vector_generalized_linear_model">wiki</a>. We can represent VGLAM as:</p>
+<p>So far we are dealing with single output and multiple inputs. But what if there are <span class="math inline">\(n_{1}\)</span> outputs. This leads us to Vector Generalized Additive Models (VGAMs), proposed by Yee and Wild in 1996 (see <a href="https://www.jstor.org/stable/2345888">paper</a>, <a href="https://en.wikipedia.org/wiki/Vector_generalized_linear_model">wiki</a>). We can represent VGLAM as:</p>
 <p><span class="math display">\[
 \begin{array}{left}
-y_q = f_{q,.}(x) = \sum_{p=1}^{d_{in}} \phi_{q,p}(x_p)
+y_q \equiv f_{q,.}(x) \equiv \phi_{q,.}(x)  = \sum_{p=1}^{n_{0}} \phi_{q,p}(x_p)
 \end{array}
-\]</span> In effect, one KAN layer is actually a VGLM. So, given <span class="math inline">\(D=\{x^{[i]}, y^{[i]}\}_{i=1}^{n}\)</span> with <span class="math inline">\(x^{[i]} \in R^{d_{in}}, y^{[i]} \in R^{d_{out}}\)</span> outputs, KAN Layer and VGAM learn <span class="math inline">\(f_{q,p}\)</span> which are specified in terms of the Basis Functions. Note that, the choice of the basis functions should correspond to the domain and range of the functions being modeled. GAMS and VGAM models are trained (or leant) using back-fitting techniques. There is no reason why we can not apply backprop and fit these models using gradient descent.</p>
+\]</span></p>
+<p>See the figure below.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./../figs/KANs-VGAMs.drawio.png" class="img-fluid figure-img"></p>
+<figcaption>KAN Layer = VGAM</figcaption>
+</figure>
+</div>
+<p>In effect, one KAN layer is actually a VGLM. So, given <span class="math inline">\(D=\{x^{[i]}, y^{[i]}\}_{i=1}^{n}\)</span> with <span class="math inline">\(x^{[i]} \in R^{n_{0}}, y^{[i]} \in R^{n_{1}}\)</span> outputs, KAN Layer and VGAM learn <span class="math inline">\(\phi_{q,p}\)</span> which are specified in terms of the Basis Functions. Note that, the choice of the basis functions should correspond to the domain and range of the functions being modeled. GAMS and VGAM models are trained (or leant) using back-fitting techniques. There is no reason why we can not apply backprop and fit these models using gradient descent.</p>
 </section>
 </section>
 <section id="deep-non-parametric-regression" class="level3">
@@ -452,13 +475,45 @@ y_q = f_{q,.}(x) = \sum_{p=1}^{d_{in}} \phi_{q,p}(x_p)
 <p>What remains to be done is to stack the KAN layers or VGAMs. That gets us to the model we have seen above: <span class="math display">\[
 f(\bf{x})=\sum_{i_{L-1}=1}^{n_{L-1}}\phi_{L-1,i_{L},i_{L-1}}\left(\sum_{i_{L-2}=1}^{n_{L-2}}\cdots\left(\sum_{i_2=1}^{n_2}\phi_{2,i_3,i_2}\left(\sum_{i_1=1}^{n_1}\phi_{1,i_2,i_1}\left(\sum_{i_0=1}^{n_0}\phi_{0,i_1,i_0}(x_{i_0})\right)\right)\right)\cdots\right)
 \]</span> For clarity sake, <span class="math inline">\(x_{i_0}\)</span> is referring to the <span class="math inline">\(i_0\)</span>th input dimension or feature, <span class="math inline">\(\phi_{l,q,p}(.)\)</span> refers to the function that maps <span class="math inline">\(p\)</span>th input of layer <span class="math inline">\(l\)</span> to the (before summation) <span class="math inline">\(q\)</span>th output.</p>
-<p>So <a href="https://arxiv.org/abs/2404.19756">KAN</a> proposed by Liu et al in 2024 is a Deep Non-parametric Regression framework. The generality of this technique comes from the flexibility of the specification (multiple inputs, multiple outputs, varying depth and width, choice of basis functions) and the deep learning framework itself (so we can fit almost all methods using backprop without doing any custom implementations). See for example, - Fast-KAN: KANs with Radial Basis Functions <a href="https://github.com/ZiyaoLi/fast-kan">code</a> - ChebyKAN: KANs with Chebyshev Polynomials <a href="https://arxiv.org/abs/2405.07200v1">paper</a> - WavKAN: KANs with Wavelets <a href="https://arxiv.org/abs/2405.12832">paper</a> - TorchKAN: KANs with Monmials, Legendre Polynomials <a href="https://github.com/1ssb/torchkan">code</a></p>
-<p>Not only that, the modularity of the KAN layer allows one to mix and match. We can replace MLP with KAN almost like a drop-in. We have already seen implementation of KANs in GPT models <a href="https://github.com/AdityaNG/kan-gpt">GTP-KAN</a>, <a href="https://github.com/CG80499/KAN-GPT-2">GPT2-KAN</a>. They also started appearing in CNNs. For more resources see <a href="https://github.com/mintisan/awesome-kan">awesome-KANS</a>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./../figs/KANs-Deep-VGAMS.drawio.png" class="img-fluid figure-img"></p>
+<figcaption>KAN = Deep Non-parametric Regression Model</figcaption>
+</figure>
+</div>
+<p>From the above figure, it is clear that the edges of the KAN network are non-parametric functions <span class="math inline">\(\phi(x)\)</span> which are specified via basis functions such as Splines. Even MLPs have weights on the edges. So, the mainstream interpretation that, in KANs, the activations are on the edges and they learnable is not very convincing. Both MLPs and KANs, the edges are learnable. For example, if we choose <span class="math inline">\(\phi(x) = \beta x\)</span>, and replace the sum with sum preceded by elementwise, fixed activations like <span class="math inline">\(SiLU\)</span>, we get the standard MLP network. <a href="https://arxiv.org/abs/2404.19756">KAN</a> proposed by Liu et al in 2024 is a Deep Non-parametric Regression framework. Specifically, we note the following:</p>
+<ul>
+<li>KAN nueron is a Generalized Aaddtive Model (GAM)</li>
+<li>KAN layer is a Vector GAM (VGAM)</li>
+<li>KAN Network is a Deep VGAM or simply put a Deep Non-parametric Regression Model</li>
+</ul>
+<p>The generality of this technique comes from</p>
+<ul>
+<li>flexibility of the specification (multiple inputs, multiple outputs, varying depth and width, choice of basis functions) and</li>
+<li>the deep learning framework itself (so we can fit almost all methods using backprop without doing any custom implementations). See for example,
+<ul>
+<li>Fast-KAN: KANs with Radial Basis Functions <a href="https://github.com/ZiyaoLi/fast-kan">code</a></li>
+<li>ChebyKAN: KANs with Chebyshev Polynomials <a href="https://arxiv.org/abs/2405.07200v1">paper</a></li>
+<li>WavKAN: KANs with Wavelets <a href="https://arxiv.org/abs/2405.12832">paper</a></li>
+<li>TorchKAN: KANs with Monmials, Legendre Polynomials <a href="https://github.com/1ssb/torchkan">code</a></li>
+</ul></li>
+</ul>
+<p>Not only that, the modularity of the KAN layer allows one to mix and match KAN layer with other modules such as a TRransfomer block or an RNN block, for example. We can replace MLP with KAN almost like a drop-in. We have already seen implementation of KANs in GPT models <a href="https://github.com/AdityaNG/kan-gpt">GTP-KAN</a>, <a href="https://github.com/CG80499/KAN-GPT-2">GPT2-KAN</a>. They also started appearing in CNNs. For more resources see <a href="https://github.com/mintisan/awesome-kan">awesome-KANS</a>.</p>
 <p>Explore this <a href="../notebooks/02-01-KAN-Intro.html">KAN Features</a> notebook or go through the examples from <a href="https://github.com/KindXiaoming/pykan">PyKAN</a> official repo.</p>
 </section>
 <section id="limitations" class="level3">
 <h3 class="anchored" data-anchor-id="limitations">Limitations</h3>
-<p>But one limitation of KANs at this time is, they are relying on one-dimensional (univariate) functions as the building blocks. This need not be efficient always. For example, consider 2d functions that have certain spatial or temporal properties. To apply KANs, we have to convert them to 1d first and then apply. It would be much better if we can find multivariate basis functions that can naturally deal with arbitrary dimensions. For example, to process images, 2d wavelets could be a better choice. Also, in many cases, MLPs still seem to be doing better. See <a href="https://arxiv.org/abs/2407.16674">KAN or MLP: A Fairer Comparision</a> for details.</p>
+<p>Few limitation of KANs at this time are:</p>
+<ul>
+<li>they are relying on one-dimensional (univariate) functions as the building blocks. This need not be efficient always. For example, consider 2d functions that have certain spatial or temporal properties. To apply KANs, we have to convert them to 1d first and then apply. It would be much better if we can find multivariate basis functions that can naturally deal with arbitrary dimensions. For example, to process images, 2d wavelets could be a better choice.</li>
+<li>In many cases, MLPs still seem to be doing better. See <a href="https://arxiv.org/abs/2407.16674">KAN or MLP: A Fairer Comparison</a> for details. KANs seem to be good at symbolic regression problems which have much more grounding in physical and other sciences. -Spline-based KAN, as noted by others are computationally slow. Knot selection (how many and where to) are important hyperparameters which can affect the performance significancy. Grid refinement implemented by the KAN authors is a welcoming step.</li>
+</ul>
+<p>That said, KANs are extremely interesting in the sense that, they are:</p>
+<ul>
+<li>KANs is a Deep Non-parametric regression framework</li>
+<li>Very generic</li>
+<li>After pruning and doing some symbolic search, one can recover interoperable equations, which may be difficult to do in a typical Deep Neural Network.</li>
+</ul>
 
 
 </section>
