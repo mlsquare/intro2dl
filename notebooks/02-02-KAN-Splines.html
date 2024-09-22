@@ -8,7 +8,7 @@
 
 <meta name="author" content="mlsquare">
 
-<title>Preface – Deep Learning</title>
+<title>KAN with Splines – Deep Learning</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,27 +21,62 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./index.html" rel="next">
-<link href="./logo.jpg" rel="icon" type="image/jpeg">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../notebooks/02-03-KAN-RBFs.html" rel="next">
+<link href="../notebooks/02-01-KAN-Intro.html" rel="prev">
+<link href="../logo.jpg" rel="icon" type="image/jpeg">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -70,6 +105,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -82,7 +146,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./preface.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/00-01-FFN-Classification-Iris.html">Lab</a></li><li class="breadcrumb-item"><a href="../notebooks/02-02-KAN-Splines.html"><span class="chapter-title">KAN with Splines</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -97,7 +161,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Deep Learning</a> 
+      <a href="../">Deep Learning</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/mlsquare/intro2dl" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
@@ -117,19 +181,19 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./preface.html" class="sidebar-item-text sidebar-link active">
+  <a href="../preface.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Welcome</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Course</span></a>
+  <a href="../course.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Course</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -143,19 +207,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lectures/L01.html" class="sidebar-item-text sidebar-link">
+  <a href="../lectures/L01.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">FFNs</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lectures/L02.html" class="sidebar-item-text sidebar-link">
+  <a href="../lectures/L02.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">CNNs</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lectures/L03.html" class="sidebar-item-text sidebar-link">
+  <a href="../lectures/L03.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">KANs</span></a>
   </div>
 </li>
@@ -172,42 +236,42 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./notebooks/00-01-FFN-Classification-Iris.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">FFN Classification</span></a>
+  <a href="../notebooks/00-01-FFN-Classification-Iris.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">FFN Classification</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./notebooks/00-02-FFN-Regression-Friedman2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">FFNs Regression</span></a>
+  <a href="../notebooks/00-02-FFN-Regression-Friedman2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">FFNs Regression</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./notebooks/02-01-KAN-Intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">KAN Intro</span></a>
+  <a href="../notebooks/02-01-KAN-Intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">KAN Intro</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./notebooks/02-02-KAN-Splines.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">KAN with Splines</span></a>
+  <a href="../notebooks/02-02-KAN-Splines.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">KAN with Splines</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./notebooks/02-03-KAN-RBFs.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">KANs with RBFs</span></a>
+  <a href="../notebooks/02-03-KAN-RBFs.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">KANs with RBFs</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./notebooks/02-04-KAN-Chebyshev.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">KANs with Chebyshev</span></a>
+  <a href="../notebooks/02-04-KAN-Chebyshev.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">KANs with Chebyshev</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./notebooks/02-05-KAN-Wavelets.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">KANs with Wavelets</span></a>
+  <a href="../notebooks/02-05-KAN-Wavelets.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">KANs with Wavelets</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./notebooks/02-07-KAN-PDE.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">KAN PDE Solver</span></a>
+  <a href="../notebooks/02-07-KAN-PDE.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">KAN PDE Solver</span></a>
   </div>
 </li>
       </ul>
@@ -217,21 +281,15 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#disclaimer" id="toc-disclaimer" class="nav-link active" data-scroll-target="#disclaimer">Disclaimer</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/mlsquare/intro2dl/edit/main/preface.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mlsquare/intro2dl/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/00-01-FFN-Classification-Iris.html">Lab</a></li><li class="breadcrumb-item"><a href="../notebooks/02-02-KAN-Splines.html"><span class="chapter-title">KAN with Splines</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Preface</h1>
+<h1 class="title">KAN with Splines</h1>
 </div>
 
 
@@ -248,18 +306,108 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>When I started reading papers about Deep Learning, typically published in conferences, I had hard time following them. The key modeling details are presented in textual form with accompanied by architecture (block) diagrams. If the paper had any Math in them it was for proofs but not for explaining the models or the expressions were restricted to highlighting key contributions (eg. loss function).</p>
-<p>Despite this information, it was hard for me to understand them to be able to reproduce. I have to look at source code to see how they are implemented and go back to the paper and read again, and repeat this process. This was probably due to the my formal training Statistics. I always start with the model (expressed as equations). This unlearning took a long time. I am assuming that folks with training in Maths/ Applied Maths will also have hard time reading papers in the ML space for the same reason - there is no precision.</p>
-<p>In this course, we will discuss different architectures (models) in Deep Learning using Mathematical language as much as possible (for the sake of precision) and follow-them up with implementation in code.</p>
-<p>The intended audience is those with math background, that wants to appreciate modern deep learning models. We will not get into “why” deep learning works or their applications. In the resources section, I will provide ample references for those interested that wants to explore further.</p>
-<section id="disclaimer" class="level3">
-<h3 class="anchored" data-anchor-id="disclaimer">Disclaimer</h3>
-<p>This course is by no means a replacement of any other resources available. Hopefully, the content and views presented complement the current practice of MLOps, readers and students benefit from it.</p>
-<p>openly,<br>
-The Saddle Point</p>
+<p>We will use example provided in the official implementation of the KAN paper. Install the library with</p>
+<p><code>pip install pykan</code></p>
+<p><strong>Function Fitting</strong> We will take some interesting test functions from <a href="https://github.com/jseabold/web-site/blob/master/content/notebooks/wavelet-regression-in-python.ipynb">Wavelet Regression</a> notebook.</p>
+<p>The Doppler function is <span class="math display">\[
+f(x) = \sqrt{x(1-x)} \sin(\frac{2.1\pi}{x+0.05}) \\
+x \sim U[0,1]
+\]</span></p>
+<div id="cell-2" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> kan.utils <span class="im">import</span> create_dataset</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>torch.set_default_dtype(torch.float64)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>device <span class="op">=</span> torch.device(<span class="st">'cuda'</span> <span class="cf">if</span> torch.cuda.is_available() <span class="cf">else</span> <span class="st">'cpu'</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'device is: '</span>,device)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> x: torch.sqrt(x[:,[<span class="dv">0</span>]]<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>x[:,[<span class="dv">0</span>]]))<span class="op">*</span>torch.sin((<span class="dv">2</span><span class="op">*</span>np.pi)<span class="op">/</span>(x[:,[<span class="dv">0</span>]]<span class="op">+</span><span class="fl">.1</span>))</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>dataset <span class="op">=</span> create_dataset(f, n_var<span class="op">=</span><span class="dv">1</span>, device<span class="op">=</span>device, ranges<span class="op">=</span>[<span class="dv">0</span>,<span class="dv">1</span>])</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'train input data shape'</span>, dataset[<span class="st">'train_input'</span>].shape)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'train label data shape'</span>, dataset[<span class="st">'train_label'</span>].shape)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>plt.scatter(dataset[<span class="st">'train_input'</span>],dataset[<span class="st">'train_label'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>device is:  cpu
+train input data shape torch.Size([1000, 1])
+train label data shape torch.Size([1000, 1])</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="02-02-KAN-Splines_files/figure-html/cell-2-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-3" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a KAN: 1D inputs, 1D output, and 5 hidden neurons. cubic spline (k=3), 5 grid intervals (grid=5).</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> kan <span class="im">import</span> KAN</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> KAN(width<span class="op">=</span>[<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">1</span>], grid<span class="op">=</span><span class="dv">5</span>, k<span class="op">=</span><span class="dv">3</span>, seed<span class="op">=</span><span class="dv">0</span>, device<span class="op">=</span>device)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># plot KAN at initialization</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>model(dataset[<span class="st">'train_input'</span>])</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>model.plot()</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># train the model</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>model.fit(dataset, opt<span class="op">=</span><span class="st">"LBFGS"</span>, steps<span class="op">=</span><span class="dv">50</span>, lamb<span class="op">=</span><span class="fl">0.001</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>checkpoint directory created: ./model
+saving model version 0.0</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>| train_loss: 8.76e-02 | test_loss: 9.21e-02 | reg: 7.97e+00 | : 100%|█| 50/50 [00:09&lt;00:00,  5.53it</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>saving model version 0.1</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="02-02-KAN-Splines_files/figure-html/cell-3-output-4.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-4" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># let us look at the recontruction</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> dataset[<span class="st">'train_input'</span>]</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>n  <span class="op">=</span> <span class="dv">1000</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>X[:,<span class="dv">0</span>] <span class="op">=</span> torch.linspace(<span class="dv">0</span>,<span class="dv">1</span>,steps<span class="op">=</span>n)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> f(X)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> y[:,<span class="dv">0</span>].detach().numpy()</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>yh <span class="op">=</span> model.forward(X)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>yh <span class="op">=</span> yh[:,<span class="dv">0</span>].detach().numpy()</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>plt.plot(y,color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>plt.plot(yh, color<span class="op">=</span><span class="st">'red'</span>)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>plt.plot(yh<span class="op">-</span>y, color<span class="op">=</span><span class="st">'black'</span>)</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="02-02-KAN-Splines_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="02-02-KAN-Splines_files/figure-html/cell-4-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -684,10 +832,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../notebooks/02-01-KAN-Intro.html" class="pagination-link" aria-label="KAN Intro">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">KAN Intro</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./index.html" class="pagination-link" aria-label="Welcome">
-        <span class="nav-page-text">Welcome</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../notebooks/02-03-KAN-RBFs.html" class="pagination-link" aria-label="KANs with RBFs">
+        <span class="nav-page-text"><span class="chapter-title">KANs with RBFs</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -699,7 +850,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/mlsquare/intro2dl/edit/main/preface.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mlsquare/intro2dl/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.dev/mlsquare/intro2dl/blob/main/notebooks/02-02-KAN-Splines.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mlsquare/intro2dl/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This course material was built with <a href="https://quarto.org/">Quarto</a> with <a href="https://github.com/hadley/r4ds">r4ds</a> theme.</p>
 </div>
