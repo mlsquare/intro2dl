@@ -114,7 +114,7 @@ f(\bf{x})=\sum_{i_{L-1}=1}^{n_{L-1}}\phi_{L-1,i_{L},i_{L-1}}\left(\sum_{i_{L-2}=
 $$
 </p>
 
-The basic ingredient is the _so called_ learnable activation $\phi_{l,i,i}$ which maps the post-activation of $j$th neuron in layer $l$ to the pre-activation of $i$th neuron. Effectively, it is the edge connecting two neurons on of adjacent layers. But how can it be made learnable? Represent this activation function as:
+The basic ingredient is the _so called_ learnable activation $\phi_{l,j,i}$ which maps the post-activation of $i$th neuron in layer $l$ to the pre-activation of $j$th neuron. Effectively, it is the edge connecting two neurons on  adjacent layers. But how can it be made learnable? Represent this activation function as:
 $$
 \begin{align}
 \phi(x)=w_{b} b(x)+w_{s}{\rm spline}(x) \\
