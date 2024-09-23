@@ -58,13 +58,13 @@ Date: Saturday, 21-Sep-2024, 1.30pm, IST.
 
 ### References
 
-- R01: [CS6910: Deep Learning](http://www.cse.iitm.ac.in/~miteshk/CS6910.html) Mitesh Khapra @ IIT Madras
-- R02:  [CS7015: Deep Learning](https://www.cse.iitm.ac.in/~miteshk/CS7015_2019.html) Mitesh Khapra @ IIT Madras(earlier version of CS6910)
-- R03: [LING 574: Deep Learning for NLP](https://www.shane.st/teaching/574/spr24/) Shane Steinhard-Threlkeld @ University of Washington
-- R04: [Dive into Deep Learning](https://d2l.ai/index.html)
-- R05: [Understanding Deep Learning](https://udlbook.github.io/udlbook/)
-- R06: [Neural Networks and Deep Learning](http://neuralnetworksanddeeplearning.com/)
-- R07: [Deep Learning for Computer Vision](https://archive.nptel.ac.in/noc/courses/noc20/SEM2/noc20-cs88/) NPTEL course by Prof. Vineeth N Balasubramanian
+- R01: [CS6910: Deep Learning](http://www.cse.iitm.ac.in/~miteshk/CS6910.html) Prof. [Mitesh Khapra](https://www.cse.iitm.ac.in/~miteshk/) @ IIT Madras
+- R02:  [CS7015: Deep Learning](https://www.cse.iitm.ac.in/~miteshk/CS7015_2019.html) Prof. [Mitesh Khapra](https://www.cse.iitm.ac.in/~miteshk/) @ IIT Madras(earlier version of CS6910)
+- R03: [LING 574: Deep Learning for NLP](https://www.shane.st/teaching/574/spr24/) Prof. [Shane Steinert-Threlkeld](https://www.shane.st/) @ University of Washington
+- R04: [Dive into Deep Learning](https://d2l.ai/index.html) [Alex Smola](https://alex.smola.org/) et al
+- R05: [Understanding Deep Learning](https://udlbook.github.io/udlbook/) Prof. [Simon Prince](https://www.bath.ac.uk/person/1545883)
+- R06: [Neural Networks and Deep Learning](http://neuralnetworksanddeeplearning.com/) Michael Nielsen
+- R07: [Deep Learning for Computer Vision](https://archive.nptel.ac.in/noc/courses/noc20/SEM2/noc20-cs88/) NPTEL course by Prof. [Vineeth N Balasubramanian](https://people.iith.ac.in/vineethnb/)
 
 ### Additional References
 
@@ -114,7 +114,7 @@ f(\bf{x})=\sum_{i_{L-1}=1}^{n_{L-1}}\phi_{L-1,i_{L},i_{L-1}}\left(\sum_{i_{L-2}=
 $$
 </p>
 
-The basic ingredient is the so called _learnable activation_ $\phi_{l,j,i}$ which maps the post-activation of $i$th neuron in layer $l$ to the pre-activation of $j$th neuron. Effectively, it is the edge connecting two neurons on  adjacent layers. But how can it be made learnable? Represent this activation function as:
+The basic ingredient is the so called _learnable activation_ $\phi_{l,j,i}$ which maps the post-activation of $i$th neuron in layer $l$ to the pre-activation of $j$th neuron in the $l+1$th layer. Effectively, it is the edge connecting two neurons on  adjacent layers. But how can it be made learnable? Represent this activation function as:
 $$
 \begin{align}
 \phi(x)=w_{b} b(x)+w_{s}{\rm spline}(x) \\
@@ -124,13 +124,13 @@ b(x)={\rm silu}(x)=x/(1+e^{-x}) \\
 $$
 where $c_i$s are trainable/learnable parameters, $B_i$ are the Spline basis functions (in the original KAN paper). The authors included $b(x)$, a $SiLU$, as a residual connection.
 
-The above development of KANs is compelling but it is much more illustrative to approach it from a Non-parametric Regression point of view, and then see that KAN's are a type of Deep Non-parametric Regressors. Then, we realize that the standard terminology like neurons, activations, pre-activations, post-activation etc., can be completely dropped.
+The above development of KANs is compelling but it is much more illustrative to approach it from a Nonparametric Regression point of view, and then see that KAN's are a type of Deep Nonparametric Regressors. Then, we realize that the standard terminology like neurons, activations, pre-activations, post-activation etc., can be completely dropped.
 
-### Shallow Non-parametric Regression
+### Shallow Nonparametric Regression
 
 Consider the following regression problem
 $$y^{[i]} \equiv f(x^{[i]}) + e^{[i]} \equiv \phi(x^{[i]}) + e^{[i]}, i \in \left\{1,\dots,N\right\}$$
-with $D = \{x^{[i]}, y^{[i]}\}_{i=1}^{N}$ representing all the data available to fit (train) the model $f(x)$. It is customary to write the model as $f(x)$ instead of $\phi(x)$. It is done for compatibility with KAN. In the shallow case $f(x) = \phi(x)$ otherwise $\phi(x)$ is used to denote the building blocks and $f(x)$ will be a composition many such building blocks.
+with $D = \{x^{[i]}, y^{[i]}\}_{i=1}^{N}$ representing all the data available to fit (train) the model $f(x)$. It is customary to write the model as $f(x)$ instead of $\phi(x)$. It is done for compatibility with KAN. In the shallow case $f(x) = \phi(x)$ otherwise $\phi(x)$ is used to denote the building blocks and $f(x)$ will be a composition of many such building blocks.
 
 For a moment, w.l.o.g, assume $x$ to be univariate. In a typical regression setup, one constructs features such as $x^2, x^3,\dots$, like in polynomial regression and treat this as a Linear Regression problem. We can view this standard procedure as expanding the function $f(x)$ on a set of Polynomials. Seen in a more general sense, we can choose an appropriate _Basis Functions_ to construct the feature space. For example [see Chapter 9 of [All of Nonparametric Statistics](https://www.stat.cmu.edu/~larry/all-of-nonpar/index.html)]
 $$f(x) \equiv \phi(x) =  \sum_{i=1}^{\infty} \beta_i B_i(x)$$
@@ -138,7 +138,7 @@ where $B_1(x) \equiv 1, B_i(x) \equiv \sqrt{2}\cos((i-1)\pi x) \text{ for } i \g
 
 ![Shallow Nonparametric Regression](./../figs/KANs-Shallow-Regression.drawio.png){fig-align="center"}
 
-In practice, we will truncate the expansion upto some finite number of terms. For illustration, say, we choose $p$ terms. Then, in matrix notation, the regression problem is:
+In practice, we will truncate the expansion up to some finite number of terms. For illustration, say, we choose $p$ terms. Then, in matrix notation, the regression problem is:
 $$
 \begin{array}{left}
 {\bf y} = {\bf X}{\bf \beta} + {\bf \epsilon}
@@ -157,7 +157,7 @@ $$
 {\bf y}_{N \times 1} &=& [y^{[1]}, y^{[2]}, \dots, y^{[N]} ]^T \\
 \end{array}
 $$
-This is the classic Non-parametric Regression setup. Different choices of the Basis Functions lead to different design matrices ${\bf X}$. Some popular choices are Splines, Chebyshev Polynomials, Legendre Polynomials, Wavelets, among others. 
+This is the classic Nonparametric Regression setup. Different choices of the basis functions lead to different design matrices ${\bf X}$. Some popular choices are Splines, Chebyshev Polynomials, Legendre Polynomials, Wavelets, among others. 
 
 <p style="color:blue">
 Specifically, the function approximation with wavelets takes the following form [see [Wavelet Regression in Python](https://github.com/jseabold/web-site/blob/master/content/notebooks/wavelet-regression-in-python.ipynb) for a very nice demonstration of wavelets for denoising]:
@@ -199,9 +199,9 @@ See the figure below.
 ![KAN Layer = VGAM](./../figs/KANs-VGAMs.drawio.png){fig-align="center"}
 
 
-In effect, one KAN layer is actually a VGAM. So, given $D=\{x^{[i]}, y^{[i]}\}_{i=1}^{N}$ with $x^{[i]} \in R^{n_{0}}, y^{[i]} \in R^{n_{1}}$ outputs, KAN Layer and VGAM learn $\phi_{q,p}$ which are specified in terms of the Basis Functions. Note that, the choice of the basis functions should correspond to the domain and range of the functions being modeled. GAMS and VGAM models are trained (or leant) using back-fitting techniques. There is no reason why we can not apply backprop and fit these models using gradient descent.
+In effect, one KAN layer is actually a VGAM. So, given $D=\{x^{[i]}, y^{[i]}\}_{i=1}^{N}$ with $x^{[i]} \in R^{n_{0}}, y^{[i]} \in R^{n_{1}}$ outputs, KAN Layer and VGAM learn $\phi_{q,p}$ which are specified in terms of the basis functions. Note that, the choice of the basis functions should correspond to the domain and range of the functions being modeled. GAMS and VGAM models are trained (or leant) using back-fitting techniques. There is no reason why we can not apply backprop and fit these models using gradient descent.
 
-### Deep Non-parametric Regression
+### Deep Nonparametric Regression
 
 What remains to be done is to stack the KAN layers or VGAMs. That gets us to the model we have seen before:
 $$
@@ -209,13 +209,13 @@ f(\bf{x})=\sum_{i_{L-1}=1}^{n_{L-1}}\phi_{L-1,i_{L},i_{L-1}}\left(\sum_{i_{L-2}=
 $$
 For clarity sake, $x_{i_0}$ is referring to the $i_0$th input dimension or feature, $\phi_{l,q,p}(.)$ refers to the function that maps $p$th input of layer $l$ to the (before summation) $q$th output.
 
-![KAN = Deep Non-parametric Regression Model](./../figs/KANs-Deep-VGAMS.drawio.png){fig-align="center"}
+![KAN = Deep Nonparametric Regression Model](./../figs/KANs-Deep-VGAMS.drawio.png){fig-align="center"}
 
-From the above figure, it is clear that the edges of the KAN network are non-parametric functions $\phi(x)$ which are specified via basis functions such as Splines. Even MLPs have weights on the edges. So, the mainstream interpretation that, in KANs, the activations are on the edges and they are learnable is not very convincing. In both MLPs and KANs, the edges are learnable. For example, if we choose $\phi(x) = \beta x$, and replace the sum with sum preceded by elementwise, fixed activations like $SiLU$, we get the standard MLP network. [KAN](https://arxiv.org/abs/2404.19756) proposed by Liu et al in 2024 is a Deep Non-parametric Regression framework. Specifically, we note the following:
+From the above figure, it is clear that the edges of the KAN network are nonparametric functions $\phi(x)$ which are specified via basis functions such as Splines. Even MLPs have weights on the edges. So, the mainstream interpretation that, in KANs, the activations are on the edges and they are learnable is not very convincing. In both MLPs and KANs, the edges are learnable. For example, if we choose $\phi(x) = \beta x$, and replace the sum with sum preceded by elementwise, fixed activations like $SiLU$, we get the standard MLP network. [KAN](https://arxiv.org/abs/2404.19756) proposed by Liu et al in 2024 is a Deep Nonparametric Regression framework. Specifically, we note the following:
 
 - KAN neuron is a Generalized Additive Model (GAM)
 - KAN layer is a Vector GAM (VGAM)
-- KAN Network is a Deep VGAM or simply put a Deep Non-parametric Regression Model
+- KAN Network is a Deep VGAM or simply put a Deep Nonparametric Regression Model
 
 The generality of this technique comes from
 
@@ -234,13 +234,13 @@ Explore the features of KANs such as interpretability, solving PDEs, check out t
 
 Few limitation of KANs at this time are:
 
--  they are relying on one dimensional (univariate) functions as the building blocks. This need not be efficient always. For example, consider 2d functions that have certain spatial or temporal properties. To apply KANs, we have to convert them to 1d first and then model them in KAN layers. It would be much better if we can find multivariate basis functions that can naturally deal with arbitrary dimensions. For example, to process images, 2d wavelets could be a better choice. 
+-  They are relying on one dimensional (univariate) functions as the building blocks. This need not be efficient always. For example, consider 2d functions that have certain spatial or temporal properties. To apply KANs, we have to convert them to 1d first and then model them in KAN layers. It would be much better if we can find multivariate basis functions that can naturally deal with arbitrary dimensions. For example, to process images, 2d wavelets could be a better choice. 
 - In many cases, MLPs still seem to be doing better. See [KAN or MLP: A Fairer Comparison](https://arxiv.org/abs/2407.16674) for details. KANs seem to be good at symbolic regression problems which have much more grounding in physical and other sciences.
 - Spline-based KANs,  as noted by others are computationally slow. Knot selection (how many and where to place them) are important hyperparameters which can affect the performance significancy. Grid refinement implemented by the KAN authors is a welcoming step in this direction but it is a hard problem.
 
 That said, KANs are extremely interesting in the sense that:
 
-- KAN is a Deep Non-parametric regression framework
+- KAN is a Deep Nonparametric regression framework
 - Very generic
 - After pruning and doing some symbolic search, one can recover interpretable equations, which may be difficult to do in a typical Deep Neural Network.
 - Combining the power of Wavelets, Filter Banks, Multi Resolution Analysis (MRA) in the KAN framework would be interesting to pursue.
