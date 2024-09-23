@@ -267,8 +267,8 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#kolmogorov-arnold-representation-theorem" id="toc-kolmogorov-arnold-representation-theorem" class="nav-link" data-scroll-target="#kolmogorov-arnold-representation-theorem"><span style="color:blue">Kolmogorov-Arnold representation theorem</span></a></li>
   <li><a href="#kolmogorov-arnold-network-kan" id="toc-kolmogorov-arnold-network-kan" class="nav-link" data-scroll-target="#kolmogorov-arnold-network-kan"><span style="color:blue">Kolmogorov-Arnold Network (KAN)</span></a></li>
-  <li><a href="#shallow-non-parametric-regression" id="toc-shallow-non-parametric-regression" class="nav-link" data-scroll-target="#shallow-non-parametric-regression">Shallow Non-parametric Regression</a></li>
-  <li><a href="#deep-non-parametric-regression" id="toc-deep-non-parametric-regression" class="nav-link" data-scroll-target="#deep-non-parametric-regression">Deep Non-parametric Regression</a></li>
+  <li><a href="#shallow-nonparametric-regression" id="toc-shallow-nonparametric-regression" class="nav-link" data-scroll-target="#shallow-nonparametric-regression">Shallow Nonparametric Regression</a></li>
+  <li><a href="#deep-nonparametric-regression" id="toc-deep-nonparametric-regression" class="nav-link" data-scroll-target="#deep-nonparametric-regression">Deep Nonparametric Regression</a></li>
   <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations">Limitations</a></li>
   </ul></li>
   </ul>
@@ -362,13 +362,13 @@ window.Quarto = {
 <section id="references" class="level3">
 <h3 class="anchored" data-anchor-id="references">References</h3>
 <ul>
-<li>R01: <a href="http://www.cse.iitm.ac.in/~miteshk/CS6910.html">CS6910: Deep Learning</a> Mitesh Khapra @ IIT Madras</li>
-<li>R02: <a href="https://www.cse.iitm.ac.in/~miteshk/CS7015_2019.html">CS7015: Deep Learning</a> Mitesh Khapra @ IIT Madras(earlier version of CS6910)</li>
-<li>R03: <a href="https://www.shane.st/teaching/574/spr24/">LING 574: Deep Learning for NLP</a> Shane Steinhard-Threlkeld @ University of Washington</li>
-<li>R04: <a href="https://d2l.ai/index.html">Dive into Deep Learning</a></li>
-<li>R05: <a href="https://udlbook.github.io/udlbook/">Understanding Deep Learning</a></li>
-<li>R06: <a href="http://neuralnetworksanddeeplearning.com/">Neural Networks and Deep Learning</a></li>
-<li>R07: <a href="https://archive.nptel.ac.in/noc/courses/noc20/SEM2/noc20-cs88/">Deep Learning for Computer Vision</a> NPTEL course by Prof.&nbsp;Vineeth N Balasubramanian</li>
+<li>R01: <a href="http://www.cse.iitm.ac.in/~miteshk/CS6910.html">CS6910: Deep Learning</a> Prof.&nbsp;<a href="https://www.cse.iitm.ac.in/~miteshk/">Mitesh Khapra</a> @ IIT Madras</li>
+<li>R02: <a href="https://www.cse.iitm.ac.in/~miteshk/CS7015_2019.html">CS7015: Deep Learning</a> Prof.&nbsp;<a href="https://www.cse.iitm.ac.in/~miteshk/">Mitesh Khapra</a> @ IIT Madras(earlier version of CS6910)</li>
+<li>R03: <a href="https://www.shane.st/teaching/574/spr24/">LING 574: Deep Learning for NLP</a> Prof.&nbsp;<a href="https://www.shane.st/">Shane Steinert-Threlkeld</a> @ University of Washington</li>
+<li>R04: <a href="https://d2l.ai/index.html">Dive into Deep Learning</a> <a href="https://alex.smola.org/">Alex Smola</a> et al</li>
+<li>R05: <a href="https://udlbook.github.io/udlbook/">Understanding Deep Learning</a> Prof.&nbsp;<a href="https://www.bath.ac.uk/person/1545883">Simon Prince</a></li>
+<li>R06: <a href="http://neuralnetworksanddeeplearning.com/">Neural Networks and Deep Learning</a> Michael Nielsen</li>
+<li>R07: <a href="https://archive.nptel.ac.in/noc/courses/noc20/SEM2/noc20-cs88/">Deep Learning for Computer Vision</a> NPTEL course by Prof.&nbsp;<a href="https://people.iith.ac.in/vineethnb/">Vineeth N Balasubramanian</a></li>
 </ul>
 </section>
 <section id="additional-references" class="level3">
@@ -400,18 +400,18 @@ The Kolmogorov-Arnold representation can be written in matrix form <span class="
 f(\bf{x})=\sum_{i_{L-1}=1}^{n_{L-1}}\phi_{L-1,i_{L},i_{L-1}}\left(\sum_{i_{L-2}=1}^{n_{L-2}}\cdots\left(\sum_{i_2=1}^{n_2}\phi_{2,i_3,i_2}\left(\sum_{i_1=1}^{n_1}\phi_{1,i_2,i_1}\left(\sum_{i_0=1}^{n_0}\phi_{0,i_1,i_0}(x_{i_0})\right)\right)\right)\cdots\right)
 \]</span>
 </p>
-<p>The basic ingredient is the so called <em>learnable activation</em> <span class="math inline">\(\phi_{l,j,i}\)</span> which maps the post-activation of <span class="math inline">\(i\)</span>th neuron in layer <span class="math inline">\(l\)</span> to the pre-activation of <span class="math inline">\(j\)</span>th neuron. Effectively, it is the edge connecting two neurons on adjacent layers. But how can it be made learnable? Represent this activation function as: <span class="math display">\[
+<p>The basic ingredient is the so called <em>learnable activation</em> <span class="math inline">\(\phi_{l,j,i}\)</span> which maps the post-activation of <span class="math inline">\(i\)</span>th neuron in layer <span class="math inline">\(l\)</span> to the pre-activation of <span class="math inline">\(j\)</span>th neuron in the <span class="math inline">\(l+1\)</span>th layer. Effectively, it is the edge connecting two neurons on adjacent layers. But how can it be made learnable? Represent this activation function as: <span class="math display">\[
 \begin{align}
 \phi(x)=w_{b} b(x)+w_{s}{\rm spline}(x) \\
 b(x)={\rm silu}(x)=x/(1+e^{-x}) \\
 {\rm spline}(x) = \sum_i c_iB_i(x)
 \end{align}
 \]</span> where <span class="math inline">\(c_i\)</span>s are trainable/learnable parameters, <span class="math inline">\(B_i\)</span> are the Spline basis functions (in the original KAN paper). The authors included <span class="math inline">\(b(x)\)</span>, a <span class="math inline">\(SiLU\)</span>, as a residual connection.</p>
-<p>The above development of KANs is compelling but it is much more illustrative to approach it from a Non-parametric Regression point of view, and then see that KAN’s are a type of Deep Non-parametric Regressors. Then, we realize that the standard terminology like neurons, activations, pre-activations, post-activation etc., can be completely dropped.</p>
+<p>The above development of KANs is compelling but it is much more illustrative to approach it from a Nonparametric Regression point of view, and then see that KAN’s are a type of Deep Nonparametric Regressors. Then, we realize that the standard terminology like neurons, activations, pre-activations, post-activation etc., can be completely dropped.</p>
 </section>
-<section id="shallow-non-parametric-regression" class="level3">
-<h3 class="anchored" data-anchor-id="shallow-non-parametric-regression">Shallow Non-parametric Regression</h3>
-<p>Consider the following regression problem <span class="math display">\[y^{[i]} \equiv f(x^{[i]}) + e^{[i]} \equiv \phi(x^{[i]}) + e^{[i]}, i \in \left\{1,\dots,N\right\}\]</span> with <span class="math inline">\(D = \{x^{[i]}, y^{[i]}\}_{i=1}^{N}\)</span> representing all the data available to fit (train) the model <span class="math inline">\(f(x)\)</span>. It is customary to write the model as <span class="math inline">\(f(x)\)</span> instead of <span class="math inline">\(\phi(x)\)</span>. It is done for compatibility with KAN. In the shallow case <span class="math inline">\(f(x) = \phi(x)\)</span> otherwise <span class="math inline">\(\phi(x)\)</span> is used to denote the building blocks and <span class="math inline">\(f(x)\)</span> will be a composition many such building blocks.</p>
+<section id="shallow-nonparametric-regression" class="level3">
+<h3 class="anchored" data-anchor-id="shallow-nonparametric-regression">Shallow Nonparametric Regression</h3>
+<p>Consider the following regression problem <span class="math display">\[y^{[i]} \equiv f(x^{[i]}) + e^{[i]} \equiv \phi(x^{[i]}) + e^{[i]}, i \in \left\{1,\dots,N\right\}\]</span> with <span class="math inline">\(D = \{x^{[i]}, y^{[i]}\}_{i=1}^{N}\)</span> representing all the data available to fit (train) the model <span class="math inline">\(f(x)\)</span>. It is customary to write the model as <span class="math inline">\(f(x)\)</span> instead of <span class="math inline">\(\phi(x)\)</span>. It is done for compatibility with KAN. In the shallow case <span class="math inline">\(f(x) = \phi(x)\)</span> otherwise <span class="math inline">\(\phi(x)\)</span> is used to denote the building blocks and <span class="math inline">\(f(x)\)</span> will be a composition of many such building blocks.</p>
 <p>For a moment, w.l.o.g, assume <span class="math inline">\(x\)</span> to be univariate. In a typical regression setup, one constructs features such as <span class="math inline">\(x^2, x^3,\dots\)</span>, like in polynomial regression and treat this as a Linear Regression problem. We can view this standard procedure as expanding the function <span class="math inline">\(f(x)\)</span> on a set of Polynomials. Seen in a more general sense, we can choose an appropriate <em>Basis Functions</em> to construct the feature space. For example [see Chapter 9 of <a href="https://www.stat.cmu.edu/~larry/all-of-nonpar/index.html">All of Nonparametric Statistics</a>] <span class="math display">\[f(x) \equiv \phi(x) =  \sum_{i=1}^{\infty} \beta_i B_i(x)\]</span> where <span class="math inline">\(B_1(x) \equiv 1, B_i(x) \equiv \sqrt{2}\cos((i-1)\pi x) \text{ for } i \ge 2\)</span>. See the figure below.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -419,7 +419,7 @@ b(x)={\rm silu}(x)=x/(1+e^{-x}) \\
 <figcaption>Shallow Nonparametric Regression</figcaption>
 </figure>
 </div>
-<p>In practice, we will truncate the expansion upto some finite number of terms. For illustration, say, we choose <span class="math inline">\(p\)</span> terms. Then, in matrix notation, the regression problem is: <span class="math display">\[
+<p>In practice, we will truncate the expansion up to some finite number of terms. For illustration, say, we choose <span class="math inline">\(p\)</span> terms. Then, in matrix notation, the regression problem is: <span class="math display">\[
 \begin{array}{left}
 {\bf y} = {\bf X}{\bf \beta} + {\bf \epsilon}
 \end{array}
@@ -434,7 +434,7 @@ b(x)={\rm silu}(x)=x/(1+e^{-x}) \\
 {\bf \beta}_{p \times 1} &amp;=&amp; [\beta_1, \beta_2, \dots, \beta_p ]^T \\
 {\bf y}_{N \times 1} &amp;=&amp; [y^{[1]}, y^{[2]}, \dots, y^{[N]} ]^T \\
 \end{array}
-\]</span> This is the classic Non-parametric Regression setup. Different choices of the Basis Functions lead to different design matrices <span class="math inline">\({\bf X}\)</span>. Some popular choices are Splines, Chebyshev Polynomials, Legendre Polynomials, Wavelets, among others.</p>
+\]</span> This is the classic Nonparametric Regression setup. Different choices of the basis functions lead to different design matrices <span class="math inline">\({\bf X}\)</span>. Some popular choices are Splines, Chebyshev Polynomials, Legendre Polynomials, Wavelets, among others.</p>
 <p style="color:blue">
 Specifically, the function approximation with wavelets takes the following form [see <a href="https://github.com/jseabold/web-site/blob/master/content/notebooks/wavelet-regression-in-python.ipynb">Wavelet Regression in Python</a> for a very nice demonstration of wavelets for denoising]: <span class="math display">\[\phi(x) = \alpha\zeta(x) + \sum_{j=0}^{J-1}\sum_{k=0}^{2^j-1}\beta_{jk}\psi_{jk}(x)\]</span> where <span class="math display">\[\alpha=\int_0^1\phi(x)\zeta(x)dx\text{, }\beta_{jk}=\int_0^1\phi(x)\psi_{jk}(x)dx.\]</span> Here <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta_{jk}\)</span> are called the scaling coefficients and the detail coefficients, respectively. The basic idea is that the detail coefficients capture the coarser details of the function while the scaling, or smoothing, coefficients capture the overall functional form.
 </p>
@@ -470,25 +470,25 @@ y_q \equiv f_{q,.}(x) \equiv \phi_{q,.}(x)  = \sum_{p=1}^{n_{0}} \phi_{q,p}(x_p)
 <figcaption>KAN Layer = VGAM</figcaption>
 </figure>
 </div>
-<p>In effect, one KAN layer is actually a VGAM. So, given <span class="math inline">\(D=\{x^{[i]}, y^{[i]}\}_{i=1}^{N}\)</span> with <span class="math inline">\(x^{[i]} \in R^{n_{0}}, y^{[i]} \in R^{n_{1}}\)</span> outputs, KAN Layer and VGAM learn <span class="math inline">\(\phi_{q,p}\)</span> which are specified in terms of the Basis Functions. Note that, the choice of the basis functions should correspond to the domain and range of the functions being modeled. GAMS and VGAM models are trained (or leant) using back-fitting techniques. There is no reason why we can not apply backprop and fit these models using gradient descent.</p>
+<p>In effect, one KAN layer is actually a VGAM. So, given <span class="math inline">\(D=\{x^{[i]}, y^{[i]}\}_{i=1}^{N}\)</span> with <span class="math inline">\(x^{[i]} \in R^{n_{0}}, y^{[i]} \in R^{n_{1}}\)</span> outputs, KAN Layer and VGAM learn <span class="math inline">\(\phi_{q,p}\)</span> which are specified in terms of the basis functions. Note that, the choice of the basis functions should correspond to the domain and range of the functions being modeled. GAMS and VGAM models are trained (or leant) using back-fitting techniques. There is no reason why we can not apply backprop and fit these models using gradient descent.</p>
 </section>
 </section>
-<section id="deep-non-parametric-regression" class="level3">
-<h3 class="anchored" data-anchor-id="deep-non-parametric-regression">Deep Non-parametric Regression</h3>
+<section id="deep-nonparametric-regression" class="level3">
+<h3 class="anchored" data-anchor-id="deep-nonparametric-regression">Deep Nonparametric Regression</h3>
 <p>What remains to be done is to stack the KAN layers or VGAMs. That gets us to the model we have seen before: <span class="math display">\[
 f(\bf{x})=\sum_{i_{L-1}=1}^{n_{L-1}}\phi_{L-1,i_{L},i_{L-1}}\left(\sum_{i_{L-2}=1}^{n_{L-2}}\cdots\left(\sum_{i_2=1}^{n_2}\phi_{2,i_3,i_2}\left(\sum_{i_1=1}^{n_1}\phi_{1,i_2,i_1}\left(\sum_{i_0=1}^{n_0}\phi_{0,i_1,i_0}(x_{i_0})\right)\right)\right)\cdots\right)
 \]</span> For clarity sake, <span class="math inline">\(x_{i_0}\)</span> is referring to the <span class="math inline">\(i_0\)</span>th input dimension or feature, <span class="math inline">\(\phi_{l,q,p}(.)\)</span> refers to the function that maps <span class="math inline">\(p\)</span>th input of layer <span class="math inline">\(l\)</span> to the (before summation) <span class="math inline">\(q\)</span>th output.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./../figs/KANs-Deep-VGAMS.drawio.png" class="img-fluid figure-img"></p>
-<figcaption>KAN = Deep Non-parametric Regression Model</figcaption>
+<figcaption>KAN = Deep Nonparametric Regression Model</figcaption>
 </figure>
 </div>
-<p>From the above figure, it is clear that the edges of the KAN network are non-parametric functions <span class="math inline">\(\phi(x)\)</span> which are specified via basis functions such as Splines. Even MLPs have weights on the edges. So, the mainstream interpretation that, in KANs, the activations are on the edges and they are learnable is not very convincing. In both MLPs and KANs, the edges are learnable. For example, if we choose <span class="math inline">\(\phi(x) = \beta x\)</span>, and replace the sum with sum preceded by elementwise, fixed activations like <span class="math inline">\(SiLU\)</span>, we get the standard MLP network. <a href="https://arxiv.org/abs/2404.19756">KAN</a> proposed by Liu et al in 2024 is a Deep Non-parametric Regression framework. Specifically, we note the following:</p>
+<p>From the above figure, it is clear that the edges of the KAN network are nonparametric functions <span class="math inline">\(\phi(x)\)</span> which are specified via basis functions such as Splines. Even MLPs have weights on the edges. So, the mainstream interpretation that, in KANs, the activations are on the edges and they are learnable is not very convincing. In both MLPs and KANs, the edges are learnable. For example, if we choose <span class="math inline">\(\phi(x) = \beta x\)</span>, and replace the sum with sum preceded by elementwise, fixed activations like <span class="math inline">\(SiLU\)</span>, we get the standard MLP network. <a href="https://arxiv.org/abs/2404.19756">KAN</a> proposed by Liu et al in 2024 is a Deep Nonparametric Regression framework. Specifically, we note the following:</p>
 <ul>
 <li>KAN neuron is a Generalized Additive Model (GAM)</li>
 <li>KAN layer is a Vector GAM (VGAM)</li>
-<li>KAN Network is a Deep VGAM or simply put a Deep Non-parametric Regression Model</li>
+<li>KAN Network is a Deep VGAM or simply put a Deep Nonparametric Regression Model</li>
 </ul>
 <p>The generality of this technique comes from</p>
 <ul>
@@ -514,7 +514,7 @@ f(\bf{x})=\sum_{i_{L-1}=1}^{n_{L-1}}\phi_{L-1,i_{L},i_{L-1}}\left(\sum_{i_{L-2}=
 </ul>
 <p>That said, KANs are extremely interesting in the sense that:</p>
 <ul>
-<li>KAN is a Deep Non-parametric regression framework</li>
+<li>KAN is a Deep Nonparametric regression framework</li>
 <li>Very generic</li>
 <li>After pruning and doing some symbolic search, one can recover interpretable equations, which may be difficult to do in a typical Deep Neural Network.</li>
 <li>Combining the power of Wavelets, Filter Banks, Multi Resolution Analysis (MRA) in the KAN framework would be interesting to pursue.</li>
