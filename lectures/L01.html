@@ -388,8 +388,8 @@ window.Quarto = {
 \begin{array}{left}
 {\bf y} = {\bf X}{\bf w} + {\bf  b} + {\bf \epsilon}
 \end{array}
-\]</span> where <span class="math inline">\({\bf  b}\)</span> represents the <span class="math inline">\({n_0} \times 1\)</span> bias (or intercept) term, <span class="math inline">\({\bf w}\)</span> is the weight matrix (regression coefficients) and <span class="math inline">\({\bf X}\)</span> is the set of all <span class="math inline">\(N \times p\)</span> features excluding the column of ones (which was included to model the intercept/ bias term).</p>
-<p>The prediction <span class="math inline">\({\bf \hat{y}}\)</span> is typically the conditional expectation <span class="math inline">\({\bf \hat{y}| {\bf X} } = {\bf X}{\bf w} + {\bf  b}\)</span> under the zero-mean error model for <span class="math inline">\({\bf \epsilon}\)</span>, obtained by minimizing the MSE between the observed and the predicted. This is essentially a perceptron with linear activation function, which is typically used to solve regression problems. What about binary classification (or more generally, categorical responses)?</p>
+\]</span> where <span class="math inline">\({\bf  b}\)</span> represents the <span class="math inline">\({n_0} \times 1\)</span> bias (or intercept) term, <span class="math inline">\({\bf w}\)</span> is the weight matrix (regression coefficients) and <span class="math inline">\({\bf X}\)</span> is the set of all <span class="math inline">\(N \times (n_0+1)\)</span> features excluding the column of ones (which was included to model the intercept/ bias term).</p>
+<p>The prediction <span class="math inline">\({\bf \hat{y}}\)</span> is typically the conditional expectation <span class="math inline">\({\bf \hat{y}| {\bf X} } = {\bf X}{\bf w} + {\bf  b}\)</span> under the zero-mean error model for <span class="math inline">\({\bf \epsilon}\)</span>, obtained by minimizing the MSE between the observed and the predicted. This is essentially a Perceptron with linear activation function, which is typically used to solve regression problems. What about binary classification (or more generally, categorical responses)?</p>
 </section>
 <section id="generalized-linear-model" class="level3">
 <h3 class="anchored" data-anchor-id="generalized-linear-model">Generalized Linear Model</h3>
@@ -408,7 +408,7 @@ h^{[i]} \equiv f(x^{[i]}) + e^{[i]}
 P(y^{[i]} = 1) \equiv \pi^{[i]}= \sigma \left( f(x^{[i]}) \right)  \equiv \frac{ \exp(f(x^{[i]})}{1+ \exp(f(x^{[i]}))}
 \end{array}
 \]</span></p>
-<p>If we choose <span class="math inline">\(f(x^{[i]}) \equiv {\bf x}{\bf w} + {\bf  b}\)</span>, where <span class="math inline">\({\bf x}\)</span> is <span class="math inline">\(1 \times {n_0}\)</span> vector of inputs, we recover the perceptron with sigmoid activation, which is exactly the logistic regression model, belonging to the much larger class of Generalized Linear Models (GLMs). In the place of <span class="math inline">\(\sigma\)</span>, one can choose any CDF. In particular, if we choose the CDF of the standard Normal distribution, we recover the <a href="https://en.wikipedia.org/wiki/Probit_model"><em>Probit</em></a> model. This perceptron (logistic regression) is the most recognizable building block of MLP, a schematic of which is shown below.</p>
+<p>If we choose <span class="math inline">\(f(x^{[i]}) \equiv {\bf x}{\bf w} + {\bf  b}\)</span>, where <span class="math inline">\({\bf x}\)</span> is <span class="math inline">\(1 \times {n_0}\)</span> vector of inputs, we recover the Perceptron with sigmoid activation, which is exactly the Logistic regression model, belonging to the much larger class of Generalized Linear Models (GLMs). In the place of <span class="math inline">\(\sigma\)</span>, one can choose any CDF. In particular, if we choose the CDF of the standard Normal distribution, we recover the <a href="https://en.wikipedia.org/wiki/Probit_model"><em>Probit</em></a> model. This Perceptron (Logistic regression) is the most recognizable building block of MLP, a schematic of which is shown below.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./../figs/FFNs-GLMs.drawio.png" class="img-fluid figure-img"></p>
@@ -418,12 +418,12 @@ P(y^{[i]} = 1) \equiv \pi^{[i]}= \sigma \left( f(x^{[i]}) \right)  \equiv \frac{
 </section>
 <section id="multiclass-classification" class="level4">
 <h4 class="anchored" data-anchor-id="multiclass-classification">Multiclass Classification</h4>
-<p>The extension of the logistic regression to multiclass is straightforward but we need to different way of writing the models. The Binary Classification problem can written in the following equivalent fashion: <span class="math display">\[
+<p>The extension of the logistic regression to multiclass is straightforward but we need a different way of writing the models. The Binary Classification problem can written in the following equivalent fashion: <span class="math display">\[
 \begin{array}{left}
 y^{[i]} \sim Bin(\pi^{[i]}, 1)\\
 \pi^{[i]} = \sigma \left( f(x^{[i]}) \right) \equiv \frac{ \exp(f(x^{[i]})} {1+ \exp(f(x^{[i]}) }
 \end{array}
-\]</span> In the GLM nomenclature, it is customary to link <span class="math inline">\(\pi^{[i]}\)</span> with <span class="math inline">\(f(x^{[i]})\)</span> as follows: <span class="math display">\[\log\left(\frac{\pi^{[i]}}{1-\pi^{[i]}}\right) = f(x^{[i]})\]</span> It is like <span class="math inline">\(f(x^{[i]})\)</span> is now modeling the difference in the class-specific responses. To make this explicit, suppose, <span class="math inline">\(f_k(x^{[i]})\)</span> is the class-specific latent response (whose thresholded version yield the binary response as note before). Then, by specification, <span class="math inline">\(f(x^{[i]}) =  f_1(x^{[i]}) - f_0(x^{[i]})\)</span>. It follows then that, <span class="math display">\[
+\]</span> In the GLM nomenclature, it is customary to link <span class="math inline">\(\pi^{[i]}\)</span> with <span class="math inline">\(f(x^{[i]})\)</span> as follows: <span class="math display">\[\log\left(\frac{\pi^{[i]}}{1-\pi^{[i]}}\right) = f(x^{[i]})\]</span> It is like <span class="math inline">\(f(x^{[i]})\)</span> is now modeling the difference in the class-specific responses. To make this explicit, suppose, <span class="math inline">\(f_k(x^{[i]})\)</span> is the class-specific latent response (whose thresholded version yields the binary response as noted before). Then, by specification, <span class="math inline">\(f(x^{[i]}) =  f_1(x^{[i]}) - f_0(x^{[i]})\)</span>. It follows then that, <span class="math display">\[
 \begin{array}{left}
 \pi^{[i]} &amp;=&amp; \frac{ \exp(f(x^{[i]})} {1+ \exp(f(x^{[i]}) } \\
 &amp;=&amp; \frac{ \exp(f_1(x^{[i]}) - f_0(x^{[i]})) }  {1+ \exp(f_1(x^{[i]}) - f_0(x^{[i]})) } \\
@@ -435,7 +435,7 @@ y^{[i]} \sim Bin(\pi^{[i]}, 1)\\
 </section>
 <section id="vector-generalized-linear-model" class="level3">
 <h3 class="anchored" data-anchor-id="vector-generalized-linear-model">Vector Generalized Linear Model</h3>
-<p>Now we are in a position to extend the Binary Classification problem to the Multi-class setting, where the scales are nominal (i.e., the class labels have no ordering, and labels could have been shuffled with no consequence).</p>
+<p>Now we are in a position to extend the Binary Classification problem to the Multiclass setting, where the scales are nominal (i.e., the class labels have no ordering, and labels could have been shuffled with no consequence).</p>
 <p>Suppose we have <span class="math inline">\({n_L}\)</span>-classes with <span class="math inline">\(\pi_k^{[i]}\)</span> representing the i-th example being drawn from the class <span class="math inline">\(k\)</span> with <span class="math inline">\(\sum_{k=1}^{{n_L}} \pi_k^{[i]} = 1\)</span>. The following generative model is a plausible model: <span class="math display">\[
 \begin{array}{left}
 y^{[i]} &amp;\sim&amp; \text{Multinomial}(\pi_k^{[i]}, 1)\\
@@ -443,7 +443,7 @@ y^{[i]} &amp;\sim&amp; \text{Multinomial}(\pi_k^{[i]}, 1)\\
 &amp;\equiv&amp; \text{softmax}(f_k(x^{[i]}))
 \end{array}
 \]</span></p>
-<p>Notice that, we have one hidden/ latent functional for each class <span class="math inline">\(f_k(x^{[i]})\)</span> - the normalized version of which models the class probabilities in the <a href="https://en.wikipedia.org/wiki/Multinomial_distribution">Multinomial</a> distribution. In general, in the above model all <span class="math inline">\(f_k(.)\)</span> are not identifiable. In fact, under the simplex constraint (i.e., class probabilities must add up to to one), <span class="math inline">\(\sum_k f_k(.)  =0\)</span>, which essentially is saying that, to model <span class="math inline">\(n_L\)</span> responses, we can not have <span class="math inline">\(n_L\)</span> independent (unconstrained) latent responses but only <span class="math inline">\(n_L-1\)</span> are identifiable.</p>
+<p>Notice that, we have one hidden/ latent functional for each class <span class="math inline">\(f_k(x^{[i]})\)</span> - the normalized version of which models the class probabilities in the <a href="https://en.wikipedia.org/wiki/Multinomial_distribution">Multinomial</a> distribution. In general, in the above model, all <span class="math inline">\(f_k(.)\)</span> are not identifiable. In fact, under the simplex constraint (i.e., class probabilities must add up to to one), <span class="math inline">\(\sum_k f_k(.)  =0\)</span>, which essentially is saying that, to model <span class="math inline">\(n_L\)</span> responses, we can not have <span class="math inline">\(n_L\)</span> independent (unconstrained) latent responses but only <span class="math inline">\(n_L-1\)</span> are identifiable.</p>
 <p>As a check, if we place this simplex constraint on the logits for the Binary Classification, we can recover standard logistic regression model, as shown below: <span class="math display">\[
 \begin{array}{left}
 \pi^{[i]} &amp;=&amp; \frac{ \exp(f_1(x^{[i]})} {\exp(f_1(x^{[i]}) + f_0(x^{[i]})) } \\
@@ -458,7 +458,7 @@ y^{[i]} &amp;\sim&amp; \text{Multinomial}(\pi_k^{[i]}, 1)\\
 \begin{array}{left}
 y_k^{[i]} \equiv \psi(x^{[i]}) = \sigma \left( \sum_{j=1}^{n_0} w_{j,k} x_j^{[i]} \right) \forall k=1,2,\dots n_L\\
 \end{array}
-\]</span> Here <span class="math inline">\(\sigma(.)\)</span> is element-wise operation. So far we discussed the shallow perceptron for regression, and classification. It is often helpful to write the expression in matrix notation as follows: <span class="math display">\[
+\]</span> Here <span class="math inline">\(\sigma(.)\)</span> is element-wise operation. So far we discussed the shallow Perceptron for regression, and classification. It is often helpful to write the expression in matrix notation as follows: <span class="math display">\[
 \begin{array}{left}
 \bf{y}  = \sigma \left( xW+b \right)
 \end{array}
@@ -466,7 +466,7 @@ y_k^{[i]} \equiv \psi(x^{[i]}) = \sigma \left( \sum_{j=1}^{n_0} w_{j,k} x_j^{[i]
 </section>
 <section id="deep-vector-generalized-linear-model" class="level3">
 <h3 class="anchored" data-anchor-id="deep-vector-generalized-linear-model">Deep Vector Generalized Linear Model</h3>
-<p>At the heart of the GLM for Multiclass, we have <span class="math inline">\(f_k\)</span> which is a map from <span class="math inline">\({n_0}\)</span>-dimensional input to <span class="math inline">\(R\)</span>, i.e., <span class="math inline">\(f_k(): R^{n_0} \rightarrow R\)</span>. If we have <span class="math inline">\({n_L}\)</span> such functions, we effectively have $<span class="math inline">\(f: R^{n_0} \rightarrow R^{n_L}\)</span>. We can stack such blocks to get a composition as follows:</p>
+<p>At the heart of the GLM for Multiclass, we have <span class="math inline">\(f_k\)</span> which is a map from <span class="math inline">\({n_0}\)</span>-dimensional input to <span class="math inline">\(R\)</span>, i.e., <span class="math inline">\(f_k(): R^{n_0} \rightarrow R\)</span>. If we have <span class="math inline">\({n_L}\)</span> such functions, we effectively have <span class="math inline">\(f: R^{n_0} \rightarrow R^{n_L}\)</span>. We can stack such blocks to get a composition as follows:</p>
 <p><span class="math display">\[
 f(\bf{x})= \sigma\left( \dots \left( \sigma\left(x W_0 + b_0\right)W_1 + b_1 \right) \dots \right) W_{n_{L-1}} + b_{n_{L-1}}
 \]</span></p>
@@ -482,7 +482,7 @@ f(\bf{x})= \sigma\left( \dots \left( \sigma\left(x W_0 + b_0\right)W_1 + b_1 \ri
 <h3 class="anchored" data-anchor-id="universal-approximation">Universal Approximation</h3>
 <section id="ary-boolean-circuits" class="level4">
 <h4 class="anchored" data-anchor-id="ary-boolean-circuits">2-Ary Boolean Circuits</h4>
-<p>Let us consider boolean variables and just two inputs <span class="math inline">\(x_1, x_2 \in \{0,1\}\)</span>. We will model the popular logic gates using a simple Neuron (strictly speaking, a McCulloh-Pitts Neuron): <span class="math inline">\(y = H\left(x_1 w_1 + x_2 w_2 + b\right)\)</span>, where the Heavyside step function <span class="math inline">\(H(x) = 1 \text{ if } x\ge 0, 0. \text{ o.w}\)</span></p>
+<p>Let us consider boolean variables and just two inputs <span class="math inline">\(x_1, x_2 \in \{0,1\}\)</span>. We will model the popular logic gates using a simple Neuron: <span class="math inline">\(y = H\left(x_1 w_1 + x_2 w_2 + b\right)\)</span>, where the Heavyside step function <span class="math inline">\(H(x) = 1 \text{ if } x\ge 0, 0. \text{ o.w}\)</span></p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -567,11 +567,11 @@ f(\bf{x})= \sigma\left( \dots \left( \sigma\left(x W_0 + b_0\right)W_1 + b_1 \ri
 \hat{y}_{OR} = \text{H}(\sum x_i \,- 0.5) \\
 \hat{y}_{NOR} = \text{H}(\sum -x_i \,+ 0.5) \\
 \end{array}
-\]</span> verify the results yourself.</p>
+\]</span> Verify the results yourself.</p>
 </section>
 <section id="m-ary-universal-boolean-circuits" class="level4">
 <h4 class="anchored" data-anchor-id="m-ary-universal-boolean-circuits">M-Ary Universal Boolean Circuits</h4>
-<p>Now consider M-ary input and our goal is to build a boolean circuit which can realize any Truth Table. The Truth Table consists of <span class="math inline">\(2^M\)</span> rows, each row corresponding to one specific state of the inputs, and contains <span class="math inline">\(M+1\)</span> columns - one column for each of the <span class="math inline">\(M\)</span> inputs and one column for the output <span class="math inline">\(y\)</span>. Truth Table can be realized in the form of a Sum-of-Products (SoP) form, a special form of Disjunctive Normal Form (see <a href="https://en.wikipedia.org/wiki/Canonical_normal_form">Canonical Forms</a> to represent Truth Tables in Boolean Algebra). Let us look at an example below with two inputs, modeling XOR gate:</p>
+<p>Now consider M-ary inputs and our goal is to build a boolean circuit which can realize any Truth Table. The Truth Table consists of <span class="math inline">\(2^M\)</span> rows, each row corresponding to one specific state of the inputs, and contains <span class="math inline">\(M+1\)</span> columns - one column for each of the <span class="math inline">\(M\)</span> inputs and one column for the output <span class="math inline">\(y\)</span>. Truth Table can be realized in the form of a Sum-of-Products (SoP) form, a special form of Disjunctive Normal Form (see <a href="https://en.wikipedia.org/wiki/Canonical_normal_form">Canonical Forms</a> to represent Truth Tables in Boolean Algebra). Let us look at an example below with two inputs, modeling XOR gate:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -608,9 +608,9 @@ f(\bf{x})= \sigma\left( \dots \left( \sigma\left(x W_0 + b_0\right)W_1 + b_1 \ri
 </tr>
 </tbody>
 </table>
-<p>For each row, whose Truth value is 1, we consider the product of inputs. We take the complement of the inputs when it is zero. For the XOR gate, we add the 2nd row product <span class="math inline">\(\bar{x_1}x_2\)</span> to the third row <span class="math inline">\(x_1 \bar{x_2}\)</span> to get final SoP as follows: <span class="math display">\[
+<p>For each row, whose Truth value is 1, we consider the product of inputs. We take the complement of the input when it is zero. For the XOR gate, we add the 2nd row product <span class="math inline">\(\bar{x_1}x_2\)</span> to the third row term <span class="math inline">\(x_1 \bar{x_2}\)</span> to get final SoP as follows: <span class="math display">\[
 y = \bar{x_1}x_2 + x_1 \bar{x_2}
-\]</span> where <span class="math inline">\(\bar{x}\)</span> represents the logical complement of <span class="math inline">\(x\)</span>. Notice that each product term consists of two sub products - one that is a product of all inputs where inputs are 1s, and product of their complements where the inputs are 0. Therefore, each product in the SoP can be represented as <span class="math inline">\(AND(AND(.), NOR(.))\)</span> and refer to this as <span class="math inline">\(AANOR\)</span> as contraction. For example, the first term in the SoP for XOR is <span class="math inline">\(AND(AND(x_1), NOR(x_2)) \equiv \bar{x_1}x_2 + x_1 \bar{x_2}\)</span>. We will exploit this to succinctly represent the SoP: <span class="math display">\[
+\]</span> where <span class="math inline">\(\bar{x}\)</span> represents the logical complement of <span class="math inline">\(x\)</span>. Notice that each product term consists of two sub products - one that is a product of all inputs where inputs are 1s, and product of their complements where the inputs are 0. Therefore, each product in the SoP can be represented as <span class="math inline">\(AND(AND(.), NOR(.))\)</span> and refer to this as <span class="math inline">\(AANOR\)</span> as contraction. For example, the first term in the SoP for XOR is <span class="math inline">\(AND(AND(x_1), NOR(x_2)) \equiv \bar{x_1}x_2\)</span>. We will exploit this to succinctly represent the SoP: <span class="math display">\[
 \begin{array}{left}
 y &amp;=&amp; \sum_{i \in \{ i' \text{ s. t } y^[i']=1\} } AND( AND( x^{i}_{p \in A}), NOR(x^{i}_{q \in \bar{A}})) \\
 A^{[i]} &amp;=&amp; \{ p \text{ s.t } x_p^{[i]} = 1 \} \\
@@ -620,7 +620,7 @@ A^{[i]} &amp;=&amp; \{ p \text{ s.t } x_p^{[i]} = 1 \} \\
 </section>
 <section id="mlp-with-1-hidden-layer" class="level4">
 <h4 class="anchored" data-anchor-id="mlp-with-1-hidden-layer">MLP with 1-hidden layer</h4>
-<p>Observe that, the gate is hot only when all <span class="math inline">\(x \in A\)</span> are 1s and <span class="math inline">\(x \in A^c\)</span> are 0s.</p>
+<p>Observe that, the AANOR gate is hot only when all <span class="math inline">\(x \in A\)</span> are 1s and <span class="math inline">\(x \in A^c\)</span> are 0s. To clarity, the AANOR gate is hot for exactly one of the rows of the <span class="math inline">\(2^M\)</span> rows. Exploiting this fact, we can simplify the Truth Table as follows:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -648,27 +648,29 @@ A^{[i]} &amp;=&amp; \{ p \text{ s.t } x_p^{[i]} = 1 \} \\
 </tr>
 </tbody>
 </table>
-<p>Verify that cases are mutually exclusive and exhaustive. Based on our idea about AND and NOR gates, let us hypothesize the following Neuron for the AANOR gate as follows: <span class="math display">\[
+<p>Verify that cases are mutually exclusive and exhaustive. Based on our idea about AND and NOR gates designed earlier, let us hypothesize the following Neuron for the AANOR gate as follows: <span class="math display">\[
 \begin{array}{left}
 y &amp;=&amp; H( \sum_{i \in A} (x_i-1) -0.5 + \sum_{i \in \bar{A}} -x_i + 0.5 + b) \\
-y &amp;=&amp; H( \sum_{i \in A} (x_i-1) + \sum_{i \in \bar{A}} -x_i + b)
+&amp;=&amp; H( \sum_{i \in A} (x_i-1) + \sum_{i \in \bar{A}} -x_i + b)
 \end{array}
-\]</span> where <span class="math inline">\(b\)</span> is to found out.</p>
-<p>Case-1: In this case, substituting the specific x’s, we get the inequality <span class="math inline">\(b &gt; 0\)</span></p>
-Case-2: At least one x in A is 0, which means, we need <span class="math inline">\(\max \left( \sum_{i \in A} (x_i-1) + \sum_{i \in \bar{A}} -x_i + b \right) &lt; 0\)</span>. It is <span class="math inline">\(1+b\)</span> and is achieved when exactly one x in A is zero, and all x’s in <span class="math inline">\(\bar{A}\)</span> are zero. Therefore, we get, <span class="math inline">\(b-1 &lt; 0\)</span>. From both the inequalities, we can choose <span class="math inline">\(b=0.5\)</span>. The AANOR gate can now be realized as: $$
-<span class="math display">\[\begin{array}{left}
+\]</span> where <span class="math inline">\(b\)</span> is to found out, which we do next.</p>
+<p>Case-1: In this case, substituting the specific x’s, we get the inequality $b &gt; 0, which ensures that <span class="math inline">\(H(.)=1\)</span> in this case.</p>
+<p>Case-2: At least one x in A is 0, which means, we need <span class="math inline">\(\max \left( \sum_{i \in A} (x_i-1) + \sum_{i \in \bar{A}} -x_i + b \right) &lt; 0\)</span>. It is <span class="math inline">\(-1+b\)</span> and is achieved when exactly one x in A is zero, and all x’s in <span class="math inline">\(\bar{A}\)</span> are zero. Therefore, we get, <span class="math inline">\(b-1 &lt; 0\)</span>. We can choose <span class="math inline">\(b=0.5\)</span> which satisfies both the inequalities <span class="math inline">\(0 &lt; b &lt; 1\)</span>. The AANOR gate can now be realized as:</p>
+<p><span class="math display">\[
+\begin{array}{left}
 y &amp;=&amp; H( \sum_{i \in A} (x_i-1) + \sum_{i \in \bar{A}} -x_i + 0.5)
-\end{array}\]</span>
-<p>Now that we can realize any AANOR gate, and OR gate is something we have already seen, any M-ary Boolean Truth Table can be realized <span class="math display">\[
+\end{array}
+\]</span></p>
+<p>Now that we can realize any AANOR gate, and OR gate is something we have already seen, any M-ary Boolean Truth Table can be realized as <span class="math display">\[
 \begin{array}{left}
 y &amp;=&amp; OR(\{ AANOR(x^{[i]} \}), i \in \{ i' \text{ s. t } y^[i']=1\}
 \end{array}
 \]</span></p>
 <p>Above can be seen a composition of Boolean gates: <span class="math display">\[
 \text{ inputs &gt; ANOR &gt; OR }
-\]</span> an MLP with 1-hidden layer in hindsight, as illustrated in the figure below. <img src="./../figs/FFNs-SOPs.drawio.png" class="img-fluid quarto-figure quarto-figure-center" alt="SOP = MLP with 1-hidden layer"></p>
-<p>Effectively, we exploited the fact that any M-ary Truth Table can be expressed in SOP form, and we have constructed a 1-hidden layer MLP which can exactly models the SoP.</p>
-<p>Let us verify this circuit for XOR gate which we know can not be modeled by single Neuron but need a 1-hiddel layer MLP.</p>
+\]</span> which is indeed an MLP with 1-hidden layer in hindsight, as illustrated in the figure below. <img src="./../figs/FFNs-SOPs.drawio.png" class="img-fluid quarto-figure quarto-figure-center" alt="SOP = MLP with 1-hidden layer"></p>
+<p>Effectively, we exploited the fact that any M-ary Truth Table can be expressed in SOP form, and we have constructed a 1-hidden layer MLP which can exactly model the SoP.</p>
+<p>Let us verify this circuit for XOR gate which we know can not be modeled by single Neuron but can be nmodeled by a 1-hidden layer MLP.</p>
 <p><span class="math display">\[
 \begin{array}{left}
 h_1 &amp;=&amp;  H\left( (x_1-1) - x_2 + 0.5 \right) \\
@@ -722,21 +724,24 @@ y &amp;=&amp;  h_1 + h_2 - 0.5\\
 </tr>
 </tbody>
 </table>
-<p>Indeed, we recovered the XOR gate. Of course, we are operating on Boolean inputs. The continuous analogue of what we derived for MLPs with 1-hidden layer are due to the early works of Cybenko’s <a href="https://hal.science/hal-03753170/">Universal Approximation Theorem</a>, <a href="https://web.njit.edu/~usman/courses/cs675_fall18/10.1.1.441.7873.pdf">pdf</a>. A nice illustration of the Universal Approximation abilities of MLPs can be found here - <a href="http://neuralnetworksanddeeplearning.com/chap4.html">Representational Power of NNs</a></p>
+<p>Indeed, we recovered the XOR gate. Of course, we are operating on Boolean inputs. The continuous analogue of what we derived for MLPs with 1-hidden layer are due to the early works of Cybenko’s <a href="https://hal.science/hal-03753170/">Universal Approximation Theorem</a><a href="https://web.njit.edu/~usman/courses/cs675_fall18/10.1.1.441.7873.pdf">pdf</a>. A nice illustration of the Universal Approximation abilities of MLPs can be found here - <a href="http://neuralnetworksanddeeplearning.com/chap4.html">Representational Power of NNs</a></p>
 </section>
 </section>
 <section id="summary" class="level3">
 <h3 class="anchored" data-anchor-id="summary">Summary</h3>
 <ul>
-<li>Logistic regression is member of Generalized Linear Models (GLMs)</li>
-<li>Generalized Linear Models is member of larger class Vector Generalized Linear Models (VGLMs)</li>
+<li>Logistic regression is a member of Generalized Linear Models (GLMs)</li>
+<li>Generalized Linear Models is a member of Vector Generalized Linear Models (VGLMs)</li>
 <li>Logistic regression = Perceptron with sigmoid activation</li>
 <li>MLP with an input and output layer (with multiple outputs) = VGLM</li>
 <li>MLPs are Deep VGLMS</li>
-<li>Any M-ary Boolean circuits can be represented in Sum-of-Products form</li>
-<li>AND, OR, NAND, NOR gates can be relaized by percetrons.</li>
-<li>Sum-of-Products can be relaized by an MLP with 1-hidden layer.</li>
+<li>Universal Approximation Ability of MLPs
+<ul>
+<li>Any M-ary Boolean circuit can be represented in Sum-of-Products form</li>
+<li>AND, OR, NAND, NOR gates can be realized by Percetrons.</li>
+<li>Sum-of-Products can be realized by an MLP with 1-hidden layer.</li>
 <li>MLP with 1-hidden layer are Universal Approximators of M-ary Boolean circuits.</li>
+</ul></li>
 </ul>
 
 
