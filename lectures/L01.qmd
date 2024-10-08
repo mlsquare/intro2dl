@@ -152,7 +152,7 @@ $$
 
 _Digression: In the Deep Learning context, such explicit constraints are ignored. When training the models with SGD, different tricks which are empirically proven such as Layer Normalization, Batch Normalization etc are used. Their effect is to enforce identifiability constraints via what look like hacks but in reality, they are fixes for the structural issues in the models themselves._ 
 
-When the constrains are removed, and  $f_k(x)= {\bf x}{\bf w_k} + {\bf  b_k}$ is a linear model, we get a Vector Generalized Linear Model ([VGLAM](https://en.wikipedia.org/wiki/Vector_generalized_linear_model)). VGLAM is shown as a (shallow) network below.
+When the constrains are removed, and  $f_k(x)= {\bf x}{\bf w_k} + {\bf  b_k}$ is a linear model, we get a Vector Generalized Linear Model ([VGLM](https://en.wikipedia.org/wiki/Vector_generalized_linear_model)). VGLAM is shown as a (shallow) network below.
 ![Nueral Network with no hidden layers = VGLM](./../figs/FFNs-VGLMs.drawio.png){fig-align="center"}
 
 Specifically, ignoring the bias terms for simplicity,
@@ -265,11 +265,11 @@ $$
 where $b$ is to  be found out, which we do next.
 
 Case-1:
-In this case, substituting the specific x's, we get the inequality $b > 0, which ensures that $H(.)=1$ in this case.
+In this case, substituting the specific x's, we get the inequality $b > 0$, which ensures that $H(.)=1$ in this case.
 
 Case-2:
 All x's in A are 1s and at least one x in $\bar{A}$ is 1, implying, we want, 
-$\max \left( \sum_{i \in \bar{A}} -x_i + b \right) < 0$.  It is $-1+b$ and is achieved when exactly all x's in $\bar{A}$ are zero. Therefore, we get, $1-b< 0$
+$\max \left( \sum_{i \in \bar{A}} -x_i + b \right) < 0$.  It is $-1+b$ and is achieved when exactly all but one x's in $\bar{A}$ are zero. Therefore, we get, $1-b< 0$
 
 Case-3:
 At least one x in A is 0, which means, we need 
@@ -290,7 +290,7 @@ $$
 
 Above can be seen a composition of Boolean gates: 
 $$
-\text{ inputs > hidden (ANOR)  > output (OR) }
+\text{ inputs > hidden (AANOR)  > output (OR) }
 $$
 which is indeed an MLP with 1-hidden layer in hindsight, as illustrated in the figure below.
 ![SOP = MLP with 1-hidden layer](./../figs/FFNs-SOPs.drawio.png){fig-align="center"}
