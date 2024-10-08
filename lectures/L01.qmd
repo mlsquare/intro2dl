@@ -74,9 +74,9 @@ $$
 {\bf y} = {\bf X}{\bf w} + {\bf  b} + {\bf \epsilon}
 \end{array}
 $$
-where ${\bf  b}$ represents the ${n_0} \times 1$ bias (or intercept) term, ${\bf w}$ is the weight matrix (regression coefficients) and ${\bf X}$ is the set of all $N \times p$ features excluding the column of ones (which was included to model the intercept/ bias term).
+where ${\bf  b}$ represents the ${n_0} \times 1$ bias (or intercept) term, ${\bf w}$ is the weight matrix (regression coefficients) and ${\bf X}$ is the set of all $N \times (n_0+1)$ features excluding the column of ones (which was included to model the intercept/ bias term).
 
-The prediction ${\bf \hat{y}}$ is typically the conditional expectation ${\bf \hat{y}| {\bf X} } = {\bf X}{\bf w} + {\bf  b}$ under the zero-mean error model for ${\bf \epsilon}$, obtained by minimizing the MSE between the observed and the predicted. This is essentially a perceptron with linear activation function, which is typically used to solve regression problems. What about binary classification (or more generally, categorical responses)?
+The prediction ${\bf \hat{y}}$ is typically the conditional expectation ${\bf \hat{y}| {\bf X} } = {\bf X}{\bf w} + {\bf  b}$ under the zero-mean error model for ${\bf \epsilon}$, obtained by minimizing the MSE between the observed and the predicted. This is essentially a Perceptron with linear activation function, which is typically used to solve regression problems. What about binary classification (or more generally, categorical responses)?
 
 ### Generalized Linear Model
 
@@ -99,13 +99,13 @@ P(y^{[i]} = 1) \equiv \pi^{[i]}= \sigma \left( f(x^{[i]}) \right)  \equiv \frac{
 \end{array}
 $$
 
-If we choose $f(x^{[i]}) \equiv {\bf x}{\bf w} + {\bf  b}$, where ${\bf x}$  is $1 \times {n_0}$ vector of inputs, we recover the perceptron with sigmoid activation, which is exactly the logistic regression model, belonging to the much larger class of Generalized Linear Models (GLMs). In the place of $\sigma$, one can choose any CDF. In particular, if we choose the CDF of the standard Normal distribution, we recover the [_Probit_](https://en.wikipedia.org/wiki/Probit_model) model. This perceptron (logistic regression) is the most recognizable building block of MLP, a schematic of which is shown below.
+If we choose $f(x^{[i]}) \equiv {\bf x}{\bf w} + {\bf  b}$, where ${\bf x}$  is $1 \times {n_0}$ vector of inputs, we recover the Perceptron with sigmoid activation, which is exactly the Logistic regression model, belonging to the much larger class of Generalized Linear Models (GLMs). In the place of $\sigma$, one can choose any CDF. In particular, if we choose the CDF of the standard Normal distribution, we recover the [_Probit_](https://en.wikipedia.org/wiki/Probit_model) model. This Perceptron (Logistic regression) is the most recognizable building block of MLP, a schematic of which is shown below.
 
 ![Perceptron = GLM](./../figs/FFNs-GLMs.drawio.png){fig-align="center"}
 
 
 #### Multiclass Classification
-The extension of the logistic regression to multiclass is straightforward but we need to different way of writing the models. The Binary Classification problem can written in the following equivalent fashion:
+The extension of the logistic regression to multiclass is straightforward but we need a different way of writing the models. The Binary Classification problem can written in the following equivalent fashion:
 $$
 \begin{array}{left}
 y^{[i]} \sim Bin(\pi^{[i]}, 1)\\
@@ -114,7 +114,7 @@ y^{[i]} \sim Bin(\pi^{[i]}, 1)\\
 $$
 In the GLM nomenclature, it is customary to link $\pi^{[i]}$ with $f(x^{[i]})$ as follows:
 $$\log\left(\frac{\pi^{[i]}}{1-\pi^{[i]}}\right) = f(x^{[i]})$$
-It is like $f(x^{[i]})$ is now modeling the difference in the class-specific responses. To make this explicit, suppose, $f_k(x^{[i]})$ is the class-specific latent response (whose thresholded version yield the binary response as note before). Then, by specification, $f(x^{[i]}) =  f_1(x^{[i]}) - f_0(x^{[i]})$. It follows then that,
+It is like $f(x^{[i]})$ is now modeling the difference in the class-specific responses. To make this explicit, suppose, $f_k(x^{[i]})$ is the class-specific latent response (whose thresholded version yields the binary response as noted before). Then, by specification, $f(x^{[i]}) =  f_1(x^{[i]}) - f_0(x^{[i]})$. It follows then that,
 $$
 \begin{array}{left}
 \pi^{[i]} &=& \frac{ \exp(f(x^{[i]})} {1+ \exp(f(x^{[i]}) } \\
@@ -126,7 +126,7 @@ $$
 
 ### Vector Generalized Linear Model
 
-Now we are in a position to extend the Binary Classification problem to the Multi-class setting, where the scales are nominal (i.e., the class labels have no ordering, and labels could have been shuffled with no consequence). 
+Now we are in a position to extend the Binary Classification problem to the Multiclass setting, where the scales are nominal (i.e., the class labels have no ordering, and labels could have been shuffled with no consequence). 
 
 Suppose we have ${n_L}$-classes with $\pi_k^{[i]}$ representing the i-th example being drawn from the class $k$ with $\sum_{k=1}^{{n_L}} \pi_k^{[i]} = 1$. The following generative model is a plausible model:
 $$
@@ -137,7 +137,7 @@ y^{[i]} &\sim& \text{Multinomial}(\pi_k^{[i]}, 1)\\
 \end{array}
 $$
 
-Notice that, we have one hidden/ latent functional for each class $f_k(x^{[i]})$ - the normalized version of which models the class probabilities in the [Multinomial](https://en.wikipedia.org/wiki/Multinomial_distribution) distribution. In general, in the above model all $f_k(.)$ are not identifiable. In fact, under the simplex constraint (i.e., class probabilities must add up to to one), $\sum_k f_k(.)  =0$, which essentially is saying that, to model $n_L$ responses, we can not have $n_L$ independent (unconstrained) latent responses but only $n_L-1$ are identifiable.
+Notice that, we have one hidden/ latent functional for each class $f_k(x^{[i]})$ - the normalized version of which models the class probabilities in the [Multinomial](https://en.wikipedia.org/wiki/Multinomial_distribution) distribution. In general, in the above model, all $f_k(.)$ are not identifiable. In fact, under the simplex constraint (i.e., class probabilities must add up to to one), $\sum_k f_k(.)  =0$, which essentially is saying that, to model $n_L$ responses, we can not have $n_L$ independent (unconstrained) latent responses but only $n_L-1$ are identifiable.
 
 As a check, if we place this simplex constraint on the logits for the Binary Classification, we can recover standard logistic regression model, as shown below:
 $$
@@ -161,7 +161,7 @@ $$
 y_k^{[i]} \equiv \psi(x^{[i]}) = \sigma \left( \sum_{j=1}^{n_0} w_{j,k} x_j^{[i]} \right) \forall k=1,2,\dots n_L\\
 \end{array}
 $$
-Here $\sigma(.)$ is element-wise operation. So far we discussed the shallow perceptron for regression, and classification. It is often helpful to write the expression in matrix notation as follows:
+Here $\sigma(.)$ is element-wise operation. So far we discussed the shallow Perceptron for regression, and classification. It is often helpful to write the expression in matrix notation as follows:
 $$
 \begin{array}{left}
 \bf{y}  = \sigma \left( xW+b \right)
@@ -171,7 +171,7 @@ where we have added the bias term $b$, a $n_L\times 1$ vector, $x$ is $1 \times 
 
 ### Deep Vector Generalized Linear Model
 
-At the heart of the GLM for Multiclass, we have $f_k$ which is a map from ${n_0}$-dimensional input to $R$, i.e., $f_k(): R^{n_0} \rightarrow R$. If we have ${n_L}$ such functions, we effectively have $$f: R^{n_0} \rightarrow R^{n_L}$. We can stack such blocks to get a composition as follows:
+At the heart of the GLM for Multiclass, we have $f_k$ which is a map from ${n_0}$-dimensional input to $R$, i.e., $f_k(): R^{n_0} \rightarrow R$. If we have ${n_L}$ such functions, we effectively have $f: R^{n_0} \rightarrow R^{n_L}$. We can stack such blocks to get a composition as follows:
 
 $$
 f(\bf{x})= \sigma\left( \dots \left( \sigma\left(x W_0 + b_0\right)W_1 + b_1 \right) \dots \right) W_{n_{L-1}} + b_{n_{L-1}}
@@ -185,7 +185,7 @@ The above is the popular Multilayer Perceptron or MLP as it is known. Shown belo
 
 #### 2-Ary Boolean Circuits
 
-Let us consider boolean variables and just two inputs $x_1, x_2 \in \{0,1\}$. We will model the popular logic gates using a simple Neuron (strictly speaking, a McCulloh-Pitts Neuron): $y = H\left(x_1 w_1 + x_2 w_2 + b\right)$, where  the Heavyside step function $H(x) = 1 \text{ if } x\ge 0, 0. \text{ o.w}$ 
+Let us consider boolean variables and just two inputs $x_1, x_2 \in \{0,1\}$. We will model the popular logic gates using a simple Neuron: $y = H\left(x_1 w_1 + x_2 w_2 + b\right)$, where  the Heavyside step function $H(x) = 1 \text{ if } x\ge 0, 0. \text{ o.w}$ 
 
 | gate| $w_1$ | $w_2$ | b |
 |-----|-----|-----|-----|
@@ -216,11 +216,11 @@ $$
 \hat{y}_{NOR} = \text{H}(\sum -x_i \,+ 0.5) \\
 \end{array}
 $$
-verify the results yourself.
+Verify the results yourself.
 
 #### M-Ary Universal Boolean Circuits
 
-Now consider M-ary input and our goal is to build a boolean circuit which can realize any Truth Table. The Truth Table consists of $2^M$ rows, each row corresponding to one specific state of the inputs, and contains $M+1$ columns - one column for each of the $M$  inputs and one column for the output $y$. Truth Table can be realized in the form of a Sum-of-Products (SoP) form, a special form of Disjunctive Normal Form (see [Canonical Forms](https://en.wikipedia.org/wiki/Canonical_normal_form) to represent Truth Tables in Boolean Algebra). Let us look at an example below with two inputs, modeling XOR gate:
+Now consider M-ary inputs and our goal is to build a boolean circuit which can realize any Truth Table. The Truth Table consists of $2^M$ rows, each row corresponding to one specific state of the inputs, and contains $M+1$ columns - one column for each of the $M$  inputs and one column for the output $y$. Truth Table can be realized in the form of a Sum-of-Products (SoP) form, a special form of Disjunctive Normal Form (see [Canonical Forms](https://en.wikipedia.org/wiki/Canonical_normal_form) to represent Truth Tables in Boolean Algebra). Let us look at an example below with two inputs, modeling XOR gate:
 
 | $x_1$ | $x_2$ | $y_{XOR}$ |
 |-----|-----|-----|-----|
@@ -229,11 +229,11 @@ Now consider M-ary input and our goal is to build a boolean circuit which can re
 1| 0 | 1 | 
 1| 1 | 0 | 
 
-For each row, whose Truth value is 1, we consider the product of inputs. We take the complement of the inputs when it is zero. For the XOR gate, we add the 2nd row product $\bar{x_1}x_2$ to the third row $x_1 \bar{x_2}$ to get final SoP  as follows:
+For each row, whose Truth value is 1, we consider the product of inputs. We take the complement of the input when it is zero. For the XOR gate, we add the 2nd row product $\bar{x_1}x_2$ to the third row term $x_1 \bar{x_2}$ to get final SoP  as follows:
 $$
 y = \bar{x_1}x_2 + x_1 \bar{x_2}
 $$
-where $\bar{x}$ represents the logical complement of $x$.  Notice that each product term consists of two sub products - one that is a product of all inputs where inputs are 1s, and product of their complements where the inputs are 0. Therefore, each product in the SoP can be represented as $AND(AND(.), NOR(.))$ and refer to this as $AANOR$ as contraction.  For example, the first term in the SoP for XOR is $AND(AND(x_1), NOR(x_2)) \equiv \bar{x_1}x_2 + x_1 \bar{x_2}$. We will exploit this to succinctly represent the SoP:
+where $\bar{x}$ represents the logical complement of $x$.  Notice that each product term consists of two sub products - one that is a product of all inputs where inputs are 1s, and product of their complements where the inputs are 0. Therefore, each product in the SoP can be represented as $AND(AND(.), NOR(.))$ and refer to this as $AANOR$ as contraction.  For example, the first term in the SoP for XOR is $AND(AND(x_1), NOR(x_2)) \equiv \bar{x_1}x_2$. We will exploit this to succinctly represent the SoP:
 $$
 \begin{array}{left}
 y &=& \sum_{i \in \{ i' \text{ s. t } y^[i']=1\} } AND( AND( x^{i}_{p \in A}), NOR(x^{i}_{q \in \bar{A}})) \\
@@ -247,35 +247,37 @@ Then the inner gate is $AANOR \equiv AND(AND(.), NOR(.))$. Can we realize such a
 #### MLP with 1-hidden layer
 
 
-Observe that, the gate is hot only when all $x \in A$ are 1s and $x \in A^c$ are 0s. 
+Observe that, the AANOR gate is hot only when all $x \in A$ are 1s and $x \in A^c$ are 0s. To clarity, the AANOR gate is hot for exactly one of the rows of the $2^M$ rows. Exploiting this fact, we can simplify the Truth Table as follows:
 
 Case | $x \in A$ | $x \in \bar{A}$ | $y_{AANOR}$ |
 |-----|-----|-----|-----|-----|
 Case-1| All 1s| All 0s | 1 |
 Case-2| At least one 0| Any | 0 |
 
-Verify that cases are mutually exclusive and exhaustive. Based on our idea about AND and NOR gates, let us hypothesize the following Neuron for the AANOR gate as follows:
+Verify that cases are mutually exclusive and exhaustive. Based on our idea about AND and NOR gates designed earlier, let us hypothesize the following Neuron for the AANOR gate as follows:
 $$
 \begin{array}{left}
 y &=& H( \sum_{i \in A} (x_i-1) -0.5 + \sum_{i \in \bar{A}} -x_i + 0.5 + b) \\
-y &=& H( \sum_{i \in A} (x_i-1) + \sum_{i \in \bar{A}} -x_i + b)
+ &=& H( \sum_{i \in A} (x_i-1) + \sum_{i \in \bar{A}} -x_i + b)
 \end{array}
 $$
-where $b$ is to found out.
+where $b$ is to found out, which we do next.
 
 Case-1:
-In this case, substituting the specific x's, we get the inequality $b > 0$
+In this case, substituting the specific x's, we get the inequality $b > 0, which ensures that $H(.)=1$ in this case.
 
 Case-2:
 At least one x in A is 0, which means, we need 
-$\max \left( \sum_{i \in A} (x_i-1) + \sum_{i \in \bar{A}} -x_i + b \right) < 0$.  It is $1+b$ and is achieved when exactly one x in A is zero, and all x's in $\bar{A}$ are zero. Therefore, we get, $b-1 < 0$.
-From both the inequalities, we can choose $b=0.5$. The AANOR gate can now be realized as:
+$\max \left( \sum_{i \in A} (x_i-1) + \sum_{i \in \bar{A}} -x_i + b \right) < 0$.  It is $-1+b$ and is achieved when exactly one x in A is zero, and all x's in $\bar{A}$ are zero. Therefore, we get, $b-1 < 0$.
+We can choose $b=0.5$ which satisfies both the inequalities $0 < b < 1$. The AANOR gate can now be realized as:
+
 $$
 \begin{array}{left}
 y &=& H( \sum_{i \in A} (x_i-1) + \sum_{i \in \bar{A}} -x_i + 0.5)
 \end{array}
+$$
 
-Now that we can realize any AANOR gate, and OR gate is something we have already seen, any M-ary Boolean Truth Table can be realized
+Now that we can realize any AANOR gate, and OR gate is something we have already seen, any M-ary Boolean Truth Table can be realized as
 $$
 \begin{array}{left}
 y &=& OR(\{ AANOR(x^{[i]} \}), i \in \{ i' \text{ s. t } y^[i']=1\}
@@ -286,12 +288,12 @@ Above can be seen a composition of Boolean gates:
 $$
 \text{ inputs > ANOR > OR }
 $$
-an MLP with 1-hidden layer in hindsight, as illustrated in the figure below.
+which is indeed an MLP with 1-hidden layer in hindsight, as illustrated in the figure below.
 ![SOP = MLP with 1-hidden layer](./../figs/FFNs-SOPs.drawio.png){fig-align="center"}
 
-Effectively, we exploited the fact that any M-ary Truth Table can be expressed in SOP form, and we have constructed a 1-hidden layer MLP which can exactly models the SoP.
+Effectively, we exploited the fact that any M-ary Truth Table can be expressed in SOP form, and we have constructed a 1-hidden layer MLP which can exactly model the SoP.
 
-Let us verify this circuit for XOR gate which we know can not be modeled by single Neuron but need a 1-hiddel layer MLP.
+Let us verify this circuit for XOR gate which we know can not be modeled by single Neuron but can be nmodeled by a 1-hidden layer MLP.
 
 $$
 \begin{array}{left}
@@ -308,16 +310,17 @@ $$
 1| 0 | 1 | 1 | 0 | 1
 1| 1 | 0 | 0 | 0 | 1
 
-Indeed, we recovered the XOR gate. Of course, we are operating on Boolean inputs. The continuous analogue of what we derived for MLPs with 1-hidden layer are due to the early works of Cybenko's [Universal Approximation Theorem](https://hal.science/hal-03753170/), [pdf](https://web.njit.edu/~usman/courses/cs675_fall18/10.1.1.441.7873.pdf). A nice illustration of the Universal Approximation abilities of MLPs can be found here - [Representational Power of NNs](http://neuralnetworksanddeeplearning.com/chap4.html)
+Indeed, we recovered the XOR gate. Of course, we are operating on Boolean inputs. The continuous analogue of what we derived for MLPs with 1-hidden layer are due to the early works of Cybenko's [Universal Approximation Theorem](https://hal.science/hal-03753170/)[pdf](https://web.njit.edu/~usman/courses/cs675_fall18/10.1.1.441.7873.pdf). A nice illustration of the Universal Approximation abilities of MLPs can be found here - [Representational Power of NNs](http://neuralnetworksanddeeplearning.com/chap4.html)
 
 ### Summary
 
-- Logistic regression is member of Generalized Linear Models (GLMs)
-- Generalized Linear Models is member of larger class Vector Generalized Linear Models (VGLMs)
+- Logistic regression is a member of Generalized Linear Models (GLMs)
+- Generalized Linear Models is a member of Vector Generalized Linear Models (VGLMs)
 - Logistic regression = Perceptron with sigmoid activation
 - MLP with an input and output layer (with multiple outputs) = VGLM
 - MLPs are Deep VGLMS
-- Any M-ary Boolean circuits can be represented in Sum-of-Products form
-- AND, OR, NAND, NOR gates can be relaized by percetrons.
-- Sum-of-Products can be relaized by an MLP with 1-hidden layer.
-- MLP with 1-hidden layer are Universal Approximators of M-ary Boolean circuits.
+- Universal Approximation Ability of MLPs
+    - Any M-ary Boolean circuit can be represented in Sum-of-Products form
+    - AND, OR, NAND, NOR gates can be realized by Percetrons.
+    - Sum-of-Products can be realized by an MLP with 1-hidden layer.
+    - MLP with 1-hidden layer are Universal Approximators of M-ary Boolean circuits.
