@@ -281,7 +281,8 @@ $$
 y &=& OR(\{ AANOR(x^{[i]} \}), i \in \{ i' \text{ s. t } y^[i']=1\}
 \end{array}
 $$
-Above can be seen a composition of Boleean gates: 
+
+Above can be seen a composition of Boolean gates: 
 $$
 \text{ inputs > ANOR > OR }
 $$
@@ -290,7 +291,24 @@ an MLP with 1-hidden layer in hindsight, as illustrated in the figure below.
 
 Effectively, we exploited the fact that any M-ary Truth Table can be expressed in SOP form, and we have constructed a 1-hidden layer MLP which can exactly models the SoP.
 
-Of course, we are operating on Boolean inputs. The continuous analogue of what we derived for MLPs with 1-hidden layer are due to the early works of Cybenko's [Universal Approximation Theorem](https://hal.science/hal-03753170/), [pdf](https://web.njit.edu/~usman/courses/cs675_fall18/10.1.1.441.7873.pdf). A nice illustration of the Universal Approximation abilities of MLPs can be found here - [Representational Power of NNs](http://neuralnetworksanddeeplearning.com/chap4.html)
+Let us verify this circuit for XOR gate which we know can not be modeled by single Neuron but need a 1-hiddel layer MLP.
+
+$$
+\begin{array}{left}
+h_1 &=&  H\left( (x_1-1) - x_2 + 0.5 \right) \\
+h_2 &=&  H\left( -x_1 + (x_2-1) + 0.5 \right) \\
+y &=&  h_1 + h_2 - 0.5\\
+\end{array}
+$$
+
+| $x_1$ | $x_2$ | $y_{XOR}$ | $h_1$ | $h_2$ | $y=OR(h_1, h_2)$
+|-----|-----|-----|-----|-----| -----|
+0| 0 | 0 | 0 | 0 | 0 
+0| 1 | 1 | 0 | 1 | 1
+1| 0 | 1 | 1 | 0 | 1
+1| 1 | 0 | 0 | 0 | 1
+
+Indeed, we recovered the XOR gate. Of course, we are operating on Boolean inputs. The continuous analogue of what we derived for MLPs with 1-hidden layer are due to the early works of Cybenko's [Universal Approximation Theorem](https://hal.science/hal-03753170/), [pdf](https://web.njit.edu/~usman/courses/cs675_fall18/10.1.1.441.7873.pdf). A nice illustration of the Universal Approximation abilities of MLPs can be found here - [Representational Power of NNs](http://neuralnetworksanddeeplearning.com/chap4.html)
 
 ### Summary
 
