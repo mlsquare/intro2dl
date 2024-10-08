@@ -315,12 +315,12 @@ Indeed, we recovered the XOR gate. Of course, we are operating on Boolean inputs
 ### Summary
 
 - Logistic regression is a member of Generalized Linear Models (GLMs)
-- Generalized Linear Models is a member of Vector Generalized Linear Models (VGLMs)
+- GLMs are a member of Vector Generalized Linear Models (VGLMs)
 - Logistic regression = Perceptron with sigmoid activation
 - MLP with an input and output layer (with multiple outputs) = VGLM
 - MLPs are Deep VGLMS
 - Universal Approximation Ability of MLPs
     - Any M-ary Boolean circuit can be represented in Sum-of-Products form
-    - AND, OR, NAND, NOR gates can be realized by Percetrons.
+    - AND, OR, NAND, NOR gates can be realized by Perceptrons.
     - Sum-of-Products can be realized by an MLP with 1-hidden layer.
-    - MLP with 1-hidden layer are Universal Approximators of M-ary Boolean circuits.
+    - (Therefore) MLP with 1-hidden layer is a Universal Approximator of (any) M-Boolean circuit
