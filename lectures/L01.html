@@ -557,7 +557,7 @@ f(\bf{x})= \sigma\left( \dots \left( \sigma\left(x W_0 + b_0\right)W_1 + b_1 \ri
 </tr>
 </tbody>
 </table>
-<p>Other gates like NAND, NOR and OR can also be realized by a Neuron of the form shown above. The NAND gate is called a universal gate (so does NOR) because, given enough number of NAND gates, any Truth Table can be realized consisting of only NAND gates. For example, NOT gate can be realized by setting one of the inputs to logic 1 to get the complement of the other input. Note that XOR can not be modeled by a perceptron. Can you guess why?</p>
+<p>Other gates like NAND, NOR and OR can also be realized by a Neuron of the form shown above. The NAND gate is called a universal gate (so does NOR) because, given enough number of NAND gates, any Truth Table can be realized consisting of only NAND gates. For example, NOT gate can be realized by setting one of the inputs to logic 1 to get the complement of the other input. Note that XOR can not be modeled by a Perceptron. Can you guess why?</p>
 </section>
 <section id="m-ary-boolean-circuits" class="level4">
 <h4 class="anchored" data-anchor-id="m-ary-boolean-circuits">M-Ary Boolean Circuits</h4>
@@ -679,7 +679,7 @@ y &amp;=&amp; OR(\{ AANOR(x^{[i]} \}), i \in \{ i' \text{ s. t } y^[i']=1\}
 \text{ inputs &gt; hidden (AANOR)  &gt; output (OR) }
 \]</span> which is indeed an MLP with 1-hidden layer in hindsight, as illustrated in the figure below. <img src="./../figs/FFNs-SOPs.drawio.png" class="img-fluid quarto-figure quarto-figure-center" alt="SOP = MLP with 1-hidden layer"></p>
 <p>Effectively, we exploited the fact that any M-ary Truth Table can be expressed in SOP form, and we have constructed a 1-hidden layer MLP which can exactly model the SoP.</p>
-<p>Let us verify this circuit for XOR gate which we know can not be modeled by single Neuron but can be nmodeled by a 1-hidden layer MLP.</p>
+<p>Let us verify this circuit for XOR gate which we know can not be modeled by single Neuron but can be modeled by a 1-hidden layer MLP.</p>
 <p><span class="math display">\[
 \begin{array}{left}
 h_1 &amp;=&amp;  H\left( (x_1-1) - x_2 + 0.5 \right) \\
