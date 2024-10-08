@@ -1,6 +1,5 @@
 # Welcome {.unnumbered}
 
-
 Dear Faculty, Students and Learners
 
 See the [course](./course.qmd) page for recent information on Lectures, Labs, Resources etc.. 
@@ -28,6 +27,8 @@ See the [course](./course.qmd) page for recent information on Lectures, Labs, Re
     - Kolmogorov-Arnold Networks (KANs)
     - Recurrent Neural Networks (RNNs)
     - Transformers
+    - Graph Neural Networks (GNNs)
+    - Selective Structured State Space Models (S4)
 
 **Part-2: A Mathematical Introduction to Deep Generative Models**
 
@@ -37,5 +38,10 @@ See the [course](./course.qmd) page for recent information on Lectures, Labs, Re
     - Flow Networks
     - Diffusion Models
 
+# Support
+
+<p style="color:blue">
+If you like the content, please share with others. Also, consider [donating](https://razorpay.me/@mlsquareorg?amount=CVDUr6Uxp2FOGZGwAHntNg%3D%3D) that costs less than a coffee.
+</p>
 
 

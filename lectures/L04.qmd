@@ -1,0 +1,117 @@
+# RNNs {.unnumbered}
+
+## Materials:
+Date: Saturday, 12-October-2024, 1.30pm, IST.
+
+### Pre-work:
+
+- Refresh ML foundations.
+- Read "The 100 page ML book" by Andiry Burkov. Chapters accessible [here](https://themlbook.com/wiki/doku.php)
+- [FFNs](./L01.qmd) 
+- [CNNs](./L02.qmd) 
+
+
+
+### In-Class
+
+- tbd
+- tbd
+
+    
+### Lab
+
+- tbd
+- tbd
+
+### Post-class:
+
+- tbd 
+- tbd
+
+
+
+### RNN Papers and Advancements
+
+- tbd
+- tbd
+
+### Theory
+
+- tbd
+- tbd
+
+
+### Additional References
+
+- tbd
+- tbd
+
+
+## Notes
+
+
+Sure, here is the content converted into Markdown format:
+
+# Linear Models
+
+1. **Line:**
+   $x_i = \beta_0 + \beta_1 t + e_i$
+   - Example: Section 3.7 from a textbook by S. M. Kay.
+
+2. **De-trended:**
+    $x_i = \mu + e_i$
+   - Example: Section 3.3 from S. M. Kay.
+
+3. **Curve:**
+   $x_i = \beta_0 + \beta_1 t + \beta_2 t^2 + e_i$
+   - Example: Section 4.4 from S. M. Kay.
+
+---
+
+# Fourier Analysis
+
+$x_i = \sum_{k=1}^{M} a_k \cos \left( \frac{2 \pi k i}{N} \right) + \sum_{k=1}^{M} b_k \sin \left( \frac{2 \pi k i}{N} \right) + e_i$
+
+where $e_i \sim N(0,1) \) for \( i = 1 \ldots N$.
+
+---
+
+# Dynamical Models: **Kalman Filters**
+
+Consider the AR-signal again:
+
+
+$x_i = \mu + e_i$
+
+A more accurate model is:
+
+
+$x_i = \mu_i + e_i$
+- The signal is changing with time.
+
+Another model:
+
+$S_t = a S_{t-1} + e_t$
+- For $t = 1, 2, \ldots, N$
+- This is an **auto-regressive model** with $\text{Var}(e_t) = \sigma_e^2$
+
+---
+
+## AR(1) System
+
+$S(t) \sim N(\mu_s, \sigma_s^2) \quad \text{for} \quad t \ge 0$
+
+- Initial condition not satisfied (steady-state not yet reached).
+
+Example: 
+- Parameters: $\( a = 0.9, \sigma_s^2 = 0.1, \mu_s = 5, \sigma_e^2 = 1 \)$
+- Question: What does this signal look like?
+
+### Notes:
+
+$$
+S_0 = aS(t) + u_0 \\
+S_1 = aS_0 + u_1 \\
+\vdots
+S_n = aS(t) + \sum_{k=0}^{n} e(n-k)
+$$
