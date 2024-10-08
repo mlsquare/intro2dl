@@ -454,7 +454,7 @@ y^{[i]} &amp;\sim&amp; \text{Multinomial}(\pi_k^{[i]}, 1)\\
 \end{array}
 \]</span></p>
 <p><em>Digression: In the Deep Learning context, such explicit constraints are ignored. When training the models with SGD, different tricks which are empirically proven such as Layer Normalization, Batch Normalization etc are used. Their effect is to enforce identifiability constraints via what look like hacks but in reality, they are fixes for the structural issues in the models themselves.</em></p>
-<p>When the constrains are removed, and <span class="math inline">\(f_k(x)= {\bf x}{\bf w_k} + {\bf  b_k}\)</span> is a linear model, we get a Vector Generalized Linear Model (<a href="https://en.wikipedia.org/wiki/Vector_generalized_linear_model">VGLAM</a>). VGLAM is shown as a (shallow) network below. <img src="./../figs/FFNs-VGLMs.drawio.png" class="img-fluid quarto-figure quarto-figure-center" alt="Nueral Network with no hidden layers = VGLM"></p>
+<p>When the constrains are removed, and <span class="math inline">\(f_k(x)= {\bf x}{\bf w_k} + {\bf  b_k}\)</span> is a linear model, we get a Vector Generalized Linear Model (<a href="https://en.wikipedia.org/wiki/Vector_generalized_linear_model">VGLM</a>). VGLAM is shown as a (shallow) network below. <img src="./../figs/FFNs-VGLMs.drawio.png" class="img-fluid quarto-figure quarto-figure-center" alt="Nueral Network with no hidden layers = VGLM"></p>
 <p>Specifically, ignoring the bias terms for simplicity, <span class="math display">\[
 \begin{array}{left}
 y_k^{[i]} \equiv \psi(x^{[i]}) = \sigma \left( \sum_{j=1}^{n_0} w_{j,k} x_j^{[i]} \right) \forall k=1,2,\dots n_L\\
@@ -662,8 +662,8 @@ y &amp;=&amp; H( \sum_{i \in A} (x_i-1) -0.5 + \sum_{i \in \bar{A}} -x_i + 0.5 +
 &amp;=&amp; H( \sum_{i \in A} (x_i-1) + \sum_{i \in \bar{A}} -x_i + b)
 \end{array}
 \]</span> where <span class="math inline">\(b\)</span> is to be found out, which we do next.</p>
-<p>Case-1: In this case, substituting the specific x’s, we get the inequality $b &gt; 0, which ensures that <span class="math inline">\(H(.)=1\)</span> in this case.</p>
-<p>Case-2: All x’s in A are 1s and at least one x in <span class="math inline">\(\bar{A}\)</span> is 1, implying, we want, <span class="math inline">\(\max \left( \sum_{i \in \bar{A}} -x_i + b \right) &lt; 0\)</span>. It is <span class="math inline">\(-1+b\)</span> and is achieved when exactly all x’s in <span class="math inline">\(\bar{A}\)</span> are zero. Therefore, we get, <span class="math inline">\(1-b&lt; 0\)</span></p>
+<p>Case-1: In this case, substituting the specific x’s, we get the inequality <span class="math inline">\(b &gt; 0\)</span>, which ensures that <span class="math inline">\(H(.)=1\)</span> in this case.</p>
+<p>Case-2: All x’s in A are 1s and at least one x in <span class="math inline">\(\bar{A}\)</span> is 1, implying, we want, <span class="math inline">\(\max \left( \sum_{i \in \bar{A}} -x_i + b \right) &lt; 0\)</span>. It is <span class="math inline">\(-1+b\)</span> and is achieved when exactly all but one x’s in <span class="math inline">\(\bar{A}\)</span> are zero. Therefore, we get, <span class="math inline">\(1-b&lt; 0\)</span></p>
 <p>Case-3: At least one x in A is 0, which means, we need <span class="math inline">\(\max \left( \sum_{i \in A} (x_i-1) + \sum_{i \in \bar{A}} -x_i + b \right) &lt; 0\)</span>. It is <span class="math inline">\(-1+b\)</span> and is achieved when exactly one x in A is zero, and all x’s in <span class="math inline">\(\bar{A}\)</span> are zero. Therefore, we get, <span class="math inline">\(b-1 &lt; 0\)</span> as in Case-2. We can choose <span class="math inline">\(b=0.5\)</span> which satisfies both the inequalities <span class="math inline">\(0 &lt; b &lt; 1\)</span>. The AANOR gate can now be realized as:</p>
 <p><span class="math display">\[
 \begin{array}{left}
@@ -676,7 +676,7 @@ y &amp;=&amp; OR(\{ AANOR(x^{[i]} \}), i \in \{ i' \text{ s. t } y^[i']=1\}
 \end{array}
 \]</span></p>
 <p>Above can be seen a composition of Boolean gates: <span class="math display">\[
-\text{ inputs &gt; hidden (ANOR)  &gt; output (OR) }
+\text{ inputs &gt; hidden (AANOR)  &gt; output (OR) }
 \]</span> which is indeed an MLP with 1-hidden layer in hindsight, as illustrated in the figure below. <img src="./../figs/FFNs-SOPs.drawio.png" class="img-fluid quarto-figure quarto-figure-center" alt="SOP = MLP with 1-hidden layer"></p>
 <p>Effectively, we exploited the fact that any M-ary Truth Table can be expressed in SOP form, and we have constructed a 1-hidden layer MLP which can exactly model the SoP.</p>
 <p>Let us verify this circuit for XOR gate which we know can not be modeled by single Neuron but can be nmodeled by a 1-hidden layer MLP.</p>
