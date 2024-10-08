@@ -641,6 +641,13 @@ A^{[i]} &amp;=&amp; \{ p \text{ s.t } x_p^{[i]} = 1 \} \\
 </tr>
 <tr class="even">
 <td>Case-2</td>
+<td>All 1s</td>
+<td>At least one 1</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Case-3</td>
 <td>At least one 0</td>
 <td>Any</td>
 <td>0</td>
@@ -654,8 +661,11 @@ y &amp;=&amp; H( \sum_{i \in A} (x_i-1) -0.5 + \sum_{i \in \bar{A}} -x_i + 0.5 +
 &amp;=&amp; H( \sum_{i \in A} (x_i-1) + \sum_{i \in \bar{A}} -x_i + b)
 \end{array}
 \]</span> where <span class="math inline">\(b\)</span> is to found out, which we do next.</p>
-<p>Case-1: In this case, substituting the specific x’s, we get the inequality $b &gt; 0, which ensures that <span class="math inline">\(H(.)=1\)</span> in this case.</p>
-<p>Case-2: At least one x in A is 0, which means, we need <span class="math inline">\(\max \left( \sum_{i \in A} (x_i-1) + \sum_{i \in \bar{A}} -x_i + b \right) &lt; 0\)</span>. It is <span class="math inline">\(-1+b\)</span> and is achieved when exactly one x in A is zero, and all x’s in <span class="math inline">\(\bar{A}\)</span> are zero. Therefore, we get, <span class="math inline">\(b-1 &lt; 0\)</span>. We can choose <span class="math inline">\(b=0.5\)</span> which satisfies both the inequalities <span class="math inline">\(0 &lt; b &lt; 1\)</span>. The AANOR gate can now be realized as:</p>
+<p>Case-1:</p>
+<p>In this case, substituting the specific x’s, we get the inequality $b &gt; 0, which ensures that <span class="math inline">\(H(.)=1\)</span> in this case.</p>
+<p>Case-2: All x’s in A are 1s and at least one x in <span class="math inline">\(\bar{A}\)</span> is 1, implying, we want, <span class="math inline">\(\max \left( \sum_{i \in \bar{A}} -x_i + b \right) &lt; 0\)</span>. It is <span class="math inline">\(-1+b\)</span> and is achieved when exactly all x’s in <span class="math inline">\(\bar{A}\)</span> are zero. Therefore, we get, <span class="math inline">\(1-b&lt; 0\)</span></p>
+<p>Case-3:</p>
+<p>At least one x in A is 0, which means, we need <span class="math inline">\(\max \left( \sum_{i \in A} (x_i-1) + \sum_{i \in \bar{A}} -x_i + b \right) &lt; 0\)</span>. It is <span class="math inline">\(-1+b\)</span> and is achieved when exactly one x in A is zero, and all x’s in <span class="math inline">\(\bar{A}\)</span> are zero. Therefore, we get, <span class="math inline">\(b-1 &lt; 0\)</span> as in Case-2. We can choose <span class="math inline">\(b=0.5\)</span> which satisfies both the inequalities <span class="math inline">\(0 &lt; b &lt; 1\)</span>. The AANOR gate can now be realized as:</p>
 <p><span class="math display">\[
 \begin{array}{left}
 y &amp;=&amp; H( \sum_{i \in A} (x_i-1) + \sum_{i \in \bar{A}} -x_i + 0.5)
