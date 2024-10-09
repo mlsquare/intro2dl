@@ -275,6 +275,8 @@ window.Quarto = {
   <li><a href="#universal-approximation" id="toc-universal-approximation" class="nav-link" data-scroll-target="#universal-approximation">Universal Approximation</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   <li><a href="#additional-references" id="toc-additional-references" class="nav-link" data-scroll-target="#additional-references">Additional References</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
+  <li><a href="#mini-project" id="toc-mini-project" class="nav-link" data-scroll-target="#mini-project">Mini Project</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/mlsquare/intro2dl/edit/main/lectures/L01.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mlsquare/intro2dl/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -741,24 +743,24 @@ y &amp;=&amp;  h_1 + h_2 - 0.5\\
 <ul>
 <li>Initialization:
 <ul>
-<li>Draw the weights as from <span class="math inline">\(w \sim N(\alpha(2h-1), \sigma_w^2), h \sim \text{Bernoulli}(0.5)\)</span></li>
+<li>Draw the weights from <span class="math inline">\(w \sim N(\alpha(2h-1), \sigma_w^2), h \sim \text{Bernoulli}(0.5)\)</span></li>
 <li>Draw the bias terms from <span class="math inline">\(b \sim N(\alpha(h-0.5), \sigma_b^2), h \sim \text{Bernoulli}(0.5)\)</span></li>
 <li>Note that we have used <span class="math inline">\(\alpha=1\)</span> in deriving a 1-hidden layer Boolean MLP. But different <span class="math inline">\(\alpha\)</span> can be chosen. For example, with <span class="math inline">\(\alpha=20\)</span>, Sigmoid activation approximates the Heavyside step function well. For training MLP, w.l.o.g, one can choose <span class="math inline">\(\alpha=0.5\)</span> to make the gradients well behaving.</li>
 </ul></li>
 <li>Lottery Ticket Hypothesis:
 <ul>
-<li><a href="https://arxiv.org/abs/1803.03635">The Lottery Ticket Hypothesis</a> conjectured that, when networks are densely and randomly intialized, some sub-networks would reach test accuracy comparable to original network. In the discrete case, it would mean that some inputs are exactly mapped to the output (essentially a look up table). And a dense MLP would have implemented a soft version of the look-up table (This essentially shows again that all models are K-Nearest ). The Boolean MLP might be an interesting model to probe the Lottery Ticket Hypothesis further.</li>
+<li><a href="https://arxiv.org/abs/1803.03635">The Lottery Ticket Hypothesis</a> conjectured that, when networks are densely and randomly intialized, some sub-networks would reach test accuracy comparable to original network. In the discrete case, it would mean that some inputs are exactly mapped to the output (essentially a look up table). And a dense MLP would have implemented a soft version of the look-up table (this essentially shows again that all models are K-Nearest neighbors). The Boolean MLP might be an interesting model to probe the Lottery Ticket Hypothesis further.</li>
 </ul></li>
 <li>Pruning and 1-bit LLMs
 <ul>
-<li>In the context Large Language Models (LLMs), we see large models with parameters in the order of billions are successfully compressed/quantized without much degradation in the performance. See for example, <a href="https://arxiv.org/abs/2402.17764">The Era of 1-bit LLMs. All LLMs are 1.58 bits</a>. If all the weights are sampled from {-1,0,+1}&nbsp;they require <span class="math inline">\(\log_2(3)=1.58\)</span> bits.</li>
+<li>In the context Large Language Models (LLMs), we see large models with parameters in the order of billions are successfully getting compressed/quantized without much degradation in the performance. See for example, <a href="https://arxiv.org/abs/2402.17764">The Era of 1-bit LLMs. All LLMs are 1.58 bits</a>. If all the weights are sampled from {-1,0,+1}&nbsp;they require <span class="math inline">\(\log_2(3)=1.58\)</span> bits.</li>
 <li>The optimal Boolean MLPs are precisely 1 bit networks, but it is easy see that, the fully specified and overparametrized Boolean MLPs are 1.58 bits, where 0 weight models skip connections.</li>
 </ul></li>
 <li>Hardware Accelerators
 <ul>
 <li>We are seeing a surge in hardware accelerators (and downstream toolchains including compilers, and hardware-software co-design) to make both training and inference faster.</li>
-<li>GPUs are the backbone of compute infra to train Deep Neural Nets. At the heart of it, it is the matrix multiplication that needs to be done efficiently. What if we networks have no explicit MatMul operations - see <a href="https://arxiv.org/abs/2406.02528">Scalable MatMul-free Language Modeling</a> for an approach or the more recent <a href="https://arxiv.org/abs/2405.16339">BOLD: Boolean Logic Deep Learning</a> where networks are trained based on a new mathematical principle of Boolean Variation with considerations for chip architecture, memory hierarchy, dataflow and arithmetic precision.</li>
-<li>Can we directly burn the model onto silicon? That is, can we take a Boolean MLP specified in PyTorch and create HDL files using the latest and greatest in VLSI technology? See <a href="https://github.com/fastmachinelearning/hls4ml">hls4ml</a>.</li>
+<li>GPUs are the backbone of compute infra to train Deep Neural Nets. At the heart of it, it is the matrix multiplication that needs to be done efficiently. What if networks have no explicit MatMul operations - see <a href="https://arxiv.org/abs/2406.02528">Scalable MatMul-free Language Modeling</a> for an approach or the more recent <a href="https://arxiv.org/abs/2405.16339">BOLD: Boolean Logic Deep Learning</a> where networks are trained based on a new mathematical principle of Boolean Variation with considerations for chip architecture, memory hierarchy, dataflow and arithmetic precision.</li>
+<li>Can we directly burn the model onto silicon? That is, can we take a Boolean MLP specified in PyTorch and create HDL files using the latest and greatest in VLSI technology? See <a href="https://github.com/fastmachinelearning/hls4ml">hls4ml</a> project.</li>
 </ul></li>
 </ul>
 </section>
@@ -777,6 +779,7 @@ y &amp;=&amp;  h_1 + h_2 - 0.5\\
 <li>AND, OR, NAND, NOR gates can be realized by Perceptrons.</li>
 <li>Sum-of-Products can be realized by an MLP with 1-hidden layer.</li>
 <li>(Therefore) MLP with 1-hidden layer is a Universal Approximator of (any) M-Boolean circuit</li>
+<li>Boolean MLPs open up interesting avenues to explore Weight Initialization strategies, Pruning, Hardware Accelerators, and studying loss surfaces.</li>
 </ul></li>
 </ul>
 </section>
@@ -786,6 +789,25 @@ y &amp;=&amp;  h_1 + h_2 - 0.5\\
 <li><a href="https://www.amazon.in/Generalized-Chapman-Monographs-Statistics-Probability/dp/0412317605">Generalized Linear Models</a>, a classic, by McCullagh and Nelder.</li>
 <li><a href="https://www.amazon.in/Categorical-Analysis-Wiley-Probability-Statistics/dp/0470463635">Categorical Data Analysis</a>, a classic, by Alen Agresti. His others books are nice too.</li>
 <li><a href="https://www.amazon.in/Vector-Generalized-Additive-Springer-Statistics/dp/1493928171">Vector Generalized Linear and Additive Moldes</a> T. W. Yee</li>
+</ul>
+</section>
+<section id="exercises" class="level3">
+<h3 class="anchored" data-anchor-id="exercises">Exercises</h3>
+<ul>
+<li>Verify/Prove that M-ary AND, OR, NAND, and NOR logic gates in the notes are correct.</li>
+<li>Show that XOR can not be realized by a Perceptron</li>
+<li>Prove (by any other method) that AANOR gate is correct.</li>
+<li>In the notes we have used SoP form. But one can also realize Boolean circuits via Product-of-Sums (PoS). Design a 1-hidden layer Boolean network and show that it is also another Universal Approximator of an M-Ary Truth Table.</li>
+</ul>
+</section>
+<section id="mini-project" class="level3">
+<h3 class="anchored" data-anchor-id="mini-project">Mini Project</h3>
+<ul>
+<li>Take a tabular data (Eg. <a href="https://scikit-learn.org/1.5/auto_examples/datasets/plot_iris_dataset.html">Iris data</a> but only consider two features) with numerical features, and Binary Class.</li>
+<li><a href="https://scikit-learn.org/1.5/modules/generated/sklearn.preprocessing.KBinsDiscretizer.html">Quantile Bin</a> the features. Effectively, one hot code each feature where the bins represents the quantiles the sample belongs to.</li>
+<li>By now, we have turned the inputs to Boolean inputs. Output is already Boolean.</li>
+<li>Build a 1-hidden layer Boolean MLP</li>
+<li>Synthesize the circuit using <a href="https://github.com/fastmachinelearning/hls4ml">hls4ml</a></li>
 </ul>
 
 
