@@ -244,10 +244,10 @@ $$
 The outer sum in the SoP is nothing but an OR gate operating on the innards. Therefore, to realize an SoP boolean network, we need an N-ary OR gate (where N can be at most $2^M$ where M is the number of inputs or input dimension).
 Then the inner gate is $AANOR \equiv AND(AND(.), NOR(.))$. Can we realize such as a gate with a Neuron? 
 
-#### MLP with 1-hidden layer
+#### Boolean MLP
 
 
-Observe that, the AANOR gate is hot only when all $x \in A$ are 1s and $x \in A^c$ are 0s. To clarity, the AANOR gate is hot for exactly one of the rows of the $2^M$ rows. Exploiting this fact, we can simplify the Truth Table as follows:
+Observe that the AANOR gate is hot only when all $x \in A$ are 1s and $x \in \bar{A}$ are 0s. To clarify, the AANOR gate is hot for exactly one of the rows of the $2^M$ rows. Exploiting this fact, we can simplify the Truth Table as follows:
 
 Case | $x \in A$ | $x \in \bar{A}$ | $y_{AANOR}$ |
 |-----|-----|-----|-----|-----|
@@ -288,7 +288,7 @@ y &=& OR(\{ AANOR(x^{[i]} \}), i \in \{ i' \text{ s. t } y^[i']=1\}
 \end{array}
 $$
 
-Above can be seen a composition of Boolean gates: 
+Above can be seen a composition of Boolean gates which we can call as Boolean MLP (BMLP): 
 $$
 \text{ inputs > hidden (AANOR)  > output (OR) }
 $$
@@ -316,6 +316,25 @@ $$
 
 Indeed, we recovered the XOR gate. Of course, we are operating on Boolean inputs. The continuous analogue of what we derived for MLPs with 1-hidden layer are due to the early works of Cybenko's [Universal Approximation Theorem](https://hal.science/hal-03753170/) [pdf](https://web.njit.edu/~usman/courses/cs675_fall18/10.1.1.441.7873.pdf). A nice illustration of the Universal Approximation abilities of MLPs can be found here - [Representational Power of NNs](http://neuralnetworksanddeeplearning.com/chap4.html)
 
+#### M-ary SOP Implications
+
+UAT from the lense of Boolean circuits opens up many interesting questions and potential answers to some of them. The critical observation is,  in the discrete case, we see that the AANOR and OR gates consist of +/-1 as the weights and +/-0.5 as the bias terms. This can have many implications.
+
+- Initialization: 
+    - Draw the weights as from $w \sim N(\alpha(2h-1), \sigma_w^2), h \sim \text{Bernoulli}(0.5)$
+    - Draw the bias terms from $b \sim N(\alpha(h-0.5), \sigma_b^2), h \sim \text{Bernoulli}(0.5)$
+    - Note that we have used $\alpha=1$ in deriving a 1-hidden layer Boolean MLP. But different $\alpha$ can be chosen. For example, with $\alpha=20$, Sigmoid activation approximates the Heavyside step function well. For training MLP, w.l.o.g, one can choose $\alpha=0.5$ to make the gradients well behaving.
+- Lottery Ticket Hypothesis: 
+    - [The Lottery Ticket Hypothesis](https://arxiv.org/abs/1803.03635) conjectured that, when networks are densely and randomly intialized, some sub-networks would reach test accuracy comparable to original network. In the discrete case, it would mean that some inputs are exactly mapped to the output (essentially a look up table). And a dense MLP would have implemented a soft version of the look-up table (This essentially shows again that all models are K-Nearest ). The Boolean MLP might be an interesting model to probe the Lottery Ticket Hypothesis further.
+- Pruning and 1-bit LLMs
+    - In the context Large Language Models (LLMs), we see large models with parameters in the order of billions are successfully compressed/quantized without much degradation in the performance. See for example, [The Era of 1-bit LLMs. All LLMs are 1.58 bits](https://arxiv.org/abs/2402.17764). If all the weights are sampled from \{-1,0,+1}\ they require $\log_2(3)=1.58$ bits. 
+    - The optimal Boolean MLPs are precisely 1 bit networks, but it is easy see that, the fully specified and overparametrized Boolean MLPs are 1.58 bits, where 0 weight models skip connections.
+- Hardware Accelerators
+    - We are seeing a surge in hardware accelerators (and downstream toolchains including compilers, and hardware-software co-design) to make both training and  inference faster. 
+    - GPUs are the backbone of compute infra to train Deep Neural Nets. At the heart of it, it is the matrix multiplication that needs to be done efficiently.  What if we networks have no explicit MatMul operations - see [Scalable MatMul-free Language Modeling](https://arxiv.org/abs/2406.02528) for an approach or the more recent [BOLD: Boolean Logic Deep Learning](https://arxiv.org/abs/2405.16339) where networks are trained based on a new mathematical principle of Boolean Variation with considerations for chip architecture, memory hierarchy, dataflow and arithmetic precision. 
+    - Can we directly burn the model onto silicon? That is, can we take a Boolean MLP specified in PyTorch and create HDL files using the latest and greatest in VLSI technology? See [hls4ml](https://github.com/fastmachinelearning/hls4ml).
+
+
 ### Summary
 
 - Logistic regression is a member of Generalized Linear Models (GLMs)
@@ -333,3 +352,4 @@ Indeed, we recovered the XOR gate. Of course, we are operating on Boolean inputs
 - [Generalized Linear Models](https://www.amazon.in/Generalized-Chapman-Monographs-Statistics-Probability/dp/0412317605), a classic, by McCullagh and Nelder.
 - [Categorical Data Analysis](https://www.amazon.in/Categorical-Analysis-Wiley-Probability-Statistics/dp/0470463635), a classic, by Alen Agresti. His others books are nice too. 
 - [Vector Generalized Linear and Additive Moldes](https://www.amazon.in/Vector-Generalized-Additive-Springer-Statistics/dp/1493928171) T.  W. Yee
+
