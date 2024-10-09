@@ -619,9 +619,9 @@ A^{[i]} &amp;=&amp; \{ p \text{ s.t } x_p^{[i]} = 1 \} \\
 \end{array}
 \]</span> The outer sum in the SoP is nothing but an OR gate operating on the innards. Therefore, to realize an SoP boolean network, we need an N-ary OR gate (where N can be at most <span class="math inline">\(2^M\)</span> where M is the number of inputs or input dimension). Then the inner gate is <span class="math inline">\(AANOR \equiv AND(AND(.), NOR(.))\)</span>. Can we realize such as a gate with a Neuron?</p>
 </section>
-<section id="mlp-with-1-hidden-layer" class="level4">
-<h4 class="anchored" data-anchor-id="mlp-with-1-hidden-layer">MLP with 1-hidden layer</h4>
-<p>Observe that, the AANOR gate is hot only when all <span class="math inline">\(x \in A\)</span> are 1s and <span class="math inline">\(x \in A^c\)</span> are 0s. To clarity, the AANOR gate is hot for exactly one of the rows of the <span class="math inline">\(2^M\)</span> rows. Exploiting this fact, we can simplify the Truth Table as follows:</p>
+<section id="boolean-mlp" class="level4">
+<h4 class="anchored" data-anchor-id="boolean-mlp">Boolean MLP</h4>
+<p>Observe that the AANOR gate is hot only when all <span class="math inline">\(x \in A\)</span> are 1s and <span class="math inline">\(x \in \bar{A}\)</span> are 0s. To clarify, the AANOR gate is hot for exactly one of the rows of the <span class="math inline">\(2^M\)</span> rows. Exploiting this fact, we can simplify the Truth Table as follows:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -675,7 +675,7 @@ y &amp;=&amp; H( \sum_{i \in A} (x_i-1) + \sum_{i \in \bar{A}} -x_i + 0.5)
 y &amp;=&amp; OR(\{ AANOR(x^{[i]} \}), i \in \{ i' \text{ s. t } y^[i']=1\}
 \end{array}
 \]</span></p>
-<p>Above can be seen a composition of Boolean gates: <span class="math display">\[
+<p>Above can be seen a composition of Boolean gates which we can call as Boolean MLP (BMLP): <span class="math display">\[
 \text{ inputs &gt; hidden (AANOR)  &gt; output (OR) }
 \]</span> which is indeed an MLP with 1-hidden layer in hindsight, as illustrated in the figure below. <img src="./../figs/FFNs-SOPs.drawio.png" class="img-fluid quarto-figure quarto-figure-center" alt="SOP = MLP with 1-hidden layer"></p>
 <p>Effectively, we exploited the fact that any M-ary Truth Table can be expressed in SOP form, and we have constructed a 1-hidden layer MLP which can exactly model the SoP.</p>
@@ -734,6 +734,33 @@ y &amp;=&amp;  h_1 + h_2 - 0.5\\
 </tbody>
 </table>
 <p>Indeed, we recovered the XOR gate. Of course, we are operating on Boolean inputs. The continuous analogue of what we derived for MLPs with 1-hidden layer are due to the early works of Cybenko’s <a href="https://hal.science/hal-03753170/">Universal Approximation Theorem</a> <a href="https://web.njit.edu/~usman/courses/cs675_fall18/10.1.1.441.7873.pdf">pdf</a>. A nice illustration of the Universal Approximation abilities of MLPs can be found here - <a href="http://neuralnetworksanddeeplearning.com/chap4.html">Representational Power of NNs</a></p>
+</section>
+<section id="m-ary-sop-implications" class="level4">
+<h4 class="anchored" data-anchor-id="m-ary-sop-implications">M-ary SOP Implications</h4>
+<p>UAT from the lense of Boolean circuits opens up many interesting questions and potential answers to some of them. The critical observation is, in the discrete case, we see that the AANOR and OR gates consist of +/-1 as the weights and +/-0.5 as the bias terms. This can have many implications.</p>
+<ul>
+<li>Initialization:
+<ul>
+<li>Draw the weights as from <span class="math inline">\(w \sim N(\alpha(2h-1), \sigma_w^2), h \sim \text{Bernoulli}(0.5)\)</span></li>
+<li>Draw the bias terms from <span class="math inline">\(b \sim N(\alpha(h-0.5), \sigma_b^2), h \sim \text{Bernoulli}(0.5)\)</span></li>
+<li>Note that we have used <span class="math inline">\(\alpha=1\)</span> in deriving a 1-hidden layer Boolean MLP. But different <span class="math inline">\(\alpha\)</span> can be chosen. For example, with <span class="math inline">\(\alpha=20\)</span>, Sigmoid activation approximates the Heavyside step function well. For training MLP, w.l.o.g, one can choose <span class="math inline">\(\alpha=0.5\)</span> to make the gradients well behaving.</li>
+</ul></li>
+<li>Lottery Ticket Hypothesis:
+<ul>
+<li><a href="https://arxiv.org/abs/1803.03635">The Lottery Ticket Hypothesis</a> conjectured that, when networks are densely and randomly intialized, some sub-networks would reach test accuracy comparable to original network. In the discrete case, it would mean that some inputs are exactly mapped to the output (essentially a look up table). And a dense MLP would have implemented a soft version of the look-up table (This essentially shows again that all models are K-Nearest ). The Boolean MLP might be an interesting model to probe the Lottery Ticket Hypothesis further.</li>
+</ul></li>
+<li>Pruning and 1-bit LLMs
+<ul>
+<li>In the context Large Language Models (LLMs), we see large models with parameters in the order of billions are successfully compressed/quantized without much degradation in the performance. See for example, <a href="https://arxiv.org/abs/2402.17764">The Era of 1-bit LLMs. All LLMs are 1.58 bits</a>. If all the weights are sampled from {-1,0,+1}&nbsp;they require <span class="math inline">\(\log_2(3)=1.58\)</span> bits.</li>
+<li>The optimal Boolean MLPs are precisely 1 bit networks, but it is easy see that, the fully specified and overparametrized Boolean MLPs are 1.58 bits, where 0 weight models skip connections.</li>
+</ul></li>
+<li>Hardware Accelerators
+<ul>
+<li>We are seeing a surge in hardware accelerators (and downstream toolchains including compilers, and hardware-software co-design) to make both training and inference faster.</li>
+<li>GPUs are the backbone of compute infra to train Deep Neural Nets. At the heart of it, it is the matrix multiplication that needs to be done efficiently. What if we networks have no explicit MatMul operations - see <a href="https://arxiv.org/abs/2406.02528">Scalable MatMul-free Language Modeling</a> for an approach or the more recent <a href="https://arxiv.org/abs/2405.16339">BOLD: Boolean Logic Deep Learning</a> where networks are trained based on a new mathematical principle of Boolean Variation with considerations for chip architecture, memory hierarchy, dataflow and arithmetic precision.</li>
+<li>Can we directly burn the model onto silicon? That is, can we take a Boolean MLP specified in PyTorch and create HDL files using the latest and greatest in VLSI technology? See <a href="https://github.com/fastmachinelearning/hls4ml">hls4ml</a>.</li>
+</ul></li>
+</ul>
 </section>
 </section>
 <section id="summary" class="level3">
