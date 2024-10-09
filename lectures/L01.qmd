@@ -321,18 +321,18 @@ Indeed, we recovered the XOR gate. Of course, we are operating on Boolean inputs
 UAT from the lense of Boolean circuits opens up many interesting questions and potential answers to some of them. The critical observation is,  in the discrete case, we see that the AANOR and OR gates consist of +/-1 as the weights and +/-0.5 as the bias terms. This can have many implications.
 
 - Initialization: 
-    - Draw the weights as from $w \sim N(\alpha(2h-1), \sigma_w^2), h \sim \text{Bernoulli}(0.5)$
+    - Draw the weights from $w \sim N(\alpha(2h-1), \sigma_w^2), h \sim \text{Bernoulli}(0.5)$
     - Draw the bias terms from $b \sim N(\alpha(h-0.5), \sigma_b^2), h \sim \text{Bernoulli}(0.5)$
     - Note that we have used $\alpha=1$ in deriving a 1-hidden layer Boolean MLP. But different $\alpha$ can be chosen. For example, with $\alpha=20$, Sigmoid activation approximates the Heavyside step function well. For training MLP, w.l.o.g, one can choose $\alpha=0.5$ to make the gradients well behaving.
 - Lottery Ticket Hypothesis: 
-    - [The Lottery Ticket Hypothesis](https://arxiv.org/abs/1803.03635) conjectured that, when networks are densely and randomly intialized, some sub-networks would reach test accuracy comparable to original network. In the discrete case, it would mean that some inputs are exactly mapped to the output (essentially a look up table). And a dense MLP would have implemented a soft version of the look-up table (This essentially shows again that all models are K-Nearest ). The Boolean MLP might be an interesting model to probe the Lottery Ticket Hypothesis further.
+    - [The Lottery Ticket Hypothesis](https://arxiv.org/abs/1803.03635) conjectured that, when networks are densely and randomly intialized, some sub-networks would reach test accuracy comparable to original network. In the discrete case, it would mean that some inputs are exactly mapped to the output (essentially a look up table). And a dense MLP would have implemented a soft version of the look-up table (this essentially shows again that all models are K-Nearest neighbors). The Boolean MLP might be an interesting model to probe the Lottery Ticket Hypothesis further.
 - Pruning and 1-bit LLMs
-    - In the context Large Language Models (LLMs), we see large models with parameters in the order of billions are successfully compressed/quantized without much degradation in the performance. See for example, [The Era of 1-bit LLMs. All LLMs are 1.58 bits](https://arxiv.org/abs/2402.17764). If all the weights are sampled from \{-1,0,+1}\ they require $\log_2(3)=1.58$ bits. 
+    - In the context Large Language Models (LLMs), we see large models with parameters in the order of billions are successfully getting compressed/quantized without much degradation in the performance. See for example, [The Era of 1-bit LLMs. All LLMs are 1.58 bits](https://arxiv.org/abs/2402.17764). If all the weights are sampled from \{-1,0,+1}\ they require $\log_2(3)=1.58$ bits. 
     - The optimal Boolean MLPs are precisely 1 bit networks, but it is easy see that, the fully specified and overparametrized Boolean MLPs are 1.58 bits, where 0 weight models skip connections.
 - Hardware Accelerators
     - We are seeing a surge in hardware accelerators (and downstream toolchains including compilers, and hardware-software co-design) to make both training and  inference faster. 
-    - GPUs are the backbone of compute infra to train Deep Neural Nets. At the heart of it, it is the matrix multiplication that needs to be done efficiently.  What if we networks have no explicit MatMul operations - see [Scalable MatMul-free Language Modeling](https://arxiv.org/abs/2406.02528) for an approach or the more recent [BOLD: Boolean Logic Deep Learning](https://arxiv.org/abs/2405.16339) where networks are trained based on a new mathematical principle of Boolean Variation with considerations for chip architecture, memory hierarchy, dataflow and arithmetic precision. 
-    - Can we directly burn the model onto silicon? That is, can we take a Boolean MLP specified in PyTorch and create HDL files using the latest and greatest in VLSI technology? See [hls4ml](https://github.com/fastmachinelearning/hls4ml).
+    - GPUs are the backbone of compute infra to train Deep Neural Nets. At the heart of it, it is the matrix multiplication that needs to be done efficiently.  What if networks have no explicit MatMul operations - see [Scalable MatMul-free Language Modeling](https://arxiv.org/abs/2406.02528) for an approach or the more recent [BOLD: Boolean Logic Deep Learning](https://arxiv.org/abs/2405.16339) where networks are trained based on a new mathematical principle of Boolean Variation with considerations for chip architecture, memory hierarchy, dataflow and arithmetic precision. 
+    - Can we directly burn the model onto silicon? That is, can we take a Boolean MLP specified in PyTorch and create HDL files using the latest and greatest in VLSI technology? See [hls4ml](https://github.com/fastmachinelearning/hls4ml) project.
 
 
 ### Summary
@@ -347,9 +347,23 @@ UAT from the lense of Boolean circuits opens up many interesting questions and p
     - AND, OR, NAND, NOR gates can be realized by Perceptrons.
     - Sum-of-Products can be realized by an MLP with 1-hidden layer.
     - (Therefore) MLP with 1-hidden layer is a Universal Approximator of (any) M-Boolean circuit
+    - Boolean MLPs open up interesting avenues to explore Weight Initialization strategies, Pruning, Hardware Accelerators, and studying loss surfaces.
 
 ### Additional References
 - [Generalized Linear Models](https://www.amazon.in/Generalized-Chapman-Monographs-Statistics-Probability/dp/0412317605), a classic, by McCullagh and Nelder.
 - [Categorical Data Analysis](https://www.amazon.in/Categorical-Analysis-Wiley-Probability-Statistics/dp/0470463635), a classic, by Alen Agresti. His others books are nice too. 
 - [Vector Generalized Linear and Additive Moldes](https://www.amazon.in/Vector-Generalized-Additive-Springer-Statistics/dp/1493928171) T.  W. Yee
 
+### Exercises
+
+- Verify/Prove that M-ary AND, OR, NAND, and NOR logic gates in the notes are correct.
+- Show that XOR can not be realized by a Perceptron
+- Prove (by any other method) that AANOR gate is correct.
+- In the notes we have used SoP form. But one can also realize Boolean circuits via Product-of-Sums (PoS). Design a 1-hidden layer Boolean network and show that it is also another Universal Approximator of an M-Ary Truth Table.
+
+### Mini Project
+- Take a tabular data (Eg. [Iris data](https://scikit-learn.org/1.5/auto_examples/datasets/plot_iris_dataset.html) but only consider two features) with numerical features, and Binary Class.
+- [Quantile Bin](https://scikit-learn.org/1.5/modules/generated/sklearn.preprocessing.KBinsDiscretizer.html) the features. Effectively, one hot code each feature where the bins represents the quantiles the sample belongs to. 
+- By now, we have turned the inputs to Boolean inputs. Output is already Boolean.
+- Build a 1-hidden layer Boolean MLP
+- Synthesize the circuit using [hls4ml](https://github.com/fastmachinelearning/hls4ml) 
