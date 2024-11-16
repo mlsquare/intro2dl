@@ -37,6 +37,8 @@ book:
     - ./lectures/L01.qmd
     - ./lectures/L02.qmd
     - ./lectures/L03.qmd
+    - ./lectures/L04.qmd
+    - ./lectures/L05.qmd
   - part: Lab
     chapters:
     - ./notebooks/00-01-FFN-Classification-Iris.ipynb
