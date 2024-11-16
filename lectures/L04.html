@@ -71,35 +71,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -269,15 +240,6 @@ window.Quarto = {
   <li><a href="#additional-references" id="toc-additional-references" class="nav-link" data-scroll-target="#additional-references">Additional References</a></li>
   </ul></li>
   <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes">Notes</a></li>
-  <li><a href="#linear-models" id="toc-linear-models" class="nav-link" data-scroll-target="#linear-models">Linear Models</a></li>
-  <li><a href="#fourier-analysis" id="toc-fourier-analysis" class="nav-link" data-scroll-target="#fourier-analysis">Fourier Analysis</a></li>
-  <li><a href="#dynamical-models-kalman-filters" id="toc-dynamical-models-kalman-filters" class="nav-link" data-scroll-target="#dynamical-models-kalman-filters">Dynamical Models: <strong>Kalman Filters</strong></a>
-  <ul class="collapse">
-  <li><a href="#ar1-system" id="toc-ar1-system" class="nav-link" data-scroll-target="#ar1-system">AR(1) System</a>
-  <ul class="collapse">
-  <li><a href="#notes-1" id="toc-notes-1" class="nav-link" data-scroll-target="#notes-1">Notes:</a></li>
-  </ul></li>
-  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/mlsquare/intro2dl/edit/main/lectures/L04.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mlsquare/intro2dl/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -338,7 +300,8 @@ window.Quarto = {
 <section id="post-class" class="level3">
 <h3 class="anchored" data-anchor-id="post-class">Post-class:</h3>
 <ul>
-<li><a href="https://www.youtube.com/watch?v=0oaSSenz_kg">GRU Analysis</a> -<a href="https://karpathy.github.io/2015/05/21/rnn-effectiveness/">Blog</a> - The unreasonable effectiveness of RNNs by Anreaj Karpathy</li>
+<li><a href="https://www.youtube.com/watch?v=0oaSSenz_kg">GRU Analysis</a></li>
+<li><a href="https://karpathy.github.io/2015/05/21/rnn-effectiveness/">Blog</a> - The unreasonable effectiveness of RNNs by Anreaj Karpathy</li>
 </ul>
 </section>
 <section id="rnn-papers-and-advancements" class="level3">
@@ -367,60 +330,9 @@ window.Quarto = {
 </section>
 <section id="notes" class="level2">
 <h2 class="anchored" data-anchor-id="notes">Notes</h2>
-<p>Sure, here is the content converted into Markdown format:</p>
-</section>
-<section id="linear-models" class="level1">
-<h1>Linear Models</h1>
-<ol type="1">
-<li><strong>Line:</strong> <span class="math inline">\(x_i = \beta_0 + \beta_1 t + e_i\)</span>
-<ul>
-<li>Example: Section 3.7 from a textbook by S. M. Kay.</li>
-</ul></li>
-<li><strong>De-trended:</strong> <span class="math inline">\(x_i = \mu + e_i\)</span>
-<ul>
-<li>Example: Section 3.3 from S. M. Kay.</li>
-</ul></li>
-<li><strong>Curve:</strong> <span class="math inline">\(x_i = \beta_0 + \beta_1 t + \beta_2 t^2 + e_i\)</span>
-<ul>
-<li>Example: Section 4.4 from S. M. Kay.</li>
-</ul></li>
-</ol>
-<hr>
-</section>
-<section id="fourier-analysis" class="level1">
-<h1>Fourier Analysis</h1>
-<p><span class="math inline">\(x_i = \sum_{k=1}^{M} a_k \cos \left( \frac{2 \pi k i}{N} \right) + \sum_{k=1}^{M} b_k \sin \left( \frac{2 \pi k i}{N} \right) + e_i\)</span></p>
-<p>where <span class="math inline">\(e_i \sim N(0,1) \) for \( i = 1 \ldots N\)</span>.</p>
-<hr>
-</section>
-<section id="dynamical-models-kalman-filters" class="level1">
-<h1>Dynamical Models: <strong>Kalman Filters</strong></h1>
-<p>Consider the AR-signal again:</p>
-<p><span class="math inline">\(x_i = \mu + e_i\)</span></p>
-<p>A more accurate model is:</p>
-<p><span class="math inline">\(x_i = \mu_i + e_i\)</span> - The signal is changing with time.</p>
-<p>Another model:</p>
-<p><span class="math inline">\(S_t = a S_{t-1} + e_t\)</span> - For <span class="math inline">\(t = 1, 2, \ldots, N\)</span> - This is an <strong>auto-regressive model</strong> with <span class="math inline">\(\text{Var}(e_t) = \sigma_e^2\)</span></p>
-<hr>
-<section id="ar1-system" class="level2">
-<h2 class="anchored" data-anchor-id="ar1-system">AR(1) System</h2>
-<p><span class="math inline">\(S(t) \sim N(\mu_s, \sigma_s^2) \quad \text{for} \quad t \ge 0\)</span></p>
-<ul>
-<li>Initial condition not satisfied (steady-state not yet reached).</li>
-</ul>
-<p>Example: - Parameters: <span class="math inline">\(\( a = 0.9, \sigma_s^2 = 0.1, \mu_s = 5, \sigma_e^2 = 1 \)\)</span> - Question: What does this signal look like?</p>
-<section id="notes-1" class="level3">
-<h3 class="anchored" data-anchor-id="notes-1">Notes:</h3>
-<p><span class="math display">\[
-S_0 = aS(t) + u_0 \\
-S_1 = aS_0 + u_1 \\
-\vdots
-S_n = aS(t) + \sum_{k=0}^{n} e(n-k)
-\]</span></p>
+<p>tbd</p>
 
 
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->

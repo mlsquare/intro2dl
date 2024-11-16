@@ -251,7 +251,7 @@
     "href": "lectures/L04.html#materials",
     "title": "RNNs",
     "section": "",
-    "text": "Pre-work:\n\nRefresh ML foundations.\nRead “The 100 page ML book” by Andiry Burkov. Chapters accessible here\nFFNs\nCNNs\nKNNs\n\n\n\nIn-Class\n\nChapter 9 from on RNNs from d2l.\nSebastian Raschka’s lecture on RNNs pdf\nUnderstanding LSTMs Chris Cola’s Blog\nLecture 14 on RNNs from from Mitesh Khapra’s CS7015\nLecture 15 on GRUs, LSTMs, from Mitesh Khapra’s CS7015\n\n\n\nLab\n\nSebastican Raschka’s tuotrial blog, RNN Classifier on IMDB notebook\nSentiment Analysis, with RNNs\nmicrograd a no dependency, tiny backprop, with a PyTorch like API, from the legendary Andreaj Karpathy\nBoolGrad backprop on Boolean Computational Graph, based on micrograd.\n\n\n\nPost-class:\n\nGRU Analysis -Blog - The unreasonable effectiveness of RNNs by Anreaj Karpathy\n\n\n\nRNN Papers and Advancements\n\nTransformers are Multi-state RNNs\nWere RNNs All We Needed?\nxLSTM: Extended Long Short-Term Memory\nTransformers are RNNs: Fast Autoregressive Transformers with Linear Attention\n\n\n\nTheory\n\ntbd\ntbd\n\n\n\nAdditional References\n\nSaebastian Raschk’s course, youtube playlist, Book\ntbd",
+    "text": "Pre-work:\n\nRefresh ML foundations.\nRead “The 100 page ML book” by Andiry Burkov. Chapters accessible here\nFFNs\nCNNs\nKNNs\n\n\n\nIn-Class\n\nChapter 9 from on RNNs from d2l.\nSebastian Raschka’s lecture on RNNs pdf\nUnderstanding LSTMs Chris Cola’s Blog\nLecture 14 on RNNs from from Mitesh Khapra’s CS7015\nLecture 15 on GRUs, LSTMs, from Mitesh Khapra’s CS7015\n\n\n\nLab\n\nSebastican Raschka’s tuotrial blog, RNN Classifier on IMDB notebook\nSentiment Analysis, with RNNs\nmicrograd a no dependency, tiny backprop, with a PyTorch like API, from the legendary Andreaj Karpathy\nBoolGrad backprop on Boolean Computational Graph, based on micrograd.\n\n\n\nPost-class:\n\nGRU Analysis\nBlog - The unreasonable effectiveness of RNNs by Anreaj Karpathy\n\n\n\nRNN Papers and Advancements\n\nTransformers are Multi-state RNNs\nWere RNNs All We Needed?\nxLSTM: Extended Long Short-Term Memory\nTransformers are RNNs: Fast Autoregressive Transformers with Linear Attention\n\n\n\nTheory\n\ntbd\ntbd\n\n\n\nAdditional References\n\nSaebastian Raschk’s course, youtube playlist, Book\ntbd",
     "crumbs": [
       "Lectures",
       "RNNs"
@@ -262,18 +262,7 @@
     "href": "lectures/L04.html#notes",
     "title": "RNNs",
     "section": "Notes",
-    "text": "Notes\nSure, here is the content converted into Markdown format:",
-    "crumbs": [
-      "Lectures",
-      "RNNs"
-    ]
-  },
-  {
-    "objectID": "lectures/L04.html#ar1-system",
-    "href": "lectures/L04.html#ar1-system",
-    "title": "RNNs",
-    "section": "AR(1) System",
-    "text": "AR(1) System\n\\(S(t) \\sim N(\\mu_s, \\sigma_s^2) \\quad \\text{for} \\quad t \\ge 0\\)\n\nInitial condition not satisfied (steady-state not yet reached).\n\nExample: - Parameters: \\(\\( a = 0.9, \\sigma_s^2 = 0.1, \\mu_s = 5, \\sigma_e^2 = 1 \\)\\) - Question: What does this signal look like?\n\nNotes:\n\\[\nS_0 = aS(t) + u_0 \\\\\nS_1 = aS_0 + u_1 \\\\\n\\vdots\nS_n = aS(t) + \\sum_{k=0}^{n} e(n-k)\n\\]",
+    "text": "Notes\ntbd",
     "crumbs": [
       "Lectures",
       "RNNs"
