@@ -17,8 +17,7 @@ Date: Saturday, 16-November-2024, 1.30pm, IST.
 
 -   [Chapter 9](https://d2l.ai/chapter_recurrent-neural-networks/index.html) from on RNNs from d2l.
 -   Sebastian Raschka's lecture on RNNs [pdf](https://sebastianraschka.com/pdf/lecture-notes/stat453ss21/L15_intro-rnn__slides.pdf)
-- [LLMs @ UPenn](https://llm-class.github.io/schedule.html) [Part-1](https://llm-class.github.io/slides/Lecture%205%20-%20The%20Transformer%20Architecture%20-%20Part%20I.pdf), 
-- [Part-2](https://llm-class.github.io/slides/Lecture%206%20-%20The%20Transformer%20Architecture%20-%20Part%20II.pdf)
+- [LLMs @ UPenn](https://llm-class.github.io/schedule.html) [Part-1](https://llm-class.github.io/slides/Lecture%205%20-%20The%20Transformer%20Architecture%20-%20Part%20I.pdf), [Part-2](https://llm-class.github.io/slides/Lecture%206%20-%20The%20Transformer%20Architecture%20-%20Part%20II.pdf)
 - [LLMs: Introduction and Recent Advances @ IIT Delhi](https://lcs2-iitd.github.io/ELL881-AIL821-2401/) Module-5 on RNNs, Module-6 on Attention and Transformers
 
 ### Lab
@@ -28,9 +27,6 @@ Date: Saturday, 16-November-2024, 1.30pm, IST.
 
 
 ### Post-class:
-
--   [GRU Analysis](https://www.youtube.com/watch?v=0oaSSenz_kg)
--   [Blog](https://karpathy.github.io/2015/05/21/rnn-effectiveness/) - The unreasonable effectiveness of RNNs by Anreaj Karpathy
 
 - [Attention Is All You Need](https://proceedings.neurips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf)
 - [The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/)
