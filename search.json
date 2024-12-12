@@ -300,5 +300,27 @@
       "Lectures",
       "Transformers"
     ]
+  },
+  {
+    "objectID": "lectures/L06.html",
+    "href": "lectures/L06.html",
+    "title": "SSMs",
+    "section": "",
+    "text": "Materials:\nDate: Thursday, 12-December-2024, 1.30pm, IST.",
+    "crumbs": [
+      "Lectures",
+      "SSMs"
+    ]
+  },
+  {
+    "objectID": "lectures/L06.html#materials",
+    "href": "lectures/L06.html#materials",
+    "title": "SSMs",
+    "section": "",
+    "text": "Pre-work:\n\nRefresh ML foundations.\nRead “The 100 page ML book” by Andiry Burkov. Chapters accessible here\nFFNs\nCNNs\nKNNs\nRNNs\nTransformers\n\n\n\nIn-Class\n\nslides Efficiently Modeling Long Sequences with Structured State Spaces by Albert Gu\nslides by Alan Milligan, UBC MLRG Summer 2024\nThe Annotated S4 blog | slides Generating Extremely Long Sequences in JAX, by Sasha Rush and Sidd Karamcheti | talk\nblog Introduction to State Space Models by Loick Bourdois\nChapter 7 of Aaraon R. Voelker’s Thesis\n\n\n\nLab\n\nMamba-Minimal walk through, a minimal implementation of Mamba\n\n\n\nPost-class:\n\nAlbert Gu’s blogs on S4 Part-1, Part-2 and Part-3\n#46 MLSys @ Stanford Talk by Albert Gu\nThe Annotated S4 blog | code\ncode - Official implementation of S4\ncode another minimal implementation of Mamba\nblog History of SSMs in 2022\n\n\n\nAdditional References\n\nLMU Legendre Memory Units: Continuous-Time Representation in Recurrent Neural Networks, Aaraon R. Voelker et al, NeurIPS 2019.\nThesis Dynamical Systems in Spiking Neuromorphic Hardware. Chapter 7 on Delay Networks is very useful to understand how the HiPPo matrix gets derived.\npaper Efficiently Modeling Long Sequences with Structured State Spaces, Albert Gu, Karan Goel, Christopher Ré, 2021\npaper Combining Recurrent, Convolutional, and Continuous-time Models with Linear State-Space Layers, Albert Gu, Isys Johnson, Karan Goel, Khaled Saab, Tri Dao, Atri Rudra, Christopher Ré, 2022\npaper\npaper How to Train Your HiPPO: State Space Models with Generalized Orthogonal Basis Projections, Albert Gu, Isys Johnson, Aman Timalsina, Atri Rudra, Christopher Ré\npaper Diagonal State Spaces are as Effective as Structured State Spaces, Ankit Gupta, Albert Gu, Jonathan Berant\npaper On the Parameterization and Initialization of Diagonal State Space Models, Albert Gu, Ankit Gupta, Karan Goel, Christopher Ré\npaper S4ND: Modeling Images and Videos as Multidimensional Signals Using State Spaces, Eric Nguyen, Karan Goel, Albert Gu, Gordon W. Downs, Preey Shah, Tri Dao, Stephen A. Baccus, Christopher Ré\npaper Transformers are SSMs: Generalized Models and Efficient Algorithms Through Structured State Space Duality, Tri Dao, Albert Gu",
+    "crumbs": [
+      "Lectures",
+      "SSMs"
+    ]
   }
 ]

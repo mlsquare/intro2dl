@@ -8,7 +8,7 @@
 
 <meta name="author" content="mlsquare">
 
-<title>Course – Deep Learning</title>
+<title>SSMs – Deep Learning</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,25 +24,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./lectures/L01.html" rel="next">
-<link href="./index.html" rel="prev">
-<link href="./logo.jpg" rel="icon" type="image/jpeg">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../notebooks/00-01-FFN-Classification-Iris.html" rel="next">
+<link href="../lectures/L05.html" rel="prev">
+<link href="../logo.jpg" rel="icon" type="image/jpeg">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -83,7 +83,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course.html"><span class="chapter-title">Course</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lectures/L01.html">Lectures</a></li><li class="breadcrumb-item"><a href="../lectures/L06.html">SSMs</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -98,7 +98,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Deep Learning</a> 
+      <a href="../">Deep Learning</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/mlsquare/intro2dl" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
@@ -118,19 +118,19 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./preface.html" class="sidebar-item-text sidebar-link">
+  <a href="../preface.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Welcome</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Course</span></a>
+  <a href="../course.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Course</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -144,37 +144,37 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lectures/L01.html" class="sidebar-item-text sidebar-link">
+  <a href="../lectures/L01.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">FFNs</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lectures/L02.html" class="sidebar-item-text sidebar-link">
+  <a href="../lectures/L02.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">CNNs</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lectures/L03.html" class="sidebar-item-text sidebar-link">
+  <a href="../lectures/L03.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">KANs</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lectures/L04.html" class="sidebar-item-text sidebar-link">
+  <a href="../lectures/L04.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">RNNs</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lectures/L05.html" class="sidebar-item-text sidebar-link">
+  <a href="../lectures/L05.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Transformers</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lectures/L06.html" class="sidebar-item-text sidebar-link">
+  <a href="../lectures/L06.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">SSMs</span></a>
   </div>
 </li>
@@ -191,42 +191,42 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./notebooks/00-01-FFN-Classification-Iris.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">FFN Classification</span></a>
+  <a href="../notebooks/00-01-FFN-Classification-Iris.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">FFN Classification</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./notebooks/00-02-FFN-Regression-Friedman2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">FFNs Regression</span></a>
+  <a href="../notebooks/00-02-FFN-Regression-Friedman2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">FFNs Regression</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./notebooks/02-01-KAN-Intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">KAN Intro</span></a>
+  <a href="../notebooks/02-01-KAN-Intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">KAN Intro</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./notebooks/02-02-KAN-Splines.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">KAN with Splines</span></a>
+  <a href="../notebooks/02-02-KAN-Splines.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">KAN with Splines</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./notebooks/02-03-KAN-RBFs.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">KANs with RBFs</span></a>
+  <a href="../notebooks/02-03-KAN-RBFs.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">KANs with RBFs</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./notebooks/02-04-KAN-Chebyshev.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">KANs with Chebyshev</span></a>
+  <a href="../notebooks/02-04-KAN-Chebyshev.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">KANs with Chebyshev</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./notebooks/02-05-KAN-Wavelets.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">KANs with Wavelets</span></a>
+  <a href="../notebooks/02-05-KAN-Wavelets.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">KANs with Wavelets</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./notebooks/02-07-KAN-PDE.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">KAN PDE Solver</span></a>
+  <a href="../notebooks/02-07-KAN-PDE.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">KAN PDE Solver</span></a>
   </div>
 </li>
       </ul>
@@ -241,20 +241,23 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#syllabus-schedule" id="toc-syllabus-schedule" class="nav-link active" data-scroll-target="#syllabus-schedule">Syllabus &amp; Schedule</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a>
+  <li><a href="#materials" id="toc-materials" class="nav-link active" data-scroll-target="#materials">Materials:</a>
   <ul class="collapse">
-  <li><a href="#references-1" id="toc-references-1" class="nav-link" data-scroll-target="#references-1">References</a></li>
+  <li><a href="#pre-work" id="toc-pre-work" class="nav-link" data-scroll-target="#pre-work">Pre-work:</a></li>
+  <li><a href="#in-class" id="toc-in-class" class="nav-link" data-scroll-target="#in-class">In-Class</a></li>
+  <li><a href="#lab" id="toc-lab" class="nav-link" data-scroll-target="#lab">Lab</a></li>
+  <li><a href="#post-class" id="toc-post-class" class="nav-link" data-scroll-target="#post-class">Post-class:</a></li>
+  <li><a href="#additional-references" id="toc-additional-references" class="nav-link" data-scroll-target="#additional-references">Additional References</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/mlsquare/intro2dl/edit/main/course.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mlsquare/intro2dl/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/mlsquare/intro2dl/edit/main/lectures/L06.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mlsquare/intro2dl/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lectures/L01.html">Lectures</a></li><li class="breadcrumb-item"><a href="../lectures/L06.html">SSMs</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">Course</span></h1>
+<h1 class="title">SSMs</h1>
 </div>
 
 
@@ -271,68 +274,62 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>You will find below material and schedule for <em>Deep Learning: A Mathematical Introduction</em> being discussed at <a href="https://www.math.tifrbng.res.in/">TIFR-CAM</a>, Bangalore, in the Fall of 2024. This will evolve as the discussion progress.</p>
-<section id="syllabus-schedule" class="level3">
-<h3 class="anchored" data-anchor-id="syllabus-schedule">Syllabus &amp; Schedule</h3>
-<div style="font-size: 80%;">
-<table class="table-striped caption-top table">
-<caption>Part-1: Deep Learning Models</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Wk</th>
-<th style="text-align: left;">Dt</th>
-<th style="text-align: left;">Topics</th>
-<th style="text-align: left;">Resources</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">01</td>
-<td style="text-align: left;">07-Sep</td>
-<td style="text-align: left;">1. Course Intro <br> 2. FFNs</td>
-<td style="text-align: left;"><a href="./lectures/L01.html">L01</a></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">02</td>
-<td style="text-align: left;">tbd</td>
-<td style="text-align: left;">1. CNNs Intro <br> 2. Lab <br> 3. Architectures</td>
-<td style="text-align: left;"><a href="./lectures/L02.html">L02</a></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">02</td>
-<td style="text-align: left;">21-Sep</td>
-<td style="text-align: left;">1. KAN (with Splines) <br> 2. Nonparametric Regression <br> 2. KAN Variants</td>
-<td style="text-align: left;"><a href="./lectures/L03.html">L03</a></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<ol type="1">
-<li>[course] <a href="http://www.cse.iitm.ac.in/~miteshk/CS6910.html">CS6910</a>, Prof.&nbsp;Mitesh Khapra’s CS6910 Deep Learning at IIT-M</li>
-<li>[course] <a href="https://deepgenerativemodels.github.io/">CS236</a> Prof.&nbsp;Stefano Emron’s course on Deep Generative Modeling at Stanford Fall’23</li>
-<li>[Book] <a href="https://jmtomczak.github.io/dgm_book.html">Deep Generative Modeling</a>, Jakub Tomxzak</li>
-<li>[Book] <a href="https://udlbook.github.io/udlbook/">Understanding Deep Learning</a>, Simon Prince</li>
-<li>[Book] <a href="https://www.deeplearningbook.org/">Deep Learning</a>, Ian Goodfellow and Yoshua Bengio and Aaron Courville</li>
-</ol>
-<section id="references-1" class="level3">
-<h3 class="anchored" data-anchor-id="references-1">References</h3>
+<section id="materials" class="level2">
+<h2 class="anchored" data-anchor-id="materials">Materials:</h2>
+<p>Date: Thursday, 12-December-2024, 1.30pm, IST.</p>
+<section id="pre-work" class="level3">
+<h3 class="anchored" data-anchor-id="pre-work">Pre-work:</h3>
 <ul>
-<li>R01: <a href="http://www.cse.iitm.ac.in/~miteshk/CS6910.html">CS6910: Deep Learning</a> Prof.&nbsp;<a href="https://www.cse.iitm.ac.in/~miteshk/">Mitesh Khapra</a> @ IIT Madras</li>
-<li>R02: <a href="https://www.cse.iitm.ac.in/~miteshk/CS7015_2019.html">CS7015: Deep Learning</a> Prof.&nbsp;<a href="https://www.cse.iitm.ac.in/~miteshk/">Mitesh Khapra</a> @ IIT Madras(earlier version of CS6910)</li>
-<li>R03: <a href="https://www.shane.st/teaching/574/spr24/">LING 574: Deep Learning for NLP</a> Prof.&nbsp;<a href="https://www.shane.st/">Shane Steinert-Threlkeld</a> @ University of Washington</li>
-<li>R04: <a href="https://d2l.ai/index.html">Dive into Deep Learning</a> <a href="https://alex.smola.org/">Alex Smola</a> et al</li>
-<li>R05: <a href="https://udlbook.github.io/udlbook/">Understanding Deep Learning</a> Prof.&nbsp;<a href="https://www.bath.ac.uk/person/1545883">Simon Prince</a></li>
-<li>R06: <a href="http://neuralnetworksanddeeplearning.com/">Neural Networks and Deep Learning</a> Michael Nielsen</li>
-<li>R07: <a href="https://archive.nptel.ac.in/noc/courses/noc20/SEM2/noc20-cs88/">Deep Learning for Computer Vision</a> NPTEL course by Prof.&nbsp;<a href="https://people.iith.ac.in/vineethnb/">Vineeth N Balasubramanian</a></li>
-<li>R08: <a href="https://deepgenerativemodels.github.io/">CS236</a> Prof.&nbsp;Stefano Emron’s course on Deep Generative Modeling at Stanford Fall’23</li>
-<li>R09: <a href="https://jmtomczak.github.io/dgm_book.html">Deep Generative Modeling</a>, Jakub Tomxzak</li>
-<li>R10 <a href="https://www.deeplearningbook.org/">Deep Learning</a>, Ian Goodfellow and Yoshua Bengio and Aaron Courville</li>
+<li>Refresh ML foundations.</li>
+<li>Read “The 100 page ML book” by Andiry Burkov. Chapters accessible <a href="https://themlbook.com/wiki/doku.php">here</a></li>
+<li><a href="../lectures/L01.html">FFNs</a></li>
+<li><a href="../lectures/L02.html">CNNs</a></li>
+<li><a href="../lectures/L03.html">KNNs</a></li>
+<li><a href="../lectures/L03.html">RNNs</a></li>
+<li><a href="../lectures/L04.html">Transformers</a></li>
 </ul>
-<p><a href="https://www.linkedin.com/in/somasdhavala/">Soma S Dhavala</a><br>
-Discussion Anchor</p>
+</section>
+<section id="in-class" class="level3">
+<h3 class="anchored" data-anchor-id="in-class">In-Class</h3>
+<ul>
+<li><a href="https://rosanneliu.com/dlctfs/dlct_220114.pdf">slides</a> Efficiently Modeling Long Sequences with Structured State Spaces by <a href="https://goombalab.github.io/">Albert Gu</a></li>
+<li><a href="https://www.cs.ubc.ca/labs/lci/mlrg/slides/MLRGSummer2024.alan.pdf">slides</a> by <a href="https://www.cs.ubc.ca/~alanmil/">Alan Milligan</a>, UBC MLRG Summer 2024</li>
+<li>The Annotated S4 <a href="https://srush.github.io/annotated-s4/">blog</a> | <a href="https://srush.github.io/annotated-s4/slides.html#1">slides</a> Generating Extremely Long Sequences in JAX, by Sasha Rush and Sidd Karamcheti | <a href="https://www.youtube.com/watch?v=GqwhkbrWDOI">talk</a></li>
+<li><a href="https://huggingface.co/blog/lbourdois/get-on-the-ssm-train">blog</a> Introduction to State Space Models by Loick Bourdois</li>
+<li>Chapter 7 of Aaraon R. Voelker’s <a href="https://uwspace.uwaterloo.ca/items/93e6f962-81cb-4606-b0c2-40ab113da4e3">Thesis</a></li>
+</ul>
+</section>
+<section id="lab" class="level3">
+<h3 class="anchored" data-anchor-id="lab">Lab</h3>
+<ul>
+<li><a href="https://github.com/johnma2006/mamba-minimal">Mamba-Minimal</a> walk through, a minimal implementation of Mamba</li>
+</ul>
+</section>
+<section id="post-class" class="level3">
+<h3 class="anchored" data-anchor-id="post-class">Post-class:</h3>
+<ul>
+<li>Albert Gu’s blogs on S4 <a href="https://hazyresearch.stanford.edu/blog/2022-01-14-s4-1">Part-1</a>, <a href="https://hazyresearch.stanford.edu/blog/2022-01-14-s4-2">Part-2</a> and <a href="https://hazyresearch.stanford.edu/blog/2022-01-14-s4-3">Part-3</a></li>
+<li><a href="https://www.youtube.com/watch?v=EvQ3ncuriCM">#46 MLSys @ Stanford</a> Talk by Albert Gu</li>
+<li>The Annotated S4 <a href="https://srush.github.io/annotated-s4/">blog</a> | <a href="https://github.com/srush/annotated-s4/">code</a></li>
+<li><a href="https://github.com/state-spaces/s4">code</a> - Official implementation of S4</li>
+<li><a href="https://github.com/alxndrTL/mamba.py">code</a> another minimal implementation of Mamba</li>
+<li><a href="https://huggingface.co/blog/lbourdois/ssm-2022">blog</a> History of SSMs in 2022</li>
+</ul>
+</section>
+<section id="additional-references" class="level3">
+<h3 class="anchored" data-anchor-id="additional-references">Additional References</h3>
+<ul>
+<li><a href="https://proceedings.neurips.cc/paper_files/paper/2019/file/952285b9b7e7a1be5aa7849f32ffff05-Paper.pdf">LMU</a> Legendre Memory Units: Continuous-Time Representation in Recurrent Neural Networks, Aaraon R. Voelker et al, NeurIPS 2019.</li>
+<li><a href="https://uwspace.uwaterloo.ca/items/93e6f962-81cb-4606-b0c2-40ab113da4e3">Thesis</a> Dynamical Systems in Spiking Neuromorphic Hardware. Chapter 7 on Delay Networks is very useful to understand how the HiPPo matrix gets derived.</li>
+<li><a href="https://arxiv.org/abs/2111.00396">paper</a> Efficiently Modeling Long Sequences with Structured State Spaces, Albert Gu, Karan Goel, Christopher Ré, 2021</li>
+<li><a href="https://arxiv.org/abs/2110.13985">paper</a> Combining Recurrent, Convolutional, and Continuous-time Models with Linear State-Space Layers, Albert Gu, Isys Johnson, Karan Goel, Khaled Saab, Tri Dao, Atri Rudra, Christopher Ré, 2022</li>
+<li><a href="">paper</a></li>
+<li><a href="https://arxiv.org/abs/2206.12037">paper</a> How to Train Your HiPPO: State Space Models with Generalized Orthogonal Basis Projections, Albert Gu, Isys Johnson, Aman Timalsina, Atri Rudra, Christopher Ré</li>
+<li><a href="https://arxiv.org/abs/2203.14343">paper</a> Diagonal State Spaces are as Effective as Structured State Spaces, Ankit Gupta, Albert Gu, Jonathan Berant</li>
+<li><a href="https://arxiv.org/abs/2206.11893">paper</a> On the Parameterization and Initialization of Diagonal State Space Models, Albert Gu, Ankit Gupta, Karan Goel, Christopher Ré</li>
+<li><a href="https://arxiv.org/abs/2210.06583">paper</a> S4ND: Modeling Images and Videos as Multidimensional Signals Using State Spaces, Eric Nguyen, Karan Goel, Albert Gu, Gordon W. Downs, Preey Shah, Tri Dao, Stephen A. Baccus, Christopher Ré</li>
+<li><a href="https://arxiv.org/abs/2405.21060">paper</a> Transformers are SSMs: Generalized Models and Efficient Algorithms Through Structured State Space Duality, Tri Dao, Albert Gu</li>
+</ul>
 
 
 </section>
@@ -761,13 +758,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="Welcome">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Welcome</span>
+      <a href="../lectures/L05.html" class="pagination-link" aria-label="Transformers">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Transformers</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./lectures/L01.html" class="pagination-link" aria-label="FFNs">
-        <span class="nav-page-text">FFNs</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../notebooks/00-01-FFN-Classification-Iris.html" class="pagination-link" aria-label="FFN Classification">
+        <span class="nav-page-text"><span class="chapter-title">FFN Classification</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -779,7 +776,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/mlsquare/intro2dl/edit/main/course.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mlsquare/intro2dl/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/mlsquare/intro2dl/edit/main/lectures/L06.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mlsquare/intro2dl/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This course material was built with <a href="https://quarto.org/">Quarto</a> with <a href="https://github.com/hadley/r4ds">r4ds</a> theme.</p>
 </div>
