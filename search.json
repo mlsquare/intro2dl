@@ -102,7 +102,7 @@
     "href": "index.html#announcements",
     "title": "Deep Learning",
     "section": "Announcements",
-    "text": "Announcements\n\n[22-Sep-2024] Notes added to L03.\n[21-Sep-2024] L02, L03 added.\n[07-Sep-2024] L01 added.\n[21-Aug-2024] Course website up",
+    "text": "Announcements\n\n[14-Dec-2024] Notes added to L06 on S4 models.\n[16-Nov-2024] Notes added to L05 on Transformers.\n[24-Oct-2024] Notes added to L04 on RNNs.\n[21-Sep-2024] L02, L03 added.\n[07-Sep-2024] L01 added.\n[21-Aug-2024] Course website up",
     "crumbs": [
       "Welcome"
     ]
@@ -112,7 +112,7 @@
     "href": "index.html#overview",
     "title": "Deep Learning",
     "section": "Overview",
-    "text": "Overview\nPrereqs\n\nUndergraduate level exposure to Linear Algebra, Calculus\nAbility to read Python code\nBasic exposure to ML/DL\n\nPart-1: A Mathematical Introduction to Deep Learning Models\n\nTopics\n\nFeed Forward Neural Networks (FFNs)\nConvolution Neural Networks (CNNs)\nKolmogorov-Arnold Networks (KANs)\nRecurrent Neural Networks (RNNs)\nTransformers\nGraph Neural Networks (GNNs)\nSelective Structured State Space Models (S4)\n\n\nPart-2: A Mathematical Introduction to Deep Generative Models\n\nTopics\n\nVariational Auto Encoders (VAEs)\nGenerative Adversarial Networks (GANs)\nFlow Networks\nDiffusion Models",
+    "text": "Overview\nPart-1: A Mathematical Introduction to Deep Learning Models\n\nFeed Forward Neural Networks (FFNs)\nConvolution Neural Networks (CNNs)\nKolmogorov-Arnold Networks (KANs)\nRecurrent Neural Networks (RNNs)\nTransformers\nGraph Neural Networks (GNNs)\nSelective Structured State Space Models (S4)\n\nPart-2: A Mathematical Introduction to Deep Generative Models\n\nVariational Auto Encoders (VAEs)\nGenerative Adversarial Networks (GANs)\nFlow Networks\nDiffusion Models",
     "crumbs": [
       "Welcome"
     ]
@@ -122,7 +122,7 @@
     "href": "preface.html",
     "title": "Preface",
     "section": "",
-    "text": "When I started reading papers about Deep Learning, typically published in conferences, I had hard time following them. The key modeling details are presented in textual form with accompanied by architecture (block) diagrams. If the paper had any Math in them it was for proofs but not for explaining the models or the expressions were restricted to highlighting key contributions (eg. loss function).\nDespite this information, it was hard for me to understand them to be able to reproduce. I have to look at source code to see how they are implemented and go back to the paper and read again, and repeat this process. This was probably due to the my formal training Statistics. I always start with the model (expressed as equations). This unlearning took a long time. I am assuming that folks with training in Maths/ Applied Maths will also have hard time reading papers in the ML space for the same reason - there is no precision.\nIn this course, we will discuss different architectures (models) in Deep Learning using Mathematical language as much as possible (for the sake of precision) and follow-them up with implementation in code.\nThe intended audience is those with math background, that wants to appreciate modern deep learning models. We will not get into “why” deep learning works or their applications. In the resources section, I will provide ample references for those interested that wants to explore further.\n\nDisclaimer\nThis course is by no means a replacement of any other resources available. Hopefully, the content and views presented complement the current practice of MLOps, readers and students benefit from it.\nopenly,\nThe Saddle Point",
+    "text": "When I started reading papers about Deep Learning, typically published in conferences, I had hard time following them.\nThe key modeling details are presented in textual form, accompanied by architecture (block) diagrams. If the paper had any Math in them, they were mostly proofs of the key contributions but not for explaining the models in complete.\nDespite this information, it was hard for me to understand them to be able to reproduce. I have to look at source code to see how they are implemented and go back to the paper and read again, and repeat this process. This was probably due to the my formal training Statistics. I always start with the model (expressed as equations). This unlearning took a long time. I am assuming that folks with training in Maths/ Applied Maths will also have hard time reading papers in the ML space for the same reason - there is no precision.\nThe intended audience is those with math background, that wants to appreciate modern deep learning models. We will not get into “why” deep learning works or their applications. In the resources section, I will provide ample references for those interested that wants to explore further.\n\nDisclaimer\nThis course is by no means a replacement of any other resources available. Hopefully, the content and views presented complement the current literature and readers and students benefit from it.\nopenly,\nThe Saddle Point",
     "crumbs": [
       "Preface"
     ]
